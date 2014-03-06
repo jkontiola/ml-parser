@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>MLP_objOperators</parentName>
+  <parentName>ML_objOperators</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///binary operator
+event_inherited();
 str = "";
+str2 = "";
+precedence = 0;
+assoc = ML_O_RIGHTASSOC;
+
+
 </string>
           </argument>
         </arguments>

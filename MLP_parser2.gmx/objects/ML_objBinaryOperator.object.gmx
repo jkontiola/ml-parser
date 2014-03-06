@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>MLP_objOperators</parentName>
+  <parentName>ML_objOperators</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,7 +29,7 @@
 event_inherited();
 str = "";
 precedence = 0;
-assoc = MLP_O_LEFTASSOC;
+assoc = ML_O_LEFTASSOC;
 
 
 </string>
