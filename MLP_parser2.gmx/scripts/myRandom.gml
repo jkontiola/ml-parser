@@ -1,1 +1,1 @@
-return random(2);
+return random(1);
