@@ -222,7 +222,7 @@
       </scripts>
     </scripts>
     <script>scripts\_ML_LiVar_Create.gml</script>
-    <script>scripts\script182.gml</script>
+    <script>scripts\_ML_LiVar_Destroy.gml</script>
     <script>scripts\newRealVarScript.gml</script>
     <script>scripts\newStringVarScript.gml</script>
   </scripts>
