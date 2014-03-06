@@ -1,1 +1,1 @@
-return random(1);
+return random(100);
