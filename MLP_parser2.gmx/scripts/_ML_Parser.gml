@@ -7,6 +7,7 @@ while (!ds_queue_empty(rpn) && ML_NoException()) {
     expression_terminator = false;
     while (!ds_queue_empty(rpn) && expression_terminator == false && ML_NoException()) {
         tok = ds_queue_dequeue(rpn);
+        
         switch (tok.tokentype) {
         case ML_TT_UNARY:
             _ML_PARSE_Unary(tok, args);

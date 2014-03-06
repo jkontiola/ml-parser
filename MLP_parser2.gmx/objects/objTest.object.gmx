@@ -69,11 +69,12 @@ with (myfunc) {
 
 tvariables = ds_map_create();
 ds_map_copy(tvariables, variables);
-str = "2*4 nCr 2*2"
+str = "2 * 4 nCr 2 * 2"
 myfunc = ML_InitParserCS(variables);
+//show_message("real script id: " + string(_ML_FMultiply));
 with (myfunc) {
     //a * b nCr c * d = a * (b nCr c) * d
-    ML_AddBinaryOper("nCr",12,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddBinaryOper("nCr",25,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
     ML_SetExpression(other.str);
 }
 
@@ -122,7 +123,7 @@ with (myfunc) {
 
 tvariables = ds_map_create();
 ds_map_copy(tvariables, variables);
-str = "str2= (str1=getstr(), strlen(str1)&lt;4 ? 's' : 'b')";
+str = "str2= (str1='asdfhjkg', strlen(str1)&lt;4 ? 's' : 'b')";
 myfunc = ML_InitParserCS(variables);
 with (myfunc) {
     ML_AddFunction("getstr",myGetString, ML_VAL_STRING);
@@ -134,16 +135,14 @@ with (myfunc) {
     ML_SetExpression(other.str);
 }
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+
 str = "ln(e^2^3)!";
-myfunc = ML_InitParserScience(variables);
+myfunc = ML_InitParserScience(ds_map_create());
 with (myfunc) {
     ML_SetExpression(other.str);
 }
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+
 str = "(sin(pi / 2) *  -(4-2) + 1)/10 + globalvariable * (1/100) &lt;= rand() * 5"
 myfunc = ML_InitParserCS(variables);
 with (myfunc) {
@@ -194,7 +193,7 @@ with (ML_objParser) {
     ML_Calculate();
 }
 
-//ds_map_destroy(variables);*/
+//ds_map_destroy(variables);  
 </string>
           </argument>
         </arguments>
@@ -272,6 +271,9 @@ draw_line_width(0,560,room_width,560,2);
 
 var j;
 draw_set_font(ft_read);
+draw_text(200,0,fps_real);
+
+
 j = 0;
 draw_text(k,j,"shows a custom function, with 2 arguments"); j += 56;
 draw_text(k,j,"shows a binarry operator#bitshifting"); j += 56;
@@ -287,7 +289,7 @@ draw_text(k,j,"shows use of strings, the comma opearator # and the use of the te
               "str1 = " + string(ds_map_find_value(variables,"_str1")) + "  str2 = "+ string(ds_map_find_value(variables,"_str2"))); j += 56;
 draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
               "'^' is to the power of, ! means factorian, 'e' is the mathematical const#"+
-              "ln(e^2^3) is read as ln(e^(2^3)) = 8#");
+              "ln(e^2^3) is read as ln(e^(2^3)) = 8#"); j+= 56;
 </string>
           </argument>
         </arguments>

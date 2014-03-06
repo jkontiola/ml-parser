@@ -100,9 +100,6 @@ with (instance_create(0,0,ML_objParser)) {
     
     ML_AddVariable("pi",pi,ML_VAL_REAL);
     ML_AddVariable("e",exp(1),ML_VAL_REAL);
-    
-    //ML_AddFunction(functionstring,scriptid,returntype, [type_arg1, type_arg2 ... type_argN])
-
-    
+        
     return id;
 }

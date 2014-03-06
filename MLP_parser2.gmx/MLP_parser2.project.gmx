@@ -10,6 +10,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\myRandom.gml</script>
+    <script>scripts\myRandom2.gml</script>
     <script>scripts\AngleDifference.gml</script>
     <script>scripts\myfun1.gml</script>
     <script>scripts\myfun2.gml</script>
@@ -220,6 +221,8 @@
         </scripts>
       </scripts>
     </scripts>
+    <script>scripts\_ML_LiVar_Create.gml</script>
+    <script>scripts\script182.gml</script>
     <script>scripts\newRealVarScript.gml</script>
     <script>scripts\newStringVarScript.gml</script>
   </scripts>
@@ -253,7 +256,7 @@
     <room>rooms\room1</room>
     <room>rooms\room0</room>
   </rooms>
-  <constants number="37">
+  <constants number="40">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -291,6 +294,9 @@
     <constant name="ML_EXCEPT_ARGTYPE">12</constant>
     <constant name="ML_EXCEPT_CALC">13</constant>
     <constant name="ML_EXCEPT_TERNARY">14</constant>
+    <constant name="ML_LIVAR_STR">0</constant>
+    <constant name="ML_LIVAR_READONLY">1</constant>
+    <constant name="ML_LIVAR_TYPE">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
