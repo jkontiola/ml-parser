@@ -29,36 +29,36 @@
 
 tvariables = ds_map_create();
 ds_map_copy(tvariables, variables);
-myfunc = MLP_InitParserCS(tvariables);
+myfunc = ML_InitParserCS(tvariables);
 
 with (myfunc) {
-    MLP_AddFunction("new_variable", newRealVarScript, MLP_VAL_REAL, MLP_VAL_STRING, MLP_VAL_REAL);      //notice two times the same name
-    MLP_AddFunction("new_variable", newStringVarScript, MLP_VAL_STRING, MLP_VAL_STRING, MLP_VAL_STRING);  //function overloading knows the difference by argument type
+    ML_AddFunction("new_variable", newRealVarScript, ML_VAL_REAL, ML_VAL_STRING, ML_VAL_REAL);      //notice two times the same name
+    ML_AddFunction("new_variable", newStringVarScript, ML_VAL_STRING, ML_VAL_STRING, ML_VAL_STRING);  //function overloading knows the difference by argument type
     
     //first variable has to be "created" by the user before it can be used. (And this line has to be parsed).
-    MLP_SetExpression("new_variable('customvar', 10)");
-    MLP_Calculate();
+    ML_SetExpression("new_variable('customvar', 10)");
+    ML_Calculate();
     
-    MLP_SetExpression("customvar *= 1.5");
-    MLP_Calculate();
+    ML_SetExpression("customvar *= 1.5");
+    ML_Calculate();
     
 }
 
 
 tvariables = ds_map_create();
 ds_map_copy(tvariables, variables);
-myfunc = MLP_InitParserCS(tvariables);
+myfunc = ML_InitParserCS(tvariables);
 
 with (myfunc) {
-    MLP_AddFunction("new_variable", newRealVarScript, MLP_VAL_REAL, MLP_VAL_STRING, MLP_VAL_REAL);      //notice two times the same name
-    MLP_AddFunction("new_variable", newStringVarScript, MLP_VAL_STRING, MLP_VAL_STRING, MLP_VAL_STRING);  //function overloading knows the difference by argument type
+    ML_AddFunction("new_variable", newRealVarScript, ML_VAL_REAL, ML_VAL_STRING, ML_VAL_REAL);      //notice two times the same name
+    ML_AddFunction("new_variable", newStringVarScript, ML_VAL_STRING, ML_VAL_STRING, ML_VAL_STRING);  //function overloading knows the difference by argument type
     
     //One can declare multiple variables, as long as 
-    MLP_SetExpression("new_variable('customvar1', 'Hello'); new_variable('customvar2', ' world')");
-    MLP_Calculate();
+    ML_SetExpression("new_variable('customvar1', 'Hello'); new_variable('customvar2', ' world')");
+    ML_Calculate();
     
-    MLP_SetExpression("customvar1 + customvar2");
-    MLP_Calculate();
+    ML_SetExpression("customvar1 + customvar2");
+    ML_Calculate();
     
 }
 
@@ -85,9 +85,9 @@ ds_map_destroy(variables);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (MLP_objParser) {
-    MLP_ClearExceptions();
-    MLP_Calculate();
+            <string>with (ML_objParser) {
+    ML_ClearExceptions();
+    ML_Calculate();
 }
 </string>
           </argument>
@@ -119,17 +119,17 @@ draw_set_font(ft_code);
 
 
 var num;
-num = instance_number(MLP_objParser);
+num = instance_number(ML_objParser);
 for (i = 0; i &lt; num; i += 1) {
-    with (instance_find(MLP_objParser, i)) {
-        if (MLP_HasAnswer()) {
+    with (instance_find(ML_objParser, i)) {
+        if (ML_HasAnswer()) {
             draw_set_color(c_black);
         } else {
             draw_set_color(c_red);
         }
-        draw_text(0, i * 56,MLP_GetExprString() );
-        draw_text(30,i * 56 + 14, MLP_LastExceptionString())
-        draw_text(30,i * 56 + 28, "ans = " + string(MLP_GetFinalAnswer()));
+        draw_text(0, i * 56,ML_GetExprString() );
+        draw_text(30,i * 56 + 14, ML_LastExceptionString())
+        draw_text(30,i * 56 + 28, "ans = " + string(ML_GetFinalAnswer()));
         draw_set_color(c_black);
         draw_line(0,i*56,room_width,i*56);
     }

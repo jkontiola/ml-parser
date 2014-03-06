@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>MLP_objTokenTypes</parentName>
+  <parentName>ML_objTokenTypes</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,10 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-functionscript = -1;
-argc = 0;
-args[0] = MLP_VAL_ANY;
-rettype = MLP_VAL_REAL;
+str = "";
+readonly = true;
+type = ML_VAL_REAL;
 </string>
           </argument>
         </arguments>

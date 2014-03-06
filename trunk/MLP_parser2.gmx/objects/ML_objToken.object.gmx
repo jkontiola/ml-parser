@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>MLP_objAll</parentName>
+  <parentName>ML_objAll</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,13 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///ternary operator structure
-event_inherited();
-functionscript = -1;
-lhstype = MLP_VAL_ANY;
-mhstype = MLP_VAL_ANY;
-rhstype = MLP_VAL_ANY;
-rettype = MLP_VAL_REAL;
+            <string>event_inherited();
+tokentype = -1;
+tokenstring = "";
+tokenpos = -1;
+operator = -1;
+argc = 0;
 </string>
           </argument>
         </arguments>
