@@ -1,14 +1,13 @@
 var vstr, p, ret, prevtok, t;
 prevtok = argument1;
-vstr = argument0.tokenstring;
+vstr = string(_ML_LiTok_GetVal(argument0));
 
 if !ds_map_exists(P_BINOPER, vstr) return false;
-p = argument0.tokenpos;
 ret = false;
-if (p >= 0) {
-    switch (prevtok.tokentype) {
+if (prevtok >= 0) {
+    switch (_ML_LiTok_GetType(prevtok)) {
     case ML_TT_UNARY:
-        if (prevtok.operator.affix == ML_UO_POSTFIX) {
+        if (_ML_LiUOp_GetAffix(_ML_LiTok_GetOperator(prevtok)) == ML_UO_POSTFIX) {
             ret = true;
         }
     break;

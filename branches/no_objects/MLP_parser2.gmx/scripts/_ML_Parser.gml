@@ -2,13 +2,14 @@ var rpn, args, tok, lhs, lhs_val, t, expression_terminator;
 //reverse polish notation of tokens;
 rpn = argument0;
 args = ds_stack_create();
+lhs_val = 0;
 while (!ds_queue_empty(rpn) && ML_NoException()) {
     ds_stack_clear(args);
     expression_terminator = false;
     while (!ds_queue_empty(rpn) && expression_terminator == false && ML_NoException()) {
         tok = ds_queue_dequeue(rpn);
         
-        switch (tok.tokentype) {
+        switch (_ML_LiTok_GetType(tok)) {
         case ML_TT_UNARY:
             _ML_PARSE_Unary(tok, args);
         break;
@@ -41,17 +42,17 @@ while (!ds_queue_empty(rpn) && ML_NoException()) {
     }
     if (!ds_stack_empty(args)) {
         lhs = ds_stack_pop(args);
-        if (lhs.tokentype == ML_TT_VALUE) {
-            if (lhs.operator == ML_VAL_REAL) {
-                lhs_val = real(lhs.tokenstring);
+        if (_ML_LiTok_GetType(lhs) == ML_TT_VALUE) {
+            if (_ML_LiTok_GetOperator(lhs) == ML_VAL_REAL) {
+                lhs_val = _ML_LiTok_GetVal(lhs);
             } else {
-                lhs_val = lhs.tokenstring;
+                lhs_val = _ML_LiTok_GetVal(lhs);
             }
             ds_list_add(AllAns, lhs_val);
-        } else if (lhs.tokentype == ML_TT_VARIABLE)  {
+        } else if (_ML_LiTok_GetType(lhs) == ML_TT_VARIABLE)  {
             var v;
-            v = lhs.operator;
-            lhs_val = ds_map_find_value(VARMAP, v.str);
+            v = _ML_LiTok_GetOperator(lhs);
+            lhs_val = ds_map_find_value(VARMAP, _ML_Li_GetName(v));
             ds_list_add(AllAns, lhs_val);
         }
     }

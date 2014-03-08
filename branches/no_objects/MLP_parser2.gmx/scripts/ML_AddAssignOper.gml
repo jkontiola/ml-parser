@@ -21,10 +21,8 @@
 var o;
 if (ds_map_exists(P_ASSIGNOPER,argument0)) {
     o = ds_map_find_value(P_ASSIGNOPER, argument0);
-    with (o) {
-        ds_map_add(ActualFunctions, argument4 +"$" + argument5, 
+    _ML_LiF_AddSig(o, argument4 +"$" + argument5, 
                     _ML_AddAssignSig(argument2, argument3, argument4, argument5));
-    }
 } else {
     var assoc;
     assoc = ML_O_RIGHTASSOC;

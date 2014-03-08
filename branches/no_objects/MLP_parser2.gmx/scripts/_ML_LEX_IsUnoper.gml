@@ -1,17 +1,17 @@
 var vstr, ret, prevtok, t, op;
 prevtok = argument1;
-vstr = argument0.tokenstring;
+vstr = string(_ML_LiTok_GetVal(argument0));
 if !ds_map_exists(P_UNOPER, vstr) return false;
 op = ds_map_find_value(P_UNOPER,vstr);
 if (prevtok >= 0) {
     ret = false;
-    if (op.affix == ML_UO_PREFIX) {
-        switch (prevtok.tokentype) {
+    if (_ML_LiUOp_GetAffix(op) == ML_UO_PREFIX) {
+        switch (_ML_LiTok_GetType(prevtok)) {
         case ML_TT_BINARY:
             ret = true;
         break;
         case ML_TT_UNARY:
-            if (prevtok.operator.affix == ML_UO_PREFIX) {
+            if (_ML_LiUOp_GetAffix(_ML_LiTok_GetOperator(prevtok)) == ML_UO_PREFIX ) {
                 ret = true;
             }
         break;
@@ -29,9 +29,9 @@ if (prevtok >= 0) {
         break;
         }
     } else {
-        switch (prevtok.tokentype) {
+        switch (_ML_LiTok_GetType(prevtok)) {
         case ML_TT_UNARY:
-            if (prevtok.operator.affix == ML_UO_POSTFIX) {
+            if (_ML_LiUOp_GetAffix(_ML_LiTok_GetOperator(prevtok)) == ML_UO_POSTFIX) {
                 ret = true;
             }
         break;
@@ -51,6 +51,6 @@ if (prevtok >= 0) {
         }
     }
 } else {
-    ret = (op.affix == ML_UO_PREFIX);
+    ret = (_ML_LiUOp_GetAffix(op) == ML_UO_PREFIX);
 }
 return ret;

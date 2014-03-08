@@ -25,10 +25,8 @@ if (s > 0) {
     v = ds_map_find_first(P_VARIABLE);
     repeat (s) { 
         ind = ds_map_find_value(P_VARIABLE, v);
-        with (ind) {
-            if (str == k) {
-                ds_list_add(list, id);
-            }
+        if (_ML_Li_GetName(ind) == k) {
+            ds_list_add(list, ind);
         }
         v = ds_map_find_next(P_VARIABLE, v);
     }

@@ -21,8 +21,9 @@ i = 0;
 endtok = false;
 
 while (i < s && !endtok) { //while there are tokens to be read
-    token = ds_list_find_value(input, i);    
-    switch (token.tokentype) {
+    token = ds_list_find_value(input, i);
+
+    switch (_ML_LiTok_GetType(token)) {
     case ML_TT_VALUE:
     case ML_TT_VARIABLE:
         if (curargnum == 0) curargnum = 1;
@@ -58,9 +59,9 @@ while (i < s && !endtok) { //while there are tokens to be read
         _ML_SY_HandleArgSep(token, curoutput, curstack);
         curargnum += 1;
     break;
-    case ML_TT_COMMA:
+    case ML_TT_COMMA: //special case - need to recheck comma's to check against function seperation
         if (curparenthesis == 0) {
-            token.tokentype = ML_TT_ARGSEP;
+            _ML_LiTok_SetType(token, ML_TT_ARGSEP); 
         } else {
             var prevtok,v;
             prevtok = -1;
@@ -90,7 +91,7 @@ while (i < s && !endtok) { //while there are tokens to be read
                     v = ML_TT_UNKNOWN;
                 }
             }
-            with (token) _ML_LEX_TokenSetType(v);
+            _ML_LEX_TokenSetType(token, v);
         }
         i-=1;
     break;
@@ -109,20 +110,23 @@ while (i < s && !endtok) { //while there are tokens to be read
     break;
     case ML_TT_EOL:
         if (curlevel != 0) {
-            ML_RaiseException(ML_EXCEPT_PARENTHESIS, token.tokenpos, "unexpected end of line, mismatching parenthesis at " + string(token.tokenpos));
+            ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token), 
+                "unexpected end of line, mismatching parenthesis at " + string(_ML_LiTok_GetPos(token)));
         }
         _ML_SY_HandleEOL(token, curoutput, curstack);
         endtok = true;
     break;
     case ML_TT_EXPRTERMINATOR:
         if (curlevel != 0) {
-            ML_RaiseException(ML_EXCEPT_PARENTHESIS, token.tokenpos, "unexpected end of expression, mismatching parenthesis at " + string(token.tokenpos));
+            ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token), 
+                "unexpected end of expression, mismatching parenthesis at " + string(_ML_LiTok_GetPos(token)));
         }
         _ML_SY_HandleExprTerminator(token, curoutput, curstack);
     break;
     
     default:
-        ML_RaiseException(ML_EXCEPT_TOKENTYPE, token.tokenpos, "unknown tokentype for token '" + token.tokenstring + "' at " + string(token.tokenpos));
+        ML_RaiseException(ML_EXCEPT_TOKENTYPE, _ML_LiTok_GetPos(token), 
+            "unknown tokentype for token '" + string(_ML_LiTok_GetVal(token)) + "' at " + string(_ML_LiTok_GetPos(token)));
     break;
     
     }
@@ -145,6 +149,7 @@ ds_stack_destroy(curstack);
 
 
 if !(endtok) {
-    ML_RaiseException(ML_EXCEPT_PARENTHESIS,token.tokenpos,"Line ended before EOL'" + token.tokenstring +"' at " +string(token.tokenpos));
+    ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token),
+        "Line ended before EOL'" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)));
 }
 return curoutput;

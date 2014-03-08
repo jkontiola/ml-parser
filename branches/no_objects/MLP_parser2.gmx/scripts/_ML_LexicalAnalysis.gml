@@ -56,9 +56,7 @@ while (string_length(str) > 0) {
     str = string_delete(str,1,l);
     p += l;
 }
-with (_ML_LEX_TokenAdd("",p)) {
-    tokentype = ML_TT_EOL;
-}
+_ML_LEX_TokenAdd("",p,ML_TT_EOL);
 if (!ML_NoException()) return tokenlist;
 
 //now for each token determine it's type:
@@ -66,7 +64,7 @@ var i, tok, v, prevtok;
 s = ds_list_size(tokenlist) - 1;
 //first token is special, no binary, no prevtoken:
 tok = ds_list_find_value(tokenlist, 0)
-if (tok.tokenstring == "("){
+if (string(_ML_LiTok_GetVal(tok)) == "("){
     v = ML_TT_LEFTP;
 } else if _ML_LEX_IsFunction(tok, -1) {
     v = ML_TT_FUNCTION;
@@ -79,21 +77,21 @@ if (tok.tokenstring == "("){
 } else {
     v = ML_TT_UNKNOWN;
 }
-with (tok) {
-    _ML_LEX_TokenSetType(v);
-}
+
+_ML_LEX_TokenSetType(tok, v);
+
 if (!ML_NoException()) return tokenlist;
 //middle tokens
 prevtok = tok;
 for (i = 1; i < s; i += 1) {
     tok = ds_list_find_value(tokenlist, i);
-    if (tok.tokenstring == ";") {
+    if (string(_ML_LiTok_GetVal(tok)) == ";") {
         v = ML_TT_EXPRTERMINATOR;
-    } else if (tok.tokenstring == ",") {
+    } else if (string(_ML_LiTok_GetVal(tok))  == ",") {
         v = ML_TT_COMMA;
-    } else if (tok.tokenstring == "("){
+    } else if (string(_ML_LiTok_GetVal(tok)) == "("){
         v = ML_TT_LEFTP;
-    } else if (tok.tokenstring == ")") {
+    } else if (string(_ML_LiTok_GetVal(tok)) == ")") {
         v = ML_TT_RIGHTP;
     }else if _ML_LEX_IsFunction(tok, prevtok) {
         v = ML_TT_FUNCTION;
@@ -114,9 +112,7 @@ for (i = 1; i < s; i += 1) {
     } else {
         v = ML_TT_UNKNOWN;
     }
-    with (tok) {
-        _ML_LEX_TokenSetType(v);
-    }
+    _ML_LEX_TokenSetType(tok, v);
     if (!ML_NoException()) return tokenlist;
     prevtok = tok;
 }

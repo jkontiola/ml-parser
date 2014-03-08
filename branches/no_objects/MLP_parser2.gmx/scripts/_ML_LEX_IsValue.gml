@@ -1,6 +1,6 @@
 
 var vstr, i, s, prevtok;
-vstr = argument0.tokenstring;
+vstr = string(_ML_LiTok_GetVal(argument0));
 prevtok = argument1;
 if (vstr == ".") return false;
 var start_c;

@@ -1,11 +1,4 @@
-//ML_AddTernarySig(script, retval, lhs, mhs, rhs)
+//_ML_AddTernarySig(script, retval, lhs, mhs, rhs)
 
-with (instance_create(0,0, ML_objAssignOperatorD)) {
-    functionscript = argument0;
-    rettype = argument1;
-    lhstype = argument2;
-    mhstype = argument3;
-    rhstype = argument4;
-    return id;
-}
-
+var ind = _ML_LiTOpS_Create(argument0, argument1, argument2, argument3, argument4);
+return ind;

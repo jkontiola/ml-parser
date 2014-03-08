@@ -1,9 +1,3 @@
-//ML_AddUnarySig(script, retval, lhs)
-
-with (instance_create(0,0, ML_objUnaryOperatorD)) {
-    functionscript = argument0;
-    rettype = argument1;
-    lhstype = argument2;
-    return id;
-}
-
+//_ML_AddUnarySig(script, retval, argtype)
+var ind = _ML_LiUOpS_Create(argument0, argument1, argument2);
+return ind;

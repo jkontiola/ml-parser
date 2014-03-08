@@ -220,9 +220,87 @@
           <script>scripts\_ML_PARSE_GetFullFunction.gml</script>
         </scripts>
       </scripts>
+      <scripts name="data_containers">
+        <script>scripts\_ML_Li_GetName.gml</script>
+        <scripts name="variables">
+          <script>scripts\_ML_LiVar_GetReadonly.gml</script>
+          <script>scripts\_ML_LiVar_GetType.gml</script>
+          <script>scripts\_ML_LiVar_Create.gml</script>
+          <script>scripts\_ML_LiVar_Destroy.gml</script>
+        </scripts>
+        <scripts name="functions">
+          <script>scripts\_ML_LiF_GetFuncs.gml</script>
+          <script>scripts\_ML_LiF_GetFunc.gml</script>
+          <script>scripts\_ML_LiF_Create.gml</script>
+          <script>scripts\_ML_LiF_Destroy.gml</script>
+          <script>scripts\_ML_LiF_AddSig.gml</script>
+          <scripts name="operators">
+            <script>scripts\_ML_LiOp_GetPrec.gml</script>
+            <script>scripts\_ML_LiOp_GetAssoc.gml</script>
+            <scripts name="binary_operators">
+              <script>scripts\_ML_LiBOp_Create.gml</script>
+              <script>scripts\_ML_LiBOp_Destroy.gml</script>
+            </scripts>
+            <scripts name="unary_operators">
+              <script>scripts\_ML_LiUOp_Create.gml</script>
+              <script>scripts\_ML_LiUOp_Destroy.gml</script>
+              <script>scripts\_ML_LiUOp_GetAffix.gml</script>
+            </scripts>
+            <scripts name="ternary">
+              <script>scripts\_ML_LiTOp_Destroy.gml</script>
+              <script>scripts\_ML_LiTOp_GetFirstName.gml</script>
+              <script>scripts\_ML_LiTOp_GetSecondName.gml</script>
+              <script>scripts\_ML_LiTOp_Create.gml</script>
+            </scripts>
+            <scripts name="assign">
+              <script>scripts\_ML_LiAOp_Create.gml</script>
+              <script>scripts\_ML_LiAOp_Destroy.gml</script>
+            </scripts>
+          </scripts>
+        </scripts>
+        <scripts name="functions_fullname">
+          <script>scripts\_ML_LiS_GetScript.gml</script>
+          <script>scripts\_ML_LiS_Destroy.gml</script>
+          <script>scripts\_ML_LiS_GetRettype.gml</script>
+          <scripts name="functions">
+            <script>scripts\_ML_LiFS_Create.gml</script>
+            <script>scripts\_ML_LiFS_GetArgN.gml</script>
+            <script>scripts\_ML_LiFS_GetArgs.gml</script>
+            <script>scripts\_ML_LiFS_GetArgcount.gml</script>
+          </scripts>
+          <scripts name="operators">
+            <scripts name="binary_operator">
+              <script>scripts\_ML_LiBOpS_Create.gml</script>
+            </scripts>
+            <scripts name="unary">
+              <script>scripts\_ML_LiUOpS_Create.gml</script>
+            </scripts>
+            <scripts name="ternary">
+              <script>scripts\_ML_LiTOpS_Create.gml</script>
+            </scripts>
+            <scripts name="assign">
+              <script>scripts\_ML_LiAOpS_Create.gml</script>
+            </scripts>
+          </scripts>
+        </scripts>
+        <scripts name="token">
+          <script>scripts\_ML_LiTok_Destroy.gml</script>
+          <script>scripts\_ML_LiTok_GetPos.gml</script>
+          <script>scripts\_ML_LiTok_GetType.gml</script>
+          <script>scripts\_ML_LiTok_GetOperator.gml</script>
+          <script>scripts\_ML_LiTok_GetArgcount.gml</script>
+          <script>scripts\_ML_LiTok_GetVal.gml</script>
+          <script>scripts\_ML_LiTok_SetString.gml</script>
+          <script>scripts\_ML_LiTok_SetType.gml</script>
+          <script>scripts\_ML_LiTok_SetArgcount.gml</script>
+          <script>scripts\_ML_LiTok_SetOperator.gml</script>
+          <script>scripts\_ML_LiTok_Create.gml</script>
+        </scripts>
+        <scripts name="parser">
+          <script>scripts\script224.gml</script>
+        </scripts>
+      </scripts>
     </scripts>
-    <script>scripts\_ML_LiVar_Create.gml</script>
-    <script>scripts\_ML_LiVar_Destroy.gml</script>
     <script>scripts\newRealVarScript.gml</script>
     <script>scripts\newStringVarScript.gml</script>
   </scripts>
@@ -231,32 +309,34 @@
     <font>fonts\ft_read</font>
   </fonts>
   <objects name="objects">
+    <object>objects\objTest3</object>
     <object>objects\objTest</object>
     <object>objects\objTest2</object>
     <objects name="ML_Parser">
       <object>objects\ML_objAll</object>
       <object>objects\ML_objTokenTypes</object>
-      <object>objects\ML_objVariable</object>
+      <object>objects\ML_objVariable_o</object>
       <object>objects\ML_objOperators</object>
-      <object>objects\ML_objFunction</object>
-      <object>objects\ML_objTernaryOperator</object>
-      <object>objects\ML_objBinaryOperator</object>
-      <object>objects\ML_objAssignOperator</object>
-      <object>objects\ML_objUnaryOperator</object>
-      <object>objects\ML_objFunctionD</object>
-      <object>objects\ML_objAssignOperatorD</object>
-      <object>objects\ML_objUnaryOperatorD</object>
-      <object>objects\ML_objBinaryOperatorD</object>
-      <object>objects\ML_objTernaryOperatorD</object>
+      <object>objects\ML_objFunction_o</object>
+      <object>objects\ML_objTernaryOperator_o</object>
+      <object>objects\ML_objBinaryOperator_o</object>
+      <object>objects\ML_objAssignOperator_o</object>
+      <object>objects\ML_objUnaryOperator_o</object>
+      <object>objects\ML_objFunctionD_o</object>
+      <object>objects\ML_objAssignOperatorD_o</object>
+      <object>objects\ML_objUnaryOperatorD_o</object>
+      <object>objects\ML_objBinaryOperatorD_o</object>
+      <object>objects\ML_objTernaryOperatorD_o</object>
       <object>objects\ML_objToken</object>
       <object>objects\ML_objParser</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
+    <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>
-  <constants number="40">
+  <constants number="63">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -294,9 +374,32 @@
     <constant name="ML_EXCEPT_ARGTYPE">12</constant>
     <constant name="ML_EXCEPT_CALC">13</constant>
     <constant name="ML_EXCEPT_TERNARY">14</constant>
-    <constant name="ML_LIVAR_STR">0</constant>
+    <constant name="ML_LI_STR">0</constant>
     <constant name="ML_LIVAR_READONLY">1</constant>
     <constant name="ML_LIVAR_TYPE">2</constant>
+    <constant name="ML_LIFUNC_ACTUAL">1</constant>
+    <constant name="ML_LIOP_PREC">2</constant>
+    <constant name="ML_LIOP_ASSOC">3</constant>
+    <constant name="ML_LITOP_STR_P1">4</constant>
+    <constant name="ML_LIUOP_AFFIX">4</constant>
+    <constant name="ML_LITOP_STR_P2">5</constant>
+    <constant name="ML_LIS_SCRIPT">0</constant>
+    <constant name="ML_LIS_RETTYPE">1</constant>
+    <constant name="ML_LIFS_ARGC">2</constant>
+    <constant name="ML_LIFS_ARGS">3</constant>
+    <constant name="ML_LIBOPS_LHSTYPE">2</constant>
+    <constant name="ML_LIBOPS_RHSTYPE">3</constant>
+    <constant name="ML_LIUOPS_ARGTYPE">2</constant>
+    <constant name="ML_LITOPS_LHSTYPE">2</constant>
+    <constant name="ML_LITOPS_RHSTYPE">3</constant>
+    <constant name="ML_LITOPS_MHSTYPE">4</constant>
+    <constant name="ML_LIAOPS_LHSTYPE">2</constant>
+    <constant name="ML_LIAOPS_RHSTYPE">3</constant>
+    <constant name="ML_LITOK_TYPE">0</constant>
+    <constant name="ML_LITOK_STR">1</constant>
+    <constant name="ML_LITOK_POS">2</constant>
+    <constant name="ML_LITOK_OP">3</constant>
+    <constant name="ML_LITOK_ARGC">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
