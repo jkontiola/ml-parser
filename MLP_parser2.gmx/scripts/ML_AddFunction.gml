@@ -32,10 +32,7 @@ if (ds_map_exists(P_FUNCTION,argument[0])) {
         }
     }
     o = ds_map_find_value(P_FUNCTION, argument[0]);
-    with (o) {
-        ds_map_add(ActualFunctions, argstr, 
-                    _ML_AddFunctionSig(argument[1], argument[2], c, tlist));
-    }
+    _ML_LiF_AddSig(o, argstr, _ML_AddFunctionSig(argument[1], argument[2], c, tlist));
 } else {
     o = _ML_NewFunction(argument[0], argument[1], argument[2], c, tlist);
     ds_map_add(P_FUNCTION, argument[0], o);

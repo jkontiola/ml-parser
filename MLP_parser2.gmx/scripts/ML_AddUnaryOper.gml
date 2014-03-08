@@ -7,8 +7,8 @@
 **  Arguments:
 **      operator    string used to identify the operator
 **      script      script id
-**      returntype  return type of the operator (default = ML_VAL_REAL)
-**      valtype     type of argument (default = ML_VAL_ANY)
+**      returntype  return type of the operator
+**      valtype     type of argument
 **      affix       affix of operator (default is prefix/ML_UO_PREFIX)
 **
 **  Returns:
@@ -20,10 +20,7 @@
 var o;
 if (ds_map_exists(P_UNOPER,argument[0])) {
     o = ds_map_find_value(P_UNOPER, argument[0]);
-    with (o) {
-        ds_map_add(ActualFunctions, argument[4], 
-                    _ML_AddUnarySig(argument[2], argument[3], argument[4]));
-    }
+    _ML_LiF_AddSig(o, argument[4],_ML_AddUnarySig(argument[2], argument[3], argument[4]));
 } else {
     var affix;
     affix = ML_UO_PREFIX;

@@ -1,4 +1,4 @@
-///ML_RemBinaryOper()
+///ML_RemBinaryOper(index)
 
-ds_map_delete(other.P_BINOPER, str);
-instance_destroy();
+ds_map_delete(P_BINOPER, _ML_Li_GetName(argument0));
+_ML_LiBOp_Destroy(argument0);

@@ -21,10 +21,8 @@
 var o;
 if (ds_map_exists(P_BINOPER,argument[0])) {
     o = ds_map_find_value(P_BINOPER, argument[0]);
-    with (o) {
-        ds_map_add(ActualFunctions, argument[4] +"$" + argument[5], 
-                    _ML_AddBinarySig(argument[2], argument[3], argument[4], argument[5]));
-    }
+    _ML_LiF_AddSig(o, argument[4] +"$" + argument[5], 
+                _ML_AddBinarySig(argument[2], argument[3], argument[4], argument[5]));
 } else {
     var assoc;
     assoc = ML_O_LEFTASSOC;
@@ -32,7 +30,4 @@ if (ds_map_exists(P_BINOPER,argument[0])) {
     o = _ML_NewBinaryOper(argument[0], argument[1], argument[2], argument[3], argument[4], argument[5], assoc);
     ds_map_add(P_BINOPER, argument[0], o);
 }
-//if (o.str == "/") {
-//    show_message("basic operator id: " + string(o)  + " string: " + o.str + " script id: " + string(argument[2]) + ", " + script_get_name(argument[2]));
-//}
 return o;

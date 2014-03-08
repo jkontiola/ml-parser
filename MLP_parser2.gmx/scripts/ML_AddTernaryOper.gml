@@ -25,10 +25,8 @@
 var o;
 if (ds_map_exists(P_TERNOPER,argument[0])) {
     o = ds_map_find_value(P_TERNOPER, argument[0]);
-    with (o) {
-        ds_map_add(ActualFunctions, argument[5] + "$" + argument[6] + "$" + argument[7], 
+    _ML_LiF_AddSig(o, argument[5] + "$" + argument[6] + "$" + argument[7], 
                     _ML_AddTernarySig(argument[3], argument[4], argument[5], argument[6], argument[7]));
-    }
 } else {
     var assoc;
     assoc = ML_O_RIGHTASSOC;

@@ -5,9 +5,10 @@ output = argument1;
 stack = argument2;
 
 while (!ds_stack_empty(stack)) {
-    if (ds_stack_top(stack).tokentype == ML_TT_LEFTP ) break;
+    if (_ML_LiTok_GetType(ds_stack_top(stack)) == ML_TT_LEFTP ) break;
     ds_queue_enqueue(output, ds_stack_pop(stack));
 }
 if (ds_stack_empty(stack)) {
-    ML_RaiseException(ML_EXCEPT_PARENTHESIS,token.tokenpos,"Mismatched parenthesis for '" + token.tokenstring +"' at " +string(token.tokenpos))
+    ML_RaiseException(ML_EXCEPT_PARENTHESIS,_ML_LiTok_GetPos(token),
+        "Mismatched parenthesis for '" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)))
 }
