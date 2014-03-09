@@ -1,12 +1,13 @@
-///ML_AddVariable(varstring,[value, type, readonly = true])
+///ML_AddVariable(parser, varstring,[value, type, readonly = true])
 /*
 **  Usage:
-**      ML_AddVariable("varstring",[value, type, readonly = true])
+**      ML_AddVariable( parser, varstring,[value, type, readonly = true])
 **
 **  Arguments:
+**      parser      parser index
 **      varstring   string used to identify the variable
 **      value       initial value, if variable does not exist yet (default 0)
-**      type        type of variable GML_VAL_REAL / GML_VAL_STRING. - If omitted the variables current state is used
+**      type        type of variable GML_VAL_REAL / GML_VAL_STRING - If omitted the variables current state is used
 **      readonly    wether or not the value can be written (default to read only)
 **
 **  Returns:
@@ -15,19 +16,20 @@
 **  Notes:
 */
 
-var str = argument[0];
+var VARMAP  = _ML_LiP_GetVarMap(argument[0]);
+var str = argument[1];
 
 if (!ds_map_exists(VARMAP,str) ) {
     var tval;
     tval = 0;
     if (argument_count > 1) {
-        tval = argument[1];
+        tval = argument[2];
     }   
     ds_map_add(VARMAP, str, tval);
 }
 var type;
-if (argument_count > 2) {
-    type = argument[2];
+if (argument_count > 3) {
+    type = argument[3];
 } else {
     var t = ds_map_find_value(VARMAP, str);
     if (is_real(t)) {
@@ -37,11 +39,11 @@ if (argument_count > 2) {
     }
 }
 var ro = true;
-if (argument_count > 3) {
-    ro = argument[3];
+if (argument_count > 4) {
+    ro = argument[4];
 }
 
 var v = _ML_LiVar_Create(str, type, ro);
-ds_map_add(P_VARIABLE,str,v);
+ds_map_add(_ML_LiP_GetVariableTable(argument[0]),str,v);
 return v;
 

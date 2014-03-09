@@ -1,4 +1,5 @@
-///ML_RemFunctionStr(function_string)
+///ML_RemFunctionStr(parser, function_string)
 
-ML_RemFunction(ds_map_find_value(P_FUNCTION,argument0));
+var P_FUNCTION  = _ML_LiP_GetFunctionTable(argument0);
+ML_RemFunction(argument0, ds_map_find_value(P_FUNCTION,argument1));
 

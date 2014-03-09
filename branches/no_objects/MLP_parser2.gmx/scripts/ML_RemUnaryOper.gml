@@ -1,4 +1,5 @@
-///ML_RemUnaryOper(index)
+///ML_RemUnaryOper(parser, index)
 
-ds_map_delete(P_UNOPER, _ML_Li_GetName(argument0));
-_ML_LiUOp_Destroy(argument0);
+var P_UNOPER = _ML_LiP_GetUnOpsTable(argument0);
+ds_map_delete(P_UNOPER, _ML_Li_GetName(argument1));
+_ML_LiUOp_Destroy(argument1);

@@ -1,3 +1,3 @@
-///ML_GetAnswer(ind)
+///ML_GetAnswer(parser, answer_ind)
 
-return ds_list_find_value(AllAns, argument0);
+return _ML_LiP_GetAnswerN(argument0, argument1);

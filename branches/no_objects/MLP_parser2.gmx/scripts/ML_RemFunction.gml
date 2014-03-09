@@ -1,4 +1,5 @@
-///ML_RemFunction(index)
+///ML_RemFunction(parser, index)
 
-ds_map_delete(P_FUNCTION, _ML_Li_GetName(argument0));
-_ML_LiF_Destroy(argument0);
+var P_FUNCTION  = _ML_LiP_GetFunctionTable(argument0);
+ds_map_delete(P_FUNCTION, _ML_Li_GetName(argument1));
+_ML_LiF_Destroy(argument1);

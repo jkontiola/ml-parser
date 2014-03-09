@@ -1,6 +1,9 @@
+///_ML_LEX_IsTernOper(parser, string, previoustoken)
+
 var vstr, p, ret, prevtok, t;
-prevtok = argument1;
-vstr = string(_ML_LiTok_GetVal(argument0));
+var P_TERNOPER = _ML_LiP_GetTernOpsTable(argument0);
+prevtok = argument2;
+vstr = string(_ML_LiTok_GetVal(argument1));
 
 if !ds_map_exists(P_TERNOPER, vstr) return false;
 if (prevtok >= 0) {

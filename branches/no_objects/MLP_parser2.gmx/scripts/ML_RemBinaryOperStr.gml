@@ -1,5 +1,6 @@
-///ML_RemBinaryOperStr(Binary operator string)
+///ML_RemBinaryOperStr(parser, Binary operator string)
 
 
-ML_RemBinaryOper(ds_map_find_value(P_BINOPER,argument0));
+var P_BINOPER = _ML_LiP_GetBinOpsTable(argument0);
+ML_RemBinaryOper(argument0, ds_map_find_value(P_BINOPER,argument1));
 

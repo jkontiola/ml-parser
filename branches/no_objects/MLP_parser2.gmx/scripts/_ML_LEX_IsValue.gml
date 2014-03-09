@@ -1,7 +1,8 @@
+///_ML_LEX_IsValue(parser, str, prevtok)
 
 var vstr, i, s, prevtok;
-vstr = string(_ML_LiTok_GetVal(argument0));
-prevtok = argument1;
+vstr = string(_ML_LiTok_GetVal(argument1));
+prevtok = argument2;
 if (vstr == ".") return false;
 var start_c;
 start_c = string_char_at(vstr,1);

@@ -1,6 +1,9 @@
+///_ML_LEX_IsBinoper(parser, str, prevtok)
+
+var P_BINOPER = _ML_LiP_GetBinOpsTable(argument0);
 var vstr, p, ret, prevtok, t;
-prevtok = argument1;
-vstr = string(_ML_LiTok_GetVal(argument0));
+prevtok = argument2;
+vstr = string(_ML_LiTok_GetVal(argument1));
 
 if !ds_map_exists(P_BINOPER, vstr) return false;
 ret = false;

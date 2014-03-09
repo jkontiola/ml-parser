@@ -1,0 +1,23 @@
+///ML_RaiseException_CurParser(Exception, position, [string, token])
+
+/*
+**  Usage:
+**      ML_RaiseException_CurParser( Exception,position,[string,token])
+**
+**  Arguments:
+**      Exception   exception id of the exception. (Can be build in or a custom)
+**      position    positino of the expression (use -1 if you don't know)
+**      string      string containing a textual description of the exception
+**      token       token where exception occurs
+**
+**  Returns:
+**
+**  Notes:
+*/
+if (argument_count == 4) {
+    ML_RaiseException(global._ML_CURRENTPARSER_, argument[0], argument[1], argument[2], argument[3]);
+} else if (argument_count == 3) {
+    ML_RaiseException(global._ML_CURRENTPARSER_, argument[0], argument[1], argument[2]);
+} else {
+    ML_RaiseException(global._ML_CURRENTPARSER_, argument[0], argument[1]);
+}

@@ -1,10 +1,11 @@
-///ML_VM_GetVar(key)
+///ML_VM_GetVar(parser, key)
 
 /*
 **  Usage:
-**      ML_VM_GetVar(key)
+**      ML_VM_GetVar(parser, key)
 **
 **  Arguments:
+**      parser  parser index
 **      key     Key/Pointer to the variable
 **
 **  Returns:
@@ -13,6 +14,6 @@
 **  Notes:
 */
 
-
-return ds_map_find_value(VARMAP, argument0);
+var VARMAP =  _ML_LiP_GetVarMap(argument0);
+return ds_map_find_value(VARMAP, argument1);
 

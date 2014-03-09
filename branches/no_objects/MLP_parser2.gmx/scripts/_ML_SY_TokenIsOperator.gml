@@ -1,3 +1,5 @@
+///_ML_SY_TokenIsOperator(tok)
+
 var t;
 t = _ML_LiTok_GetType(argument0);
 

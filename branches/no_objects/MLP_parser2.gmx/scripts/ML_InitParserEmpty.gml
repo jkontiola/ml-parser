@@ -15,7 +15,7 @@
 */
 
 
-with (instance_create(0,0,ML_objParser)) {
-    VARMAP = argument0;
-    return id;
-}
+var ind = _ML_LiP_Create("", argument0);
+global._ML_CURRENTPARSER_ = ind;
+
+return ind;

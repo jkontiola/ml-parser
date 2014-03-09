@@ -1,12 +1,18 @@
+///_ML_PARSE_Unary(parser, token, argstack)
+
 var op, lhs, lhs_val, ret, lhs_type;
 
-op = _ML_LiTok_GetOperator(argument0);
-if (ds_stack_size(argument1) < 1) {
-    ML_RaiseException(ML_EXCEPT_UNOPERATOR,_ML_LiTok_GetPos(argument0),
+var VARMAP = _ML_LiP_GetVarMap(argument0);
+var token = argument1;
+var argstack = argument2;
+
+op = _ML_LiTok_GetOperator(token);
+if (ds_stack_size(argstack) < 1) {
+    ML_RaiseException_CurParser(ML_EXCEPT_UNOPERATOR,_ML_LiTok_GetPos(argument0),
             "missing value for '" + string(_ML_LiTok_GetVal(tokenstring)) +"' at " +string(_ML_LiTok_GetPos(argument0)));
     return 0;   
 }
-lhs = ds_stack_top(argument1);
+lhs = ds_stack_top(argstack);
 if (_ML_LiTok_GetType(lhs) == ML_TT_VALUE) {
     lhs_val = _ML_LiTok_GetVal(lhs);
     lhs_type = _ML_LiTok_GetOperator(lhs);
@@ -23,7 +29,7 @@ argstring = lhs_type;
 exact_operator = _ML_LiF_GetFunc(op, argstring)
 
 if (exact_operator < 0) {
-    ML_RaiseException(ML_EXCEPT_ARGTYPE,_ML_LiTok_GetPos(argument0),
+    ML_RaiseException_CurParser(ML_EXCEPT_ARGTYPE,_ML_LiTok_GetPos(argument0),
         "Invalid argument type for '" + string(_ML_LiTok_GetVal(argument0)) +"' at " +string(_ML_LiTok_GetPos(argument0)));
     return 0;
 } 

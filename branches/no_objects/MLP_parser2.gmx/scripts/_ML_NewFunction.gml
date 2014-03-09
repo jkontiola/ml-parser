@@ -1,4 +1,4 @@
-//   ML_NewFunction(function_string,script,returntype, argc, arglist)
+///   _ML_NewFunction(function_string,script,returntype, argc, arglist)
 
 var ind = _ML_LiF_Create(argument0);
 var i, argstr;

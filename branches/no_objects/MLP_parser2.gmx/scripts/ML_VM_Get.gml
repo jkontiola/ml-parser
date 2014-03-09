@@ -1,13 +1,14 @@
-///ML_VM_Get()
+///ML_VM_Get(parser)
 
 /*
 **  Usage:
 **      ML_VM_Get()
 **
 **  Arguments:
+**      parser      parser index
 **
 **  Returns:
-**      CurrentVarMap id.
+**      CurrentVarMap id
 **
 **  Notes:
 **      Can be manually changed. Though do NOT delete entries unless sure no pointer exists anymore
@@ -15,5 +16,5 @@
 */
 
 
-return VARMAP;
+return _ML_LiP_GetVarMap(argument0);
 

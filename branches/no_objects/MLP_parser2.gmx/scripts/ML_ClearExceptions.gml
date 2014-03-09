@@ -1,5 +1,6 @@
-///ML_ClearExceptions()
+///ML_ClearExceptions(parser)
 
-ErrorFlags = 0;
-ErrorPosition = -1;
-ErrorString = "";
+_ML_LiP_SetErrorFlags(argument0, 0);
+_ML_LiP_SetErrorPos(argument0, -1);
+_ML_LiP_SetErrorString(argument0, "");
+

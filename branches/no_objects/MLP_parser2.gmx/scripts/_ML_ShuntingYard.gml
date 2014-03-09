@@ -1,7 +1,10 @@
+///_ML_ShuntingYard(parser, tokens)
+
 var input, curoutput, curstack, token, endtok, o1, o2, t, allstack, alloutput;
 var curlevel, allargnum, curargnum, curparenthesis, allparenthesis;
 
-input = argument0;
+var parser = argument0;
+input = argument1;
 
 allstack = ds_stack_create();
 alloutput = ds_stack_create();
@@ -17,7 +20,7 @@ curlevel = 0;
 
 
 s = ds_list_size(input);
-i = 0;
+var i = 0;
 endtok = false;
 
 while (i < s && !endtok) { //while there are tokens to be read
@@ -50,13 +53,13 @@ while (i < s && !endtok) { //while there are tokens to be read
     case ML_TT_BINARY:
     case ML_TT_UNARY:
     case ML_TT_TERNARY1:
-        _ML_SY_HandleOperator(token, curoutput, curstack);
+        _ML_SY_HandleOperator(parser, token, curoutput, curstack);
     break;
     case ML_TT_TERNARY2:
-        _ML_SY_HandleTernary2(token, curoutput, curstack);
+        _ML_SY_HandleTernary2(parser, token, curoutput, curstack);
     break;
     case ML_TT_ARGSEP:
-        _ML_SY_HandleArgSep(token, curoutput, curstack);
+        _ML_SY_HandleArgSep(parser, token, curoutput, curstack);
         curargnum += 1;
     break;
     case ML_TT_COMMA: //special case - need to recheck comma's to check against function seperation
@@ -68,35 +71,35 @@ while (i < s && !endtok) { //while there are tokens to be read
             v = ML_TT_UNKNOWN;
             if (i > 0) {
                 prevtok = ds_list_find_value(input, i - 1);
-                if (_ML_LEX_IsBinoper(token, prevtok)) {
+                if (_ML_LEX_IsBinoper(parser, token, prevtok)) {
                     v = ML_TT_BINARY;    
-                } else if (_ML_LEX_IsAssignoper(token, prevtok)) {
+                } else if (_ML_LEX_IsAssignoper(parser, token, prevtok)) {
                     v = ML_TT_ASSIGN;
-                } else if (_ML_LEX_IsTernOper(token, prevtok)) {
+                } else if (_ML_LEX_IsTernOper(parser, token, prevtok)) {
                     v = ML_TT_TERNARY1;
-                } else if (_ML_LEX_IsTernOper2(token, prevtok)) {
+                } else if (_ML_LEX_IsTernOper2(parser, token, prevtok)) {
                     v = ML_TT_TERNARY2
                 }
             }
             if (v == ML_TT_UNKNOWN) {
-                if _ML_LEX_IsFunction(token, prevtok) {
+                if _ML_LEX_IsFunction(parser, token, prevtok) {
                     v = ML_TT_FUNCTION;
-                } else if (_ML_LEX_IsUnoper(token, prevtok)) {
+                } else if (_ML_LEX_IsUnoper(parser, token, prevtok)) {
                     v = ML_TT_UNARY;
-                } else if _ML_LEX_IsVariable(token, prevtok) {
+                } else if _ML_LEX_IsVariable(parser, token, prevtok) {
                     v = ML_TT_VARIABLE;
-                } else if _ML_LEX_IsValue(token, prevtok){
+                } else if _ML_LEX_IsValue(parser, token, prevtok){
                     v = ML_TT_VALUE;
                 } else {
                     v = ML_TT_UNKNOWN;
                 }
             }
-            _ML_LEX_TokenSetType(token, v);
+            _ML_LEX_TokenSetType(parser, token, v);
         }
         i-=1;
     break;
     case ML_TT_RIGHTP:
-        if (_ML_SY_HandleRightPar(token, curoutput, curstack, curargnum, alloutput, allstack, curlevel) == 1) {
+        if (_ML_SY_HandleRightPar(parser, token, curoutput, curstack, curargnum, alloutput, allstack, curlevel) == 1) {
             ds_stack_destroy(curstack);
             ds_queue_destroy(curoutput);
             curoutput = ds_stack_pop(alloutput);
@@ -110,22 +113,22 @@ while (i < s && !endtok) { //while there are tokens to be read
     break;
     case ML_TT_EOL:
         if (curlevel != 0) {
-            ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token), 
+            ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token), 
                 "unexpected end of line, mismatching parenthesis at " + string(_ML_LiTok_GetPos(token)));
         }
-        _ML_SY_HandleEOL(token, curoutput, curstack);
+        _ML_SY_HandleEOL(parser, token, curoutput, curstack);
         endtok = true;
     break;
     case ML_TT_EXPRTERMINATOR:
         if (curlevel != 0) {
-            ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token), 
+            ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token), 
                 "unexpected end of expression, mismatching parenthesis at " + string(_ML_LiTok_GetPos(token)));
         }
-        _ML_SY_HandleExprTerminator(token, curoutput, curstack);
+        _ML_SY_HandleExprTerminator(parser, token, curoutput, curstack);
     break;
     
     default:
-        ML_RaiseException(ML_EXCEPT_TOKENTYPE, _ML_LiTok_GetPos(token), 
+        ML_RaiseException(parser, ML_EXCEPT_TOKENTYPE, _ML_LiTok_GetPos(token), 
             "unknown tokentype for token '" + string(_ML_LiTok_GetVal(token)) + "' at " + string(_ML_LiTok_GetPos(token)));
     break;
     
@@ -149,7 +152,7 @@ ds_stack_destroy(curstack);
 
 
 if !(endtok) {
-    ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token),
+    ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token),
         "Line ended before EOL'" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)));
 }
 return curoutput;

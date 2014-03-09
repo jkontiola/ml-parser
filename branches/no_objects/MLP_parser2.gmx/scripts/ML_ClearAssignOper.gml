@@ -1,5 +1,6 @@
-///ML_ClearAssignOper()
+///ML_ClearAssignOper(parser)
 
+var P_ASSIGNOPER = _ML_LiP_GetAssignOpsTable(argument0);
 repeat (ds_map_size(P_ASSIGNOPER)) {
-    ML_RemAssignOperStr(ds_map_find_first(P_ASSIGNOPER));
+    ML_RemAssignOperStr(argument0, ds_map_find_first(P_ASSIGNOPER));
 }
