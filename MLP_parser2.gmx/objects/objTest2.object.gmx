@@ -25,44 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var variables = ds_map_create();
+            <string>variables = ds_map_create();
+allfuncs = ds_list_create();
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
-myfunc = ML_InitParserCS(tvariables);
 
-with (myfunc) {
-    ML_AddFunction("new_variable", newRealVarScript, ML_VAL_REAL, ML_VAL_STRING, ML_VAL_REAL);      //notice two times the same name
-    ML_AddFunction("new_variable", newStringVarScript, ML_VAL_STRING, ML_VAL_STRING, ML_VAL_STRING);  //function overloading knows the difference by argument type
+myfunc = ML_InitParserCS(variables);
+
+    ML_AddFunction(myfunc, "new_variable", newRealVarScript, ML_VAL_REAL, ML_VAL_STRING, ML_VAL_REAL);      //notice two times the same name
+    ML_AddFunction(myfunc, "new_variable", newStringVarScript, ML_VAL_STRING, ML_VAL_STRING, ML_VAL_STRING);  //function overloading knows the difference by argument type
     
     //first variable has to be "created" by the user before it can be used. (And this line has to be parsed).
-    ML_SetExpression("new_variable('customvar', 10)");
-    ML_Calculate();
-    
-    ML_SetExpression("customvar *= 1.5");
-    ML_Calculate();
-    
-}
+    ML_SetExpression(myfunc, "new_variable('customvar', 10)");
+    ML_Calculate(myfunc);
+    ML_SetExpression(myfunc, "customvar *= 1.5");
+ds_list_add(allfuncs, myfunc);
 
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
-myfunc = ML_InitParserCS(tvariables);
 
-with (myfunc) {
-    ML_AddFunction("new_variable", newRealVarScript, ML_VAL_REAL, ML_VAL_STRING, ML_VAL_REAL);      //notice two times the same name
-    ML_AddFunction("new_variable", newStringVarScript, ML_VAL_STRING, ML_VAL_STRING, ML_VAL_STRING);  //function overloading knows the difference by argument type
+
+myfunc = ML_InitParserCS(variables);
+
+    ML_AddFunction(myfunc, "new_variable", newRealVarScript, ML_VAL_REAL, ML_VAL_STRING, ML_VAL_REAL);      //notice two times the same name
+    ML_AddFunction(myfunc, "new_variable", newStringVarScript, ML_VAL_STRING, ML_VAL_STRING, ML_VAL_STRING);  //function overloading knows the difference by argument type
     
     //One can declare multiple variables, as long as 
-    ML_SetExpression("new_variable('customvar1', 'Hello'); new_variable('customvar2', ' world')");
-    ML_Calculate();
-    
-    ML_SetExpression("customvar1 + customvar2");
-    ML_Calculate();
-    
-}
+    ML_SetExpression(myfunc, "new_variable('customvar1', 'Hello'); new_variable('customvar2', ' world')");
+    ML_Calculate(myfunc);
+    ML_SetExpression(myfunc, "customvar1 + customvar2");
+ds_list_add(allfuncs, myfunc);
 
-ds_map_destroy(variables);
+
+calculate_all_parsers(allfuncs);
 </string>
           </argument>
         </arguments>
@@ -85,10 +78,7 @@ ds_map_destroy(variables);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (ML_objParser) {
-    ML_ClearExceptions();
-    ML_Calculate();
-}
+            <string>calculate_all_parsers(allfuncs);
 </string>
           </argument>
         </arguments>
@@ -119,21 +109,7 @@ draw_set_font(ft_code);
 
 
 var num;
-num = instance_number(ML_objParser);
-for (i = 0; i &lt; num; i += 1) {
-    with (instance_find(ML_objParser, i)) {
-        if (ML_HasAnswer()) {
-            draw_set_color(c_black);
-        } else {
-            draw_set_color(c_red);
-        }
-        draw_text(0, i * 56,ML_GetExprString() );
-        draw_text(30,i * 56 + 14, ML_LastExceptionString())
-        draw_text(30,i * 56 + 28, "ans = " + string(ML_GetFinalAnswer()));
-        draw_set_color(c_black);
-        draw_line(0,i*56,room_width,i*56);
-    }
-}
+display_all_parsers(allfuncs);
 draw_set_color(c_black);
 draw_line_width(k-5,0,k-5,560,2);
 draw_line_width(0,560,room_width,560,2);

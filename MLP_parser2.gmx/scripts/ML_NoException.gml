@@ -1,3 +1,3 @@
-///ML_NoException()
+///ML_NoException(parser)
 
-return (ErrorFlags == 0);
+return (_ML_LiP_GetErrorFlags(argument0) == 0);

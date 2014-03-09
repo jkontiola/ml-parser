@@ -24,6 +24,12 @@
       <script>scripts\ML_GetExprString.gml</script>
       <script>scripts\ML_Calculate.gml</script>
       <scripts name="ExceptionHandling">
+        <script>scripts\ML_NoException_CurParser.gml</script>
+        <script>scripts\ML_LastExceptionPosition_CurParser.gml</script>
+        <script>scripts\ML_LastExceptionString_CurParser.gml</script>
+        <script>scripts\ML_LastException_CurParser.gml</script>
+        <script>scripts\ML_ClearExceptions_CurParser.gml</script>
+        <script>scripts\ML_RaiseException_CurParser.gml</script>
         <script>scripts\ML_NoException.gml</script>
         <script>scripts\ML_LastExceptionPosition.gml</script>
         <script>scripts\ML_LastExceptionString.gml</script>
@@ -88,13 +94,13 @@
           </scripts>
         </scripts>
         <scripts name="Variable Map">
-          <script>scripts\ML_VM_HasNoPVar.gml</script>
-          <script>scripts\ML_VM_Set.gml</script>
-          <script>scripts\ML_VM_GetPVarList.gml</script>
           <script>scripts\ML_VM_Get.gml</script>
+          <script>scripts\ML_VM_Set.gml</script>
+          <script>scripts\ML_VM_HasNoPVar.gml</script>
+          <script>scripts\ML_VM_GetPVarList.gml</script>
           <script>scripts\ML_VM_GetVar.gml</script>
-          <script>scripts\ML_VM_RemVar.gml</script>
           <script>scripts\ML_VM_SetVar.gml</script>
+          <script>scripts\ML_VM_RemVar.gml</script>
         </scripts>
         <script>scripts\ML_SetExpression.gml</script>
       </scripts>
@@ -210,14 +216,12 @@
           <script>scripts\_ML_ShuntingYard.gml</script>
         </scripts>
         <scripts name="Parsing">
-          <script>scripts\_ML_PARSE_RemToken.gml</script>
           <script>scripts\_ML_PARSE_Binary.gml</script>
           <script>scripts\_ML_PARSE_Ternary.gml</script>
           <script>scripts\_ML_PARSE_Assign.gml</script>
           <script>scripts\_ML_PARSE_Unary.gml</script>
           <script>scripts\_ML_PARSE_Function.gml</script>
-          <script>scripts\_ML_Parser.gml</script>
-          <script>scripts\_ML_PARSE_GetFullFunction.gml</script>
+          <script>scripts\_ML_Parse.gml</script>
         </scripts>
       </scripts>
       <scripts name="data_containers">
@@ -259,8 +263,8 @@
           </scripts>
         </scripts>
         <scripts name="functions_fullname">
-          <script>scripts\_ML_LiS_GetScript.gml</script>
           <script>scripts\_ML_LiS_Destroy.gml</script>
+          <script>scripts\_ML_LiS_GetScript.gml</script>
           <script>scripts\_ML_LiS_GetRettype.gml</script>
           <scripts name="functions">
             <script>scripts\_ML_LiFS_Create.gml</script>
@@ -297,11 +301,49 @@
           <script>scripts\_ML_LiTok_Create.gml</script>
         </scripts>
         <scripts name="parser">
-          <script>scripts\script224.gml</script>
+          <script>scripts\_ML_LiP_Create.gml</script>
+          <script>scripts\_ML_LiP_AllAnswerSize.gml</script>
+          <script>scripts\_ML_LiP_ClearAnswers.gml</script>
+          <script>scripts\_ML_LiP_AddAnswer.gml</script>
+          <script>scripts\_ML_LiP_GetAnswerN.gml</script>
+          <script>scripts\_ML_LiP_Destroy.gml</script>
+          <scripts name="getters">
+            <script>scripts\_ML_LiP_GetBinOpsTable.gml</script>
+            <script>scripts\_ML_LiP_GetUnOpsTable.gml</script>
+            <script>scripts\_ML_LiP_GetTernOpsTable.gml</script>
+            <script>scripts\_ML_LiP_GetTernOps2Table.gml</script>
+            <script>scripts\_ML_LiP_GetAssignOpsTable.gml</script>
+            <script>scripts\_ML_LiP_GetFunctionTable.gml</script>
+            <script>scripts\_ML_LiP_GetVariableTable.gml</script>
+            <script>scripts\_ML_LiP_GetFunctionString.gml</script>
+            <script>scripts\_ML_LiP_GetVarMap.gml</script>
+            <script>scripts\_ML_LiP_GetAnswer.gml</script>
+            <script>scripts\_ML_LiP_GetAllAnswers.gml</script>
+            <script>scripts\_ML_LiP_GetErrorFlags.gml</script>
+            <script>scripts\_ML_LiP_GetErrorPos.gml</script>
+            <script>scripts\_ML_LiP_GetErrorString.gml</script>
+            <script>scripts\_ML_LiP_GetErrorToken.gml</script>
+            <script>scripts\_ML_LiP_GetCalculated.gml</script>
+          </scripts>
+          <scripts name="setters">
+            <script>scripts\_ML_LiP_SetFunctionString.gml</script>
+            <script>scripts\_ML_LiP_SetVarMap.gml</script>
+            <script>scripts\_ML_LiP_SetErrorFlags.gml</script>
+            <script>scripts\_ML_LiP_SetErrorPos.gml</script>
+            <script>scripts\_ML_LiP_SetErrorString.gml</script>
+            <script>scripts\_ML_LiP_SetErrorToken.gml</script>
+            <script>scripts\_ML_LiP_SetAnswer.gml</script>
+            <script>scripts\_ML_LiP_SetCalculated.gml</script>
+          </scripts>
         </scripts>
       </scripts>
     </scripts>
     <script>scripts\newRealVarScript.gml</script>
+    <scripts name="debug">
+      <script>scripts\display_all_parsers.gml</script>
+      <script>scripts\calculate_all_parsers.gml</script>
+      <script>scripts\destroy_all_parsers.gml</script>
+    </scripts>
     <script>scripts\newStringVarScript.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -309,14 +351,14 @@
     <font>fonts\ft_read</font>
   </fonts>
   <objects name="objects">
-    <object>objects\objTest3</object>
     <object>objects\objTest</object>
     <object>objects\objTest2</object>
+    <object>objects\objTest3</object>
     <objects name="ML_Parser">
-      <object>objects\ML_objAll</object>
-      <object>objects\ML_objTokenTypes</object>
+      <object>objects\ML_objAll_o</object>
+      <object>objects\ML_objTokenTypes_o</object>
       <object>objects\ML_objVariable_o</object>
-      <object>objects\ML_objOperators</object>
+      <object>objects\ML_objOperators_o</object>
       <object>objects\ML_objFunction_o</object>
       <object>objects\ML_objTernaryOperator_o</object>
       <object>objects\ML_objBinaryOperator_o</object>
@@ -327,8 +369,8 @@
       <object>objects\ML_objUnaryOperatorD_o</object>
       <object>objects\ML_objBinaryOperatorD_o</object>
       <object>objects\ML_objTernaryOperatorD_o</object>
-      <object>objects\ML_objToken</object>
-      <object>objects\ML_objParser</object>
+      <object>objects\ML_objToken_o</object>
+      <object>objects\ML_objParser_o</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -336,7 +378,7 @@
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>
-  <constants number="63">
+  <constants number="79">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -400,6 +442,22 @@
     <constant name="ML_LITOK_POS">2</constant>
     <constant name="ML_LITOK_OP">3</constant>
     <constant name="ML_LITOK_ARGC">4</constant>
+    <constant name="ML_LIP_BINOPSTABLE">0</constant>
+    <constant name="ML_LIP_UNOPSTABLE">1</constant>
+    <constant name="ML_LIP_ASOPSTABLE">2</constant>
+    <constant name="ML_LIP_TERNOPSTABLE">3</constant>
+    <constant name="ML_LIP_TERNOPS2TABLE">4</constant>
+    <constant name="ML_LIP_FUNCTABLE">5</constant>
+    <constant name="ML_LIP_VARTABLE">6</constant>
+    <constant name="ML_LIP_FUNCSTR">7</constant>
+    <constant name="ML_LIP_VARMAP">8</constant>
+    <constant name="ML_LIP_ANSWER">9</constant>
+    <constant name="ML_LIP_ALLANSWERS">10</constant>
+    <constant name="ML_LIP_ERRFLAGS">11</constant>
+    <constant name="ML_LIP_ERRPOS">12</constant>
+    <constant name="ML_LIP_ERRSTRING">13</constant>
+    <constant name="ML_LIP_ERRTOKEN">14</constant>
+    <constant name="ML_LIP_CALCULATED">15</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

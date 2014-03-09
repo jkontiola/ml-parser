@@ -1,10 +1,11 @@
-///ML_VM_HasNoPVar(key)
+///ML_VM_HasNoPVar(parser, key)
 
 /*
 **  Usage:
-**      ML_VM_HasNoPVar(key)
+**      ML_VM_HasNoPVar(parser, key)
 **
 **  Arguments:
+**      parser  parser index
 **      key     key/pointer to check for
 **
 **  Returns:
@@ -14,8 +15,9 @@
 */
 
 var s, v, k, ind;
+var P_VARIABLE = _ML_LiP_GetVariableTable(argument0);
 s = ds_map_size(P_VARIABLE);
-k = argument0;
+k = argument1;
 
 if (s > 0) {
     v = ds_map_find_first(P_VARIABLE);

@@ -1,6 +1,5 @@
 //assign =
 var v;
-v = argument1;
-
-    ds_map_replace(VARMAP, argument0, v);
+    v = argument2;
+    ds_map_replace(argument0, argument1, v);
 return v;

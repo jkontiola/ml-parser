@@ -28,6 +28,8 @@
             <string>
 var tvariables;
 variables = ds_map_create();
+allfuncs = ds_list_create();
+
 
 ds_map_add(variables, "globalvariable", 200);
 ds_map_add(variables, "pi", pi);
@@ -39,28 +41,88 @@ ds_map_add(variables, "str1", "");
 ds_map_add(variables, "str2", "");
 ds_map_add(variables, "str3", "");
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
-//str = "str2= (str1='asdfhjkg', strlen(str1)&lt;4 ? 's' : 'b')";
-str = "1 ? 's' : 'b'";
+str = "strlen('999')";
+//str = "(sin(pi / 2) *  -(4-2) + 1)/10 + globalvariable * (1/100) &lt;= rand() * 5";
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_AddFunction("getstr",myGetString, ML_VAL_STRING);
-    ML_AddFunction("strlen",myStringLength, ML_VAL_REAL, ML_VAL_STRING);
+ML_AddFunction(myfunc, "rand",myRandom, ML_VAL_REAL);
+ML_AddFunction(myfunc, "strlen",myStringLength, ML_VAL_REAL, ML_VAL_STRING);
+
+
+
+    ML_AddVariable(myfunc, "globalvariable");
+    ML_AddVariable(myfunc, "pi");
+    ML_AddVariable(myfunc, "e");
+    ML_AddVariable(myfunc, "var1");
+    ML_AddVariable(myfunc, "var2");
+    ML_AddVariable(myfunc, "var3");
+    ML_AddVariable(myfunc, "str1","", ML_VAL_STRING, false); 
+    ML_AddVariable(myfunc, "str2","", ML_VAL_STRING, false);
+    ML_AddVariable(myfunc, "str3"); 
     
-    ML_AddVariable("str1","", ML_VAL_STRING, false); 
-    ML_AddVariable("str2","", ML_VAL_STRING, false);
-    ML_AddVariable("str3"); //automatically checks that "str1" is string (and sets var to unreadable
-    ML_SetExpression(other.str);
-}
+    ML_AddFunction(myfunc, "getstr",myGetString, ML_VAL_STRING);
+    ML_AddFunction(myfunc, "strlen",myStringLength, ML_VAL_REAL, ML_VAL_STRING);
+    
+    
+    ML_AddBinaryOper(myfunc, "nPr",14.5,_ML_FPermutation, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddBinaryOper(myfunc, "nCr",14.5,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    
+    
+    ML_AddFunction(myfunc, "angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "not",_ML_FNot, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "sin",_ML_FSin, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "cos",_ML_FCos, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "tan",_ML_FTan, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "degrees",_ML_FDegrees, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "radians",_ML_FRadians, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "sqrt",_ML_FSqrt, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "power",_ML_FPower, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "round",_ML_FRound, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "floor",_ML_FFloor, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "ceil",_ML_FCeil, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "frac",_ML_FFrac, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "abs", _ML_FAbs, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "arcsin", _ML_FASin, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "arccos", _ML_FACos, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "arctan", _ML_FATan, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "exp", _ML_FExp, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "ln", _ML_FLn, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "log", _ML_FLog, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "log2", _ML_FLog2, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "logn", _ML_FLogn, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "factorial", _ML_FFactorial, ML_VAL_REAL, ML_VAL_REAL);
+    
+    
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+    
 
-
-with (ML_objParser) {
-    ML_ClearExceptions();
-    ML_Calculate();
-}
-
+calculate_all_parsers(allfuncs);
 //ds_map_destroy(variables);  
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_destroy(allfuncs)
+ds_map_destroy(variables);
+
 </string>
           </argument>
         </arguments>
@@ -83,10 +145,7 @@ with (ML_objParser) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (ML_objParser) {
-    ML_ClearExceptions();
-    ML_Calculate();
-}
+            <string>calculate_all_parsers(allfuncs);
 </string>
           </argument>
         </arguments>
@@ -116,22 +175,7 @@ k = 400;
 draw_set_font(ft_code);
 
 
-var num;
-num = instance_number(ML_objParser);
-for (i = 0; i &lt; num; i += 1) {
-    with (instance_find(ML_objParser, i)) {
-        if (ML_HasAnswer()) {
-            draw_set_color(c_black);
-        } else {
-            draw_set_color(c_red);
-        }
-        draw_text(0, i * 56,ML_GetExprString() );
-        draw_text(30,i * 56 + 14, ML_LastExceptionString())
-        draw_text(30,i * 56 + 28, "ans = " + string(ML_GetFinalAnswer()));
-        draw_set_color(c_black);
-        draw_line(0,i*56,room_width,i*56);
-    }
-}
+display_all_parsers(allfuncs);
 draw_set_color(c_black);
 draw_line_width(k-5,0,k-5,560,2);
 draw_line_width(0,560,room_width,560,2);
@@ -179,13 +223,13 @@ draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>var str = ML_GetExprString(myfunc);
 str = get_string("new function", str);
-with (myfunc) {
-    ML_SetExpression(other.str);
-    ML_ClearExceptions();
-    ML_Calculate();
-}
+
+    ML_SetExpression(myfunc, str);
+    ML_ClearExceptions(myfunc);
+    ML_Calculate(myfunc);
+
 </string>
           </argument>
         </arguments>

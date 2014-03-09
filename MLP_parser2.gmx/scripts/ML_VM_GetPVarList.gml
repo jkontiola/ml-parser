@@ -1,25 +1,27 @@
-///ML_VM_GetPVarList(key)
+///ML_VM_GetPVarList(parser, key)
 
 /*
 **  Usage:
-**      ML_VM_GetPVarList(key)
+**      ML_VM_GetPVarList(parser, key)
 **
 **  Arguments:
+**      parser  parser index
 **      key     key/pointer to check for
 **
 **  Returns:
 **      ds_list containing id of all variables pointing to "key"
 **
 **  Notes:
-**      - Creates list, you are responsible for destroying the list.
+**      - Creates list, you are responsible for destroying the list
 **
 **  Notes:
 */
 
 var s, list, v, k, ind;
+var P_VARIABLE =  _ML_LiP_GetVariableTable(argument0);
 s = ds_map_size(P_VARIABLE);
 list = ds_list_create();
-k = argument0;
+k = argument1;
 
 if (s > 0) {
     v = ds_map_find_first(P_VARIABLE);

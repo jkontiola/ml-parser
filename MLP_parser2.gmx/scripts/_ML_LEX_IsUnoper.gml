@@ -1,6 +1,12 @@
+///_ML_LEX_IsUnoper(parser, str, prevtok)
+
+var P_UNOPER = _ML_LiP_GetUnOpsTable(argument0);
 var vstr, ret, prevtok, t, op;
-prevtok = argument1;
-vstr = string(_ML_LiTok_GetVal(argument0));
+prevtok = argument2;
+vstr = string(_ML_LiTok_GetVal(argument1));
+var tkey = ds_map_find_first(P_UNOPER);
+
+
 if !ds_map_exists(P_UNOPER, vstr) return false;
 op = ds_map_find_value(P_UNOPER,vstr);
 if (prevtok >= 0) {

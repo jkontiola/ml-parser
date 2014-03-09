@@ -1,29 +1,36 @@
+///_ML_Parse(parser, PolishQueue)
+
 var rpn, args, tok, lhs, lhs_val, t, expression_terminator;
 //reverse polish notation of tokens;
-rpn = argument0;
+var parser = argument0;
+rpn = argument1;
 args = ds_stack_create();
 lhs_val = 0;
-while (!ds_queue_empty(rpn) && ML_NoException()) {
+
+var VARMAP = _ML_LiP_GetVarMap(parser);
+
+
+while (!ds_queue_empty(rpn) && ML_NoException(parser)) {
     ds_stack_clear(args);
     expression_terminator = false;
-    while (!ds_queue_empty(rpn) && expression_terminator == false && ML_NoException()) {
+    while (!ds_queue_empty(rpn) && expression_terminator == false && ML_NoException(parser)) {
         tok = ds_queue_dequeue(rpn);
         
         switch (_ML_LiTok_GetType(tok)) {
         case ML_TT_UNARY:
-            _ML_PARSE_Unary(tok, args);
+            _ML_PARSE_Unary(parser, tok, args);
         break;
         case ML_TT_BINARY:
-            _ML_PARSE_Binary(tok, args);
+            _ML_PARSE_Binary(parser, tok, args);
         break;
         case ML_TT_ASSIGN:
-            _ML_PARSE_Assign(tok, args);
+            _ML_PARSE_Assign(parser, tok, args);
         break;
         case ML_TT_TERNARY:
-            _ML_PARSE_Ternary(tok, args);
+            _ML_PARSE_Ternary(parser, tok, args);
         break;
         case ML_TT_FUNCTION:
-            _ML_PARSE_Function(tok, args);
+            _ML_PARSE_Function(parser, tok, args);
         break;
         case ML_TT_VALUE:
         case ML_TT_VARIABLE:
@@ -34,7 +41,7 @@ while (!ds_queue_empty(rpn) && ML_NoException()) {
         break;
         }
     }
-    if (ML_NoException()) {
+    if (ML_NoException(parser)) {
         if (ds_stack_size(args) > 1) {
             ML_RaiseException(ML_EXCEPT_VALUE,-1,
                 "missing operator or function in expression");
@@ -48,12 +55,12 @@ while (!ds_queue_empty(rpn) && ML_NoException()) {
             } else {
                 lhs_val = _ML_LiTok_GetVal(lhs);
             }
-            ds_list_add(AllAns, lhs_val);
+            _ML_LiP_AddAnswer(parser, lhs_val);
         } else if (_ML_LiTok_GetType(lhs) == ML_TT_VARIABLE)  {
             var v;
             v = _ML_LiTok_GetOperator(lhs);
             lhs_val = ds_map_find_value(VARMAP, _ML_Li_GetName(v));
-            ds_list_add(AllAns, lhs_val);
+            _ML_LiP_AddAnswer(parser, lhs_val);
         }
     }
 }

@@ -1,13 +1,14 @@
-//ML_SY_HandleEOL(token, output, stack);
-var token, output, stack;
-token = argument0;
-output = argument1;
-stack = argument2;
+///_ML_SY_HandleExprTerminator(parser, token, output, stack)
+var token, output, stack, parser;
+parser = argument0;
+token = argument1;
+output = argument2;
+stack = argument3;
 while (!ds_stack_empty(stack)) {
     var t = ds_stack_pop(stack);
     //untill stack is empty
     if (_ML_LiTok_GetType(t) == ML_TT_ARGSEP || _ML_LiTok_GetType(t) == ML_TT_LEFTP) {
-        ML_RaiseException(ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(t),
+        ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(t),
             "Mismatched parenthesis for '" + string(_ML_LiTok_GetVal(t)) +"' at " +string(_ML_LiTok_GetPos(t)));
     } else {
         ds_queue_enqueue(output, t);

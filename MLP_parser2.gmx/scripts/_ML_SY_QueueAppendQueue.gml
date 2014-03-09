@@ -1,4 +1,4 @@
-//ML_SY_QueueAppendQueue(q1, q2);
+///_ML_SY_QueueAppendQueue(q1, q2);
 //appends q2 to q1
 
 var q1, q2;

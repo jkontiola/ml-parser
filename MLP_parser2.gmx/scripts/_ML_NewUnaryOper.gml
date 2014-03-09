@@ -1,4 +1,4 @@
-//   _ML_AddUnaryOper(operator, precedence,script,returntype, lhstype, affix)
+///   _ML_NewUnaryOper(operator, precedence,script,returntype, lhstype, affix)
 
 
 var assoc;

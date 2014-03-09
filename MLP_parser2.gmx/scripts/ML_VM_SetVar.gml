@@ -1,10 +1,11 @@
-///ML_VM_SetVar(key, value)
+///ML_VM_SetVar(parser, key, value)
 
 /*
 **  Usage:
-**      ML_VM_SetVar(key, value)
+**      ML_VM_SetVar(parser, key, value)
 **
 **  Arguments:
+**      parser  parser index
 **      key     Key/Pointer to the variable
 **      value   Value to set
 **
@@ -13,8 +14,9 @@
 **  Notes:
 */
 var key, value;
-key = argument0;
-value = argument1;
+key = argument1;
+value = argument2;
+var VARMAP = _ML_LiP_GetVarMap(argument0);
 if (ds_map_exists(VARMAP, key)) {
     ds_map_replace(VARMAP, key, value);
 } else {
