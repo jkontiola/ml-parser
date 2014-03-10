@@ -19,7 +19,7 @@ curlevel = 0;
 
 
 
-s = ds_list_size(input);
+var s = ds_list_size(input);
 var i = 0;
 endtok = false;
 

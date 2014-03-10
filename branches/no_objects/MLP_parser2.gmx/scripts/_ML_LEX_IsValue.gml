@@ -12,6 +12,7 @@ if (start_c == "'" || start_c == '"') return true;
 s = string_length(vstr);
 i = 1;
 //before dot:
+var c;
 do {
     c = string_char_at(vstr,i);
     i+=1;

@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>fps_sum = 0;
 fps_num = 0;
-i=10;
 global.DEBUGNOW = false;
+global.ACTIVELISTS = 0;
 
-
+var str;
 var tvariables;
 variables = ds_map_create();
 allfuncs = ds_list_create();

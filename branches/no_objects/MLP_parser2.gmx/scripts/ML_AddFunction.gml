@@ -21,7 +21,7 @@
 var o, c, tlist;
 tlist = ds_list_create();
 c = argument_count - 4;
-for (i = 0; i < c; ++i) {
+for (var i = 0; i < c; ++i) {
     ds_list_add(tlist,argument[i+4]);
 }
 var P_FUNCTION  = _ML_LiP_GetFunctionTable(argument[0]);
@@ -31,7 +31,7 @@ if (ds_map_exists(P_FUNCTION,argument[1])) {
     argstr = "";
     if (c > 0) {
         argstr = argument[4];
-        for (i = 1; i < c; i+= 1) {
+        for (var i = 1; i < c; i+= 1) {
             argstr += "$" + argument[i+4];
         }
     }
