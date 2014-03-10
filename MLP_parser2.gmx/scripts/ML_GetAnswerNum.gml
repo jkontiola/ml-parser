@@ -1,3 +1,3 @@
-///ML_GetAnswerNum()
+///ML_GetAnswerNum(parser)
 
-return ds_list_size(AllAnswer);
+return _ML_LiP_AllAnswerSize(argument0);

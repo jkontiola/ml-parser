@@ -1,3 +1,3 @@
-///ML_LastExceptionPosition()
+///ML_LastExceptionPosition(parser)
 
-return ErrorPosition;
+return _ML_LiP_GetErrorPos(argument0);

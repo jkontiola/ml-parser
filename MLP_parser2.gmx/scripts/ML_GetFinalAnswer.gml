@@ -1,3 +1,3 @@
-///ML_GetFinalAnswer()
+///ML_GetFinalAnswer(parser)
 
-return Ans;
+return _ML_LiP_GetAnswer(argument0);

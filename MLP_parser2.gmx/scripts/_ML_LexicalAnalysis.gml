@@ -1,10 +1,25 @@
-var str, l , s, level, c, tc, tokenstr, tstr, p, tokelist;
-str = functionstring;
-l = 0;
-level = 0;
-maxlevel = 0;
+///_ML_LexicalAnalysis(parser)
 
-//clean up old data
+var str, s, c, tc, tokenstr, tstr, p, tokenlist;
+
+var l = 0;
+var level = 0;
+var maxlevel = 0;
+
+//lists
+var parser = argument0;
+str = _ML_LiP_GetFunctionString(parser);
+
+var P_TERNOPER = _ML_LiP_GetTernOpsTable(parser);
+var P_TERNOPER2 = _ML_LiP_GetTernOps2Table(parser);
+var P_ASSIGNOPER = _ML_LiP_GetAssignOpsTable(parser);
+var P_UNOPER = _ML_LiP_GetUnOpsTable(parser);
+var P_BINOPER = _ML_LiP_GetBinOpsTable(parser);
+//var P_FUNCTION = _ML_LiP_GetFunctionTable(parser);
+//var P_VARIABLE = _ML_LiP_GetVariableTable(parser);
+
+
+//initialize
 tokenlist = ds_list_create();
 p = 1;
 while (string_length(str) > 0) {
@@ -51,73 +66,69 @@ while (string_length(str) > 0) {
         }
         if (l <= 0) l = string_length(str);
         tokenstr = string_copy(str,1,l);
-        _ML_LEX_TokenAdd(tokenstr,p);
+        _ML_LEX_TokenAdd(tokenlist, tokenstr,p);
     }
     str = string_delete(str,1,l);
     p += l;
 }
-with (_ML_LEX_TokenAdd("",p)) {
-    tokentype = ML_TT_EOL;
-}
-if (!ML_NoException()) return tokenlist;
+var eol = _ML_LEX_TokenAdd(tokenlist,"",p);
+_ML_LEX_TokenSetType(parser, eol, ML_TT_EOL);
+if (!ML_NoException(parser)) return tokenlist;
 
 //now for each token determine it's type:
 var i, tok, v, prevtok;
 s = ds_list_size(tokenlist) - 1;
 //first token is special, no binary, no prevtoken:
 tok = ds_list_find_value(tokenlist, 0)
-if (tok.tokenstring == "("){
+if (string(_ML_LiTok_GetVal(tok)) == "("){
     v = ML_TT_LEFTP;
-} else if _ML_LEX_IsFunction(tok, -1) {
+} else if _ML_LEX_IsFunction(parser, tok, -1) {
     v = ML_TT_FUNCTION;
-} else if (_ML_LEX_IsUnoper(tok, -1)) {
+} else if (_ML_LEX_IsUnoper(parser, tok, -1)) {
     v = ML_TT_UNARY;
-} else if _ML_LEX_IsVariable(tok, -1) {
+} else if _ML_LEX_IsVariable(parser, tok, -1) {
     v = ML_TT_VARIABLE;
-} else if _ML_LEX_IsValue(tok, -1 ){
+} else if _ML_LEX_IsValue(parser, tok, -1 ){
     v = ML_TT_VALUE;
 } else {
     v = ML_TT_UNKNOWN;
 }
-with (tok) {
-    _ML_LEX_TokenSetType(v);
-}
-if (!ML_NoException()) return tokenlist;
+_ML_LEX_TokenSetType(parser, tok, v);
+
+if (!ML_NoException(parser)) return tokenlist;
 //middle tokens
 prevtok = tok;
 for (i = 1; i < s; i += 1) {
     tok = ds_list_find_value(tokenlist, i);
-    if (tok.tokenstring == ";") {
+    if (string(_ML_LiTok_GetVal(tok)) == ";") {
         v = ML_TT_EXPRTERMINATOR;
-    } else if (tok.tokenstring == ",") {
+    } else if (string(_ML_LiTok_GetVal(tok))  == ",") {
         v = ML_TT_COMMA;
-    } else if (tok.tokenstring == "("){
+    } else if (string(_ML_LiTok_GetVal(tok)) == "("){
         v = ML_TT_LEFTP;
-    } else if (tok.tokenstring == ")") {
+    } else if (string(_ML_LiTok_GetVal(tok)) == ")") {
         v = ML_TT_RIGHTP;
-    }else if _ML_LEX_IsFunction(tok, prevtok) {
+    }else if _ML_LEX_IsFunction(parser, tok, prevtok) {
         v = ML_TT_FUNCTION;
-    } else if _ML_LEX_IsVariable(tok, prevtok) {
+    } else if _ML_LEX_IsVariable(parser, tok, prevtok) {
         v = ML_TT_VARIABLE;
-    } else if _ML_LEX_IsValue(tok, prevtok){
+    } else if _ML_LEX_IsValue(parser, tok, prevtok){
         v = ML_TT_VALUE;
-    } else if (_ML_LEX_IsBinoper(tok, prevtok)) {
+    } else if (_ML_LEX_IsBinoper(parser, tok, prevtok)) {
         v = ML_TT_BINARY;    
-    } else if (_ML_LEX_IsUnoper(tok, prevtok)) {
+    } else if (_ML_LEX_IsUnoper(parser, tok, prevtok)) {
         v = ML_TT_UNARY;
-    } else if (_ML_LEX_IsAssignoper(tok, prevtok)) {
+    } else if (_ML_LEX_IsAssignoper(parser, tok, prevtok)) {
         v = ML_TT_ASSIGN;
-    } else if (_ML_LEX_IsTernOper(tok, prevtok)) {
+    } else if (_ML_LEX_IsTernOper(parser, tok, prevtok)) {
         v = ML_TT_TERNARY1;
-    } else if (_ML_LEX_IsTernOper2(tok, prevtok)) {
+    } else if (_ML_LEX_IsTernOper2(parser, tok, prevtok)) {
         v = ML_TT_TERNARY2
     } else {
         v = ML_TT_UNKNOWN;
     }
-    with (tok) {
-        _ML_LEX_TokenSetType(v);
-    }
-    if (!ML_NoException()) return tokenlist;
+    _ML_LEX_TokenSetType(parser, tok, v);
+    if (!ML_NoException(parser)) return tokenlist;
     prevtok = tok;
 }
 

@@ -1,7 +1,5 @@
-///ML_RemUnaryOperStr(Unary operator string)
+///ML_RemUnaryOperStr(parser, Unary operator string)
 
-var op;
-op = ds_map_find_value(P_BINOPER,argument0);
-with (op) {
-    ML_RemUnaryOper();
-}
+var P_UNOPER = _ML_LiP_GetUnOpsTable(argument0);
+ML_RemUnaryOper(argument0, ds_map_find_value(P_UNOPER,argument1));
+

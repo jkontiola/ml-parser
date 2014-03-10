@@ -1,3 +1,3 @@
-///ML_LastExceptionString()
+///ML_LastExceptionString(parser)
 
-return ErrorString;
+return _ML_LiP_GetErrorString(argument0);

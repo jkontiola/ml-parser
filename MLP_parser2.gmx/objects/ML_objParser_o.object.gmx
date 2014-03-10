@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>ML_objTokenTypes</parentName>
+  <parentName>ML_objAll_o</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,28 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-ActualFunctions = ds_map_create();
+P_BINOPER = ds_map_create();
+P_UNOPER = ds_map_create();
+P_FUNCTION = ds_map_create();
+P_VARIABLE = ds_map_create();
+P_ASSIGNOPER = ds_map_create();
+P_TERNOPER = ds_map_create();
+P_TERNOPER2 = ds_map_create();
+VARMAP = -1;
+
+
+
+functionstring = "";
+
+
+ErrorFlags = 0;
+ErrorPosition = -1;
+ErrorString = "";
+ErrorToken = noone;
+Calculated = false;
+Ans = 0;
+
+AllAns = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -49,12 +70,22 @@ ActualFunctions = ds_map_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat (ds_map_size(ActualFunctions)) {
-    with (ds_map_find_value(ActualFunctions,ds_map_find_first(ActualFunctions))) {
-        instance_destroy();
-    }
-}
-ds_map_destroy(ActualFunctions);
+            <string>/*ML_ClearFunction();
+ML_ClearVariable();
+ML_ClearBinaryOper();
+ML_ClearUnaryOper();
+ML_ClearAssignOper();
+ML_ClearTernaryOper();*/
+
+
+ds_map_destroy(P_BINOPER);
+ds_map_destroy(P_UNOPER);
+ds_map_destroy(P_FUNCTION);
+ds_map_destroy(P_VARIABLE);
+ds_map_destroy(P_ASSIGNOPER);
+ds_map_destroy(P_TERNOPER);
+ds_map_destroy(P_TERNOPER2);
+ds_list_destroy(AllAns);
 </string>
           </argument>
         </arguments>

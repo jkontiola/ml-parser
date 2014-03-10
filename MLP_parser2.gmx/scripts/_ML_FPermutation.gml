@@ -24,7 +24,7 @@
     k = floor(argument1);
     m = n - k;
     if (m < 0) {
-        ML_RaiseException(ML_EXCEPT_CALC,-1,"subset larger than total set for nPr: " + string(argument0) +", "+ string(argument1) );
+        ML_RaiseException_CurParser(ML_EXCEPT_CALC,-1,"subset larger than total set for nPr: " + string(argument0) +", "+ string(argument1) );
         return -1;
     }
     else {
