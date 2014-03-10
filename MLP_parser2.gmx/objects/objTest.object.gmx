@@ -29,6 +29,9 @@
 fps_num = 0;
 global.DEBUGNOW = false;
 global.ACTIVELISTS = 0;
+global.ACTIVEMAPS = 0;
+global.ACTIVEQUEUES = 0;
+global.ACTIVESTACKS = 0;
 
 var str;
 var tvariables;
@@ -242,6 +245,12 @@ if (fps_num &gt; 90) {
 }
 draw_text(200,0,fps_real);
 
+draw_text(200,36,"lists: " + string(global.ACTIVELISTS));
+draw_text(200,54,"maps: " + string(global.ACTIVEMAPS));
+draw_text(200,72,"queues: " + string(global.ACTIVEQUEUES));
+draw_text(200,90,"stacks: " + string(global.ACTIVESTACKS));
+
+
 display_all_parsers(allfuncs);
 draw_set_color(c_black);
 draw_line_width(k-5,0,k-5,560,2);
@@ -270,6 +279,8 @@ draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
               "ln(e^2^3) is read as ln(e^(2^3)) = 8#"); j+= 56;
               
 
+              
+//*/
 </string>
           </argument>
         </arguments>
@@ -298,6 +309,43 @@ ML_SetExpression(myfunc, str);
 ML_ClearExceptions(myfunc);
 ML_Calculate(myfunc);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var ind = ML_InitParserCS(variables);
+str = "angle_difference(-270,720)"
+    //ML_AddFunction(myfunc, "angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    
+    ML_AddTernaryOper(ind, "?", ":", 3, _ML_FConditional,
+        ML_VAL_REAL,ML_VAL_REAL,ML_VAL_REAL,ML_VAL_REAL);
+    //ML_AddTernaryOper(ind, "?", ":", 3, _ML_FConditional,
+    //    ML_VAL_STRING,ML_VAL_REAL,ML_VAL_STRING,ML_VAL_STRING);
+    
+    
+//    ML_SetExpression(ind, str);
+
+//ML_Calculate(myfunc);
+
+ML_DestroyParser(ind);
 </string>
           </argument>
         </arguments>

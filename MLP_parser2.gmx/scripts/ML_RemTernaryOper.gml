@@ -17,7 +17,7 @@ if (i < 0)  {
     ds_list_delete(entry, i);
 }
 if (ds_list_empty(entry)) {
-    ds_map_destroy(entry);
+    ds_list_destroy(entry);
     ds_map_delete(P_TERNOPER2, str2);
 }
-instance_destroy();
+_ML_LiTOp_Destroy(ind);

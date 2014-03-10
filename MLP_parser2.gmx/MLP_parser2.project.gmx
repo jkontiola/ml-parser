@@ -233,7 +233,6 @@
           <script>scripts\_ML_LiVar_Destroy.gml</script>
         </scripts>
         <scripts name="functions">
-          <script>scripts\_ML_LiF_GetFuncs.gml</script>
           <script>scripts\_ML_LiF_GetFunc.gml</script>
           <script>scripts\_ML_LiF_Create.gml</script>
           <script>scripts\_ML_LiF_Destroy.gml</script>
@@ -346,6 +345,13 @@
       <scripts name="tmp">
         <script>scripts\___my_list_create.gml</script>
         <script>scripts\___my_list_destroy.gml</script>
+        <script>scripts\___my_map_create.gml</script>
+        <script>scripts\___my_map_destroy.gml</script>
+        <script>scripts\___my_stack_create.gml</script>
+        <script>scripts\___my_stack_destroy.gml</script>
+        <script>scripts\___my_queue_create.gml</script>
+        <script>scripts\___my_queue_destroy.gml</script>
+        <script>scripts\_ML_LiF_GetFuncs.gml</script>
       </scripts>
     </scripts>
     <script>scripts\newStringVarScript.gml</script>
