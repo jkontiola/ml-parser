@@ -1,10 +1,3 @@
-//ML_AddBinarySig(script, retval, lhs, rhs)
-
-with (instance_create(0,0, ML_objAssignOperatorD)) {
-    functionscript = argument0;
-    rettype = argument1;
-    lhstype = argument2;
-    rhstype = argument3;
-    return id;
-}
-
+//_ML_AddBinarySig(script, retval, lhs, rhs)
+var ind = _ML_LiAOpS_Create(argument0, argument1, argument2, argument3);
+return ind;

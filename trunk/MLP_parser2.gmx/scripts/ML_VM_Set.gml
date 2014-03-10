@@ -1,21 +1,22 @@
-///ML_VM_Set(VarMap, [CreateNewVars] )
+///ML_VM_Set(parser, VarMap, [CreateNewVars] )
 
 /*
 **  Usage:
-**      ML_VM_Set(VarMap, [CreateNewVars] )
+**      ML_VM_Set(parser, VarMap, [CreateNewVars] )
 **
 **  Arguments:
+**      parser          parser index
 **      VarMap          Map containing [Variable; Value] pairs (where Variable is a string)
-**      CreateNewVars   Whether to create new variables based on the new map.
+**      CreateNewVars   Whether to create new variables based on the new map
 **                          varstring = key (in VarMap)
 **                          pointer = key (in VarMap)
 **                          value = value (in VarMap)
 **                          type = type of value (in VarMap)
 **                          readonly = true
-**                      Default to not create new vars.
+**                      Default to not create new vars
 **
 **  Returns:
-**      VarMap id.
+**      VarMap id
 **
 **  Notes:
 **      - Does NOT take ownership of the map, destroying keeps responsibility of the user
@@ -23,12 +24,13 @@
 **      - Normally not called by the user (as varmap is initialized at creation of the parser)
 */
 
-ML_ClearVariable()
+ML_ClearVariable(argument[0])
+var VARMAP = _ML_LiP_GetVarMap(argument[0]);
 if (VARMAP != -1) ds_map_destroy(VARMAP);
-VARMAP = argument[0];
+VARMAP = argument[1];
 
 if (argument_count > 1) {
-    if (argument[1]) {    
+    if (argument[2]) {    
         var s;
         s = ds_map_size(VARMAP);
         if (s > 0) {

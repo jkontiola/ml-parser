@@ -1,5 +1,5 @@
 if (argument0 < 0 || argument0 > 21) {
-    ML_RaiseException(ML_EXCEPT_CALC,-1,"Bad argument for factorial " + string(argument1) );
+    ML_RaiseException_CurParser(ML_EXCEPT_CALC,-1,"Bad argument for factorial " + string(argument1) );
     return -1;
 }
 

@@ -1,3 +1,3 @@
-///ML_GetExprString()
+///ML_GetExprString(parser)
 
-return functionstring;
+return _ML_LiP_GetFunctionString(argument0);

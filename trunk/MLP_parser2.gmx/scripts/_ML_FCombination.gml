@@ -9,7 +9,7 @@
 **  Returns:
 **      the number of unique subsets created from all
 **      combinations of the given number of elements,
-**      or (-1) on error.
+**      or (-1) on error
 **
 **  Example:
 **      If six players compete in pairs, the number of
@@ -23,7 +23,7 @@
     k = floor(argument1);
     m = n - k;
     if (m < 0) {
-        ML_RaiseException(ML_EXCEPT_CALC,-1,"subset larger than total set for nCr: " + string(argument0) +", "+ string(argument1) );
+        ML_RaiseException_CurParser(ML_EXCEPT_CALC,-1,"subset larger than total set for nCr: " + string(argument0) +", "+ string(argument1) );
         return -1;
     }
     else {

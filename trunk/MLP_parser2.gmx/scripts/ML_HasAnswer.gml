@@ -1,3 +1,3 @@
-///ML_HasAnswer()
+///ML_HasAnswer(parser)
 
-return Calculated;
+return _ML_LiP_GetCalculated(argument0);

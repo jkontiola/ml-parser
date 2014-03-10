@@ -25,9 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>fps_sum = 0;
+fps_num = 0;
+global.DEBUGNOW = false;
+global.ACTIVELISTS = 0;
+global.ACTIVEMAPS = 0;
+global.ACTIVEQUEUES = 0;
+global.ACTIVESTACKS = 0;
+
+var str;
 var tvariables;
 variables = ds_map_create();
+allfuncs = ds_list_create();
+
 
 ds_map_add(variables, "globalvariable", 200);
 ds_map_add(variables, "pi", pi);
@@ -39,162 +49,145 @@ ds_map_add(variables, "str1", "");
 ds_map_add(variables, "str2", "");
 ds_map_add(variables, "str3", "");
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
 myfunc = ML_InitParserCS(variables);
 str = "angle_difference(-270,720)"
-with (myfunc) {
-    ML_AddFunction("angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    ML_SetExpression(other.str);
-}
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+    ML_AddFunction(myfunc, "angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+
 myfunc = ML_InitParserCS(variables);
 str = "6 &lt;&lt; 2"
-with (myfunc) {
-    ML_SetExpression(other.str);
-}
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+
 str = "sin( pi / 2) +globalvariable"
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_AddVariable("globalvariable");
-    ML_AddVariable("pi", pi); //3rd argument is unnecessary as variable is already initialized
-    ML_AddFunction("sin",_ML_FSin,ML_VAL_REAL, ML_VAL_REAL);
-    ML_SetExpression(other.str);
-}
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
-str = "2*4 nCr 2*2"
+    ML_AddVariable(myfunc, "globalvariable");
+    ML_AddVariable(myfunc, "pi", pi); //3rd argument is unnecessary as variable is already initialized
+    ML_AddFunction(myfunc, "sin",_ML_FSin,ML_VAL_REAL, ML_VAL_REAL);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+
+str = "2 * 4 nCr 2 * 2"
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    //a * b nCr c * d = a * (b nCr c) * d
-    ML_AddBinaryOper("nCr",12,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    ML_SetExpression(other.str);
-}
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+    //a * b nCr c * d = a * (b nCr c) * d
+    ML_AddBinaryOper(myfunc, "nCr",25,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+
 str = "rand() - 0.5"
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_AddFunction("rand",myRandom, ML_VAL_REAL);
-    ML_SetExpression(other.str);
-}
+
+    ML_AddFunction(myfunc, "rand",myRandom, ML_VAL_REAL);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
 
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
 str = "2 &lt;= 4 ^^ 4 &gt; 5";
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_SetExpression(other.str);
-}
+
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
 
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
 str = "2 * * 5"
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_SetExpression(other.str);
-}
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
 str = "var1 += var2 = (3*var3 - var2)";
-//show_message("huh");
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
+
     //values "1" are unnecessary as variables are already initialized.
     
     
-    ML_AddVariable("var1",1, ML_VAL_REAL, false);
-    ML_AddVariable("var2",1, ML_VAL_REAL, false);
-    ML_AddVariable("var3",1, ML_VAL_REAL, true);
-    ML_SetExpression(other.str);
-}
+    ML_AddVariable(myfunc, "var1",1, ML_VAL_REAL, false);
+    ML_AddVariable(myfunc, "var2",1, ML_VAL_REAL, false);
+    ML_AddVariable(myfunc, "var3",1, ML_VAL_REAL, true);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
 
-
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
-str = "str2= (str1=getstr(), strlen(str1)&lt;4 ? 's' : 'b')";
+str = "str2= (str1='asdfhjkg', strlen(str1)&lt;4 ? 's' : 'b')";
+//str = "-8";
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_AddFunction("getstr",myGetString, ML_VAL_STRING);
-    ML_AddFunction("strlen",myStringLength, ML_VAL_REAL, ML_VAL_STRING);
-    
-    ML_AddVariable("str1","", ML_VAL_STRING, false); 
-    ML_AddVariable("str2","", ML_VAL_STRING, false);
-    ML_AddVariable("str3"); //automatically checks that "str1" is string (and sets var to unreadable
-    ML_SetExpression(other.str);
-}
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+    ML_AddFunction(myfunc, "getstr",myGetString, ML_VAL_STRING);
+    ML_AddFunction(myfunc, "strlen",myStringLength, ML_VAL_REAL, ML_VAL_STRING);
+    
+    ML_AddVariable(myfunc, "str1","", ML_VAL_STRING, false); 
+    ML_AddVariable(myfunc, "str2","", ML_VAL_STRING, false);
+    ML_AddVariable(myfunc, "str3"); //automatically checks that "str1" is string (and sets var to unreadable
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+//show_message(myfunc); -- 100004
+
+
 str = "ln(e^2^3)!";
 myfunc = ML_InitParserScience(variables);
-with (myfunc) {
-    ML_SetExpression(other.str);
-}
 
-tvariables = ds_map_create();
-ds_map_copy(tvariables, variables);
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+//show_message(myfunc); -- 100059
+
+
+
 str = "(sin(pi / 2) *  -(4-2) + 1)/10 + globalvariable * (1/100) &lt;= rand() * 5"
+//str = "strlen('adafb')"
 myfunc = ML_InitParserCS(variables);
-with (myfunc) {
-    ML_AddVariable("globalvariable");
-    ML_AddVariable("pi");
-    ML_AddVariable("e");
-    ML_AddVariable("var1");
-    ML_AddVariable("var2");
-    ML_AddVariable("var3");
-    ML_AddVariable("str1");
-    ML_AddVariable("str2");
-    ML_AddVariable("str3");
-    
-    ML_AddBinaryOper("nPr",14.5,_ML_FPermutation, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddBinaryOper("nCr",14.5,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    
-    ML_AddFunction("rand",myRandom, ML_VAL_REAL);
-    ML_AddFunction("angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("not",_ML_FNot, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("sin",_ML_FSin, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("cos",_ML_FCos, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("tan",_ML_FTan, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("degrees",_ML_FDegrees, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("radians",_ML_FRadians, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("sqrt",_ML_FSqrt, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("power",_ML_FPower, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("round",_ML_FRound, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("floor",_ML_FFloor, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("ceil",_ML_FCeil, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("frac",_ML_FFrac, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("abs", _ML_FAbs, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("arcsin", _ML_FASin, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("arccos", _ML_FACos, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("arctan", _ML_FATan, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("exp", _ML_FExp, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("ln", _ML_FLn, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("log", _ML_FLog, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("log2", _ML_FLog2, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("logn", _ML_FLogn, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
-    ML_AddFunction("factorial", _ML_FFactorial, ML_VAL_REAL, ML_VAL_REAL);
-    
-    
-    ML_SetExpression(other.str);
-}
 
-with (ML_objParser) {
-    ML_ClearExceptions();
-    ML_Calculate();
-}
+    ML_AddVariable(myfunc, "globalvariable");
+    ML_AddVariable(myfunc, "pi");
+    ML_AddVariable(myfunc, "e");
+    ML_AddVariable(myfunc, "var1");
+    ML_AddVariable(myfunc, "var2");
+    ML_AddVariable(myfunc, "var3");
+    ML_AddVariable(myfunc, "str1","", ML_VAL_STRING, false); 
+    ML_AddVariable(myfunc, "str2","", ML_VAL_STRING, false);
+    ML_AddVariable(myfunc, "str3"); 
+    
+    ML_AddFunction(myfunc, "getstr",myGetString, ML_VAL_STRING);
+    ML_AddFunction(myfunc, "strlen",myStringLength, ML_VAL_REAL, ML_VAL_STRING);
+    
+    
+    ML_AddBinaryOper(myfunc, "nPr",14.5,_ML_FPermutation, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddBinaryOper(myfunc, "nCr",14.5,_ML_FCombination, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    
+    ML_AddFunction(myfunc, "rand",myRandom, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "not",_ML_FNot, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "sin",_ML_FSin, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "cos",_ML_FCos, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "tan",_ML_FTan, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "degrees",_ML_FDegrees, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "radians",_ML_FRadians, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "sqrt",_ML_FSqrt, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "power",_ML_FPower, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "round",_ML_FRound, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "floor",_ML_FFloor, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "ceil",_ML_FCeil, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "frac",_ML_FFrac, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "abs", _ML_FAbs, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "arcsin", _ML_FASin, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "arccos", _ML_FACos, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "arctan", _ML_FATan, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "exp", _ML_FExp, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "ln", _ML_FLn, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "log", _ML_FLog, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "log2", _ML_FLog2, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "logn", _ML_FLogn, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    ML_AddFunction(myfunc, "factorial", _ML_FFactorial, ML_VAL_REAL, ML_VAL_REAL);
+    
+    
+    ML_SetExpression(myfunc, str);
+ds_list_add(allfuncs, myfunc);
+//*/
+calculate_all_parsers(allfuncs);
 
-//ds_map_destroy(variables);*/
+//ds_map_destroy(variables);  
 </string>
           </argument>
         </arguments>
@@ -217,10 +210,7 @@ with (ML_objParser) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (ML_objParser) {
-    ML_ClearExceptions();
-    ML_Calculate();
-}
+            <string>calculate_all_parsers(allfuncs);
 </string>
           </argument>
         </arguments>
@@ -248,30 +238,29 @@ i = 0;
 //debug mode, for all parsers
 k = 400;
 draw_set_font(ft_code);
-
-
-var num;
-num = instance_number(ML_objParser);
-for (i = 0; i &lt; num; i += 1) {
-    with (instance_find(ML_objParser, i)) {
-        if (ML_HasAnswer()) {
-            draw_set_color(c_black);
-        } else {
-            draw_set_color(c_red);
-        }
-        draw_text(0, i * 56,ML_GetExprString() );
-        draw_text(30,i * 56 + 14, ML_LastExceptionString())
-        draw_text(30,i * 56 + 28, "ans = " + string(ML_GetFinalAnswer()));
-        draw_set_color(c_black);
-        draw_line(0,i*56,room_width,i*56);
-    }
+++fps_num;
+if (fps_num &gt; 90) {
+    fps_sum += fps_real;
+    draw_text(200,18,fps_sum / (fps_num - 90));
 }
+draw_text(200,0,fps_real);
+
+draw_text(200,36,"lists: " + string(global.ACTIVELISTS));
+draw_text(200,54,"maps: " + string(global.ACTIVEMAPS));
+draw_text(200,72,"queues: " + string(global.ACTIVEQUEUES));
+draw_text(200,90,"stacks: " + string(global.ACTIVESTACKS));
+
+
+display_all_parsers(allfuncs);
 draw_set_color(c_black);
 draw_line_width(k-5,0,k-5,560,2);
 draw_line_width(0,560,room_width,560,2);
 
 var j;
 draw_set_font(ft_read);
+
+
+
 j = 0;
 draw_text(k,j,"shows a custom function, with 2 arguments"); j += 56;
 draw_text(k,j,"shows a binarry operator#bitshifting"); j += 56;
@@ -287,7 +276,11 @@ draw_text(k,j,"shows use of strings, the comma opearator # and the use of the te
               "str1 = " + string(ds_map_find_value(variables,"_str1")) + "  str2 = "+ string(ds_map_find_value(variables,"_str2"))); j += 56;
 draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
               "'^' is to the power of, ! means factorian, 'e' is the mathematical const#"+
-              "ln(e^2^3) is read as ln(e^(2^3)) = 8#");
+              "ln(e^2^3) is read as ln(e^(2^3)) = 8#"); j+= 56;
+              
+
+              
+//*/
 </string>
           </argument>
         </arguments>
@@ -310,13 +303,49 @@ draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>var str = ML_GetExprString(myfunc);
 str = get_string("new function", str);
-with (myfunc) {
-    ML_SetExpression(other.str);
-    ML_ClearExceptions();
-    ML_Calculate();
-}
+ML_SetExpression(myfunc, str);
+ML_ClearExceptions(myfunc);
+ML_Calculate(myfunc);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var ind = ML_InitParserCS(variables);
+str = "angle_difference(-270,720)"
+    //ML_AddFunction(myfunc, "angle_difference",AngleDifference, ML_VAL_REAL, ML_VAL_REAL, ML_VAL_REAL);
+    
+    ML_AddTernaryOper(ind, "?", ":", 3, _ML_FConditional,
+        ML_VAL_REAL,ML_VAL_REAL,ML_VAL_REAL,ML_VAL_REAL);
+    //ML_AddTernaryOper(ind, "?", ":", 3, _ML_FConditional,
+    //    ML_VAL_STRING,ML_VAL_REAL,ML_VAL_STRING,ML_VAL_STRING);
+    
+    
+//    ML_SetExpression(ind, str);
+
+//ML_Calculate(myfunc);
+
+ML_DestroyParser(ind);
 </string>
           </argument>
         </arguments>

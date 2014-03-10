@@ -1,3 +1,3 @@
-///ML_LastException()
+///ML_LastException(parser)
 
-return ErrorFlags;
+return _ML_LiP_GetErrorFlags(argument0);

@@ -1,4 +1,5 @@
-///ML_RemBinaryOper()
+///ML_RemBinaryOper(parser, index)
 
-ds_map_delete(other.P_BINOPER, str);
-instance_destroy();
+var P_BINOPER = _ML_LiP_GetBinOpsTable(argument0);
+ds_map_delete(P_BINOPER, _ML_Li_GetName(argument1));
+_ML_LiBOp_Destroy(argument1);

@@ -1,5 +1,7 @@
-var o1,o2;
-o1 = argument0;
-o2 = argument1;
+///_ML_SY_OperatorActBefore(o1, o2)
 
-return !(o1.precedence < o2.precedence || (o1.assoc == ML_O_LEFTASSOC && o1.precedence == o2.precedence));
+var o1p, o2p, o1a;
+o1p = _ML_LiOp_GetPrec(argument0);
+o2p = _ML_LiOp_GetPrec(argument1);
+o1a = _ML_LiOp_GetAssoc(argument0);
+return !(o1p < o2p || (o1a == ML_O_LEFTASSOC && o1p == o2p));
