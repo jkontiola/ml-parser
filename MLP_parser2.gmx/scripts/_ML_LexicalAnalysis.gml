@@ -1,10 +1,10 @@
 ///_ML_LexicalAnalysis(parser)
 
-var str, l , s, level, c, tc, tokenstr, tstr, p, tokenlist;
+var str, s, c, tc, tokenstr, tstr, p, tokenlist;
 
-l = 0;
-level = 0;
-maxlevel = 0;
+var l = 0;
+var level = 0;
+var maxlevel = 0;
 
 //lists
 var parser = argument0;

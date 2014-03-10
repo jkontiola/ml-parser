@@ -2,7 +2,7 @@
 
 var a;
 a[0] = ML_VAL_REAL;
-for (i = 0; i < argument2 ; i += 1) {
+for (var i = 0; i < argument2 ; ++i) {
     a[i] = ds_list_find_value(argument3, i);
 }
 

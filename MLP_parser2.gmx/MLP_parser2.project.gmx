@@ -343,6 +343,10 @@
       <script>scripts\display_all_parsers.gml</script>
       <script>scripts\calculate_all_parsers.gml</script>
       <script>scripts\destroy_all_parsers.gml</script>
+      <scripts name="tmp">
+        <script>scripts\___my_list_create.gml</script>
+        <script>scripts\___my_list_destroy.gml</script>
+      </scripts>
     </scripts>
     <script>scripts\newStringVarScript.gml</script>
   </scripts>
