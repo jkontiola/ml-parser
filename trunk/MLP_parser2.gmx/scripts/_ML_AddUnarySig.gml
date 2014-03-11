@@ -1,3 +1,3 @@
-///_ML_AddUnarySig(script, retval, argtype)
-var ind = _ML_LiUOpS_Create(argument0, argument1, argument2);
+///_ML_AddUnarySig(script, retval)
+var ind = _ML_LiS_Create(argument0, argument1);
 return ind;

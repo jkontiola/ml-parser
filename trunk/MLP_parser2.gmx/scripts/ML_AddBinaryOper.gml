@@ -25,7 +25,7 @@ var P_BINOPER = _ML_LiP_GetBinOpsTable(argument[0]);
 if (ds_map_exists(P_BINOPER,argument[1])) {
     o = ds_map_find_value(P_BINOPER, argument[1]);
     _ML_LiF_AddSig(o, argument[5] +"$" + argument[6], 
-                _ML_AddBinarySig(argument[3], argument[4], argument[5], argument[6]));
+                _ML_AddBinarySig(argument[3], argument[4]));
 } else {
     var assoc;
     assoc = ML_O_LEFTASSOC;

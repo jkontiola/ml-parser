@@ -17,7 +17,6 @@ ds_list_add(ind, ds_list_create()); //all answers list 10
 ds_list_add(ind, 0); //Error flags 11
 ds_list_add(ind, -1); //error pos 12
 ds_list_add(ind, ""); //error string 13
-ds_list_add(ind, noone); //error token 14
-ds_list_add(ind, false); //calculated 15
+ds_list_add(ind, false); //calculated 14
 
 return ind;

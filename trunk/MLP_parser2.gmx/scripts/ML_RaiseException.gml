@@ -21,7 +21,4 @@ _ML_LiP_SetErrorFlags(ind, argument[1]);
 _ML_LiP_SetErrorPos(ind, argument[2]);
 if (argument_count > 3) {
     _ML_LiP_SetErrorString(ind, argument[3]);
-    if (argument_count > 4) {
-        _ML_LiP_SetErrorToken(ind, argument[4]);
-    }
 }
