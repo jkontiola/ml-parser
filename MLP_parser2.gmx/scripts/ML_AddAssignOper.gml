@@ -26,7 +26,7 @@ var P_ASSIGNOPER = _ML_LiP_GetAssignOpsTable(argument[0]);
 if (ds_map_exists(P_ASSIGNOPER,argument[1])) {
     o = ds_map_find_value(P_ASSIGNOPER, argument[1]);
     _ML_LiF_AddSig(o, argument[5] +"$" + argument[6], 
-                    _ML_AddAssignSig(argument[3], argument[4], argument[5], argument[6]));
+                    _ML_AddAssignSig(argument[3], argument[4]));
 } else {
     var assoc;
     assoc = ML_O_RIGHTASSOC;

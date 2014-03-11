@@ -25,7 +25,7 @@ var o;
 var P_UNOPER = _ML_LiP_GetUnOpsTable(argument[0]);
 if (ds_map_exists(P_UNOPER,argument[1])) {
     o = ds_map_find_value(P_UNOPER, argument[1]);
-    _ML_LiF_AddSig(o, argument[5],_ML_AddUnarySig(argument[3], argument[4], argument[5]));
+    _ML_LiF_AddSig(o, argument[5],_ML_AddUnarySig(argument[3], argument[4]));
 } else {
     var affix;
     affix = ML_UO_PREFIX;

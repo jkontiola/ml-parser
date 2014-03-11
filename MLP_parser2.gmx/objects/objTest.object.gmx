@@ -244,7 +244,7 @@ if (fps_num &gt; 90) {
     draw_text(200,18,fps_sum / (fps_num - 90));
 }
 draw_text(200,0,fps_real);
-
+/*
 draw_text(200,36,"lists: " + string(global.ACTIVELISTS));
 draw_text(200,54,"maps: " + string(global.ACTIVEMAPS));
 draw_text(200,72,"queues: " + string(global.ACTIVEQUEUES));
@@ -281,6 +281,34 @@ draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
 
               
 //*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="96">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var list = ds_list_create();
+var map = ds_map_create();
+show_message('lists: ' + string(list) + "   maps: " + string(map));
+
+ds_list_destroy(list);
+ds_map_destroy(map);
 </string>
           </argument>
         </arguments>

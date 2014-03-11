@@ -36,7 +36,6 @@
         <script>scripts\ML_LastException.gml</script>
         <script>scripts\ML_ClearExceptions.gml</script>
         <script>scripts\ML_RaiseException.gml</script>
-        <script>scripts\_ML_LastExceptionToken.gml</script>
       </scripts>
       <scripts name="BuildFunctions">
         <script>scripts\ML_InitParserEmpty.gml</script>
@@ -264,27 +263,8 @@
         <scripts name="functions_fullname">
           <script>scripts\_ML_LiS_Destroy.gml</script>
           <script>scripts\_ML_LiS_GetScript.gml</script>
+          <script>scripts\_ML_LiS_Create.gml</script>
           <script>scripts\_ML_LiS_GetRettype.gml</script>
-          <scripts name="functions">
-            <script>scripts\_ML_LiFS_Create.gml</script>
-            <script>scripts\_ML_LiFS_GetArgN.gml</script>
-            <script>scripts\_ML_LiFS_GetArgs.gml</script>
-            <script>scripts\_ML_LiFS_GetArgcount.gml</script>
-          </scripts>
-          <scripts name="operators">
-            <scripts name="binary_operator">
-              <script>scripts\_ML_LiBOpS_Create.gml</script>
-            </scripts>
-            <scripts name="unary">
-              <script>scripts\_ML_LiUOpS_Create.gml</script>
-            </scripts>
-            <scripts name="ternary">
-              <script>scripts\_ML_LiTOpS_Create.gml</script>
-            </scripts>
-            <scripts name="assign">
-              <script>scripts\_ML_LiAOpS_Create.gml</script>
-            </scripts>
-          </scripts>
         </scripts>
         <scripts name="token">
           <script>scripts\_ML_LiTok_Destroy.gml</script>
@@ -321,7 +301,6 @@
             <script>scripts\_ML_LiP_GetErrorFlags.gml</script>
             <script>scripts\_ML_LiP_GetErrorPos.gml</script>
             <script>scripts\_ML_LiP_GetErrorString.gml</script>
-            <script>scripts\_ML_LiP_GetErrorToken.gml</script>
             <script>scripts\_ML_LiP_GetCalculated.gml</script>
           </scripts>
           <scripts name="setters">
@@ -330,7 +309,6 @@
             <script>scripts\_ML_LiP_SetErrorFlags.gml</script>
             <script>scripts\_ML_LiP_SetErrorPos.gml</script>
             <script>scripts\_ML_LiP_SetErrorString.gml</script>
-            <script>scripts\_ML_LiP_SetErrorToken.gml</script>
             <script>scripts\_ML_LiP_SetAnswer.gml</script>
             <script>scripts\_ML_LiP_SetCalculated.gml</script>
           </scripts>
@@ -388,7 +366,7 @@
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>
-  <constants number="79">
+  <constants number="78">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -466,8 +444,7 @@
     <constant name="ML_LIP_ERRFLAGS">11</constant>
     <constant name="ML_LIP_ERRPOS">12</constant>
     <constant name="ML_LIP_ERRSTRING">13</constant>
-    <constant name="ML_LIP_ERRTOKEN">14</constant>
-    <constant name="ML_LIP_CALCULATED">15</constant>
+    <constant name="ML_LIP_CALCULATED">14</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
