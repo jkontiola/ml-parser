@@ -1,5 +1,7 @@
 ///ML_VM_GetVar(parser, key)
-
+/// @argType    r, any
+/// @returnType string
+/// @hidden     false
 /*
 **  Usage:
 **      ML_VM_GetVar(parser, key)
@@ -15,5 +17,5 @@
 */
 
 var VARMAP =  _ML_LiP_GetVarMap(argument0);
-return ds_map_find_value(VARMAP, argument1);
+return string(ds_map_find_value(VARMAP, argument1));
 

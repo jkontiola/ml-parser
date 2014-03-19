@@ -1,5 +1,7 @@
 ///ML_SetExpression(parser, expression)
-
+/// @argType    r,s
+/// @returnType void
+/// @hidden     false
 /*
 **  Usage:
 **      ML_SetExpression(parser, expression)

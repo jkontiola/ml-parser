@@ -1,5 +1,7 @@
-///_ML_Parse(parser, PolishQueue)
-
+///_ML_Parse(parser, ReversePolishQueue)
+/// @argType    r,r
+/// @returnType string
+/// @hidden     true
 var rpn, args, tok, lhs, lhs_val, t, expression_terminator;
 //reverse polish notation of tokens;
 var parser = argument0;
@@ -50,19 +52,16 @@ while (!ds_queue_empty(rpn) && ML_NoException(parser)) {
     if (!ds_stack_empty(args)) {
         lhs = ds_stack_pop(args);
         if (_ML_LiTok_GetType(lhs) == ML_TT_VALUE) {
-            if (_ML_LiTok_GetOperator(lhs) == ML_VAL_REAL) {
-                lhs_val = _ML_LiTok_GetVal(lhs);
-            } else {
-                lhs_val = _ML_LiTok_GetVal(lhs);
-            }
-            _ML_LiP_AddAnswer(parser, lhs_val);
+            var lhs_val = _ML_LiTok_GetVal(lhs);
+            var lhs_type = _ML_LiTok_GetOperator(lhs);
+            _ML_LiP_AddAnswer(parser, lhs_val, lhs_type);
         } else if (_ML_LiTok_GetType(lhs) == ML_TT_VARIABLE)  {
-            var v;
-            v = _ML_LiTok_GetOperator(lhs);
-            lhs_val = ds_map_find_value(VARMAP, _ML_Li_GetName(v));
-            _ML_LiP_AddAnswer(parser, lhs_val);
+            var v = _ML_LiTok_GetOperator(lhs);
+            var lhs_val = ds_map_find_value(VARMAP, _ML_Li_GetName(v));
+            var lhs_type = _ML_LiVar_GetType(v);
+            _ML_LiP_AddAnswer(parser, lhs_val, lhs_type);
         }
     }
 }
 ds_stack_destroy(args);
-return lhs_val;
+return string(lhs_val);

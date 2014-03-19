@@ -1,5 +1,7 @@
 ///ML_RemTernaryOper(parser, index);
-
+/// @argType    r,r
+/// @returnType void
+/// @hidden     false
 var ind = argument1;
 var P_TERNOPER = _ML_LiP_GetTernOpsTable(argument0);
 var P_TERNOPER2 = _ML_LiP_GetTernOps2Table(argument0);

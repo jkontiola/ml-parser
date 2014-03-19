@@ -244,7 +244,7 @@ if (fps_num &gt; 90) {
     draw_text(200,18,fps_sum / (fps_num - 90));
 }
 draw_text(200,0,fps_real);
-/*
+
 draw_text(200,36,"lists: " + string(global.ACTIVELISTS));
 draw_text(200,54,"maps: " + string(global.ACTIVEMAPS));
 draw_text(200,72,"queues: " + string(global.ACTIVEQUEUES));

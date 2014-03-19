@@ -1,5 +1,7 @@
 ///_ML_PARSE_Unary(parser, token, argstack)
-
+/// @argType    r,r,r
+/// @returnType void
+/// @hidden     true
 var op, lhs, lhs_val, ret, lhs_type;
 
 var VARMAP = _ML_LiP_GetVarMap(argument0);

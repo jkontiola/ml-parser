@@ -1,5 +1,7 @@
 /// _ML_PARSE_Binary(parser, tok, argstack)
-
+/// @argType    r,r,r
+/// @returnType void
+/// @hidden     true
 var VARMAP = _ML_LiP_GetVarMap(argument0);
 var token = argument1;
 var argstack = argument2;

@@ -1,5 +1,7 @@
 ///_ML_LiUOp_Create(name, precedence, associativity, affix)
-
+/// @argType    s,r,r,r
+/// @returnType real
+/// @hidden     true
 
 var l = ds_list_create();
 ds_list_add(l, argument0); //str

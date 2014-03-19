@@ -1,4 +1,7 @@
 ///_ML_LEX_IsValue(parser, str, prevtok)
+/// @argType    r,s,r
+/// @returnType r
+/// @hidden     true
 
 var vstr, i, s, prevtok;
 vstr = string(_ML_LiTok_GetVal(argument1));

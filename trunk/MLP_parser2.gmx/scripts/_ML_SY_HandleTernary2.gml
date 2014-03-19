@@ -1,4 +1,7 @@
 ///_ML_SY_HandleTernary2(parser, token, output, stack);
+/// @argType    r,r,r,r
+/// @returnType void
+/// @hidden     true
 var token, output, stack, mylist, t, o1, o2;
 parser = argument0;
 token = argument1;

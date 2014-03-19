@@ -1,4 +1,8 @@
 ///ML_VM_HasNoPVar(parser, key)
+/// @argType    r, r
+/// @returnType real
+/// @hidden     false
+
 
 /*
 **  Usage:

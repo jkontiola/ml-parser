@@ -1,4 +1,7 @@
 ///_ML_LEX_IsUnoper(parser, str, prevtok)
+/// @argType    r,s,r
+/// @returnType r
+/// @hidden     true
 
 var P_UNOPER = _ML_LiP_GetUnOpsTable(argument0);
 var vstr, ret, prevtok, t, op;

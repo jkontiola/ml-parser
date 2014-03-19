@@ -1,5 +1,7 @@
 ///ML_InitParserScience(VarMap)
-
+/// @argType    r
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_InitParserScience(VarMap)

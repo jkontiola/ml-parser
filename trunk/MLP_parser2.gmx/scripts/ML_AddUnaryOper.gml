@@ -1,5 +1,7 @@
 ///ML_AddUnaryOper(parser, operator, precedence,script,returntype, valtype,[ affix])
-
+/// @argType    r,s,r,r,s,s,r
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_AddUnaryOper(parser, operator, precedence,script,returntype, valtype,[ affix])

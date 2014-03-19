@@ -1,5 +1,7 @@
 ///ML_VM_SetVar(parser, key, value)
-
+/// @argType    r ,r, any
+/// @returnType void
+/// @hidden     false
 /*
 **  Usage:
 **      ML_VM_SetVar(parser, key, value)

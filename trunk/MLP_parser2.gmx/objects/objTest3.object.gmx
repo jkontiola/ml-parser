@@ -128,29 +128,6 @@ ds_map_destroy(variables);
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>calculate_all_parsers(allfuncs);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -230,6 +207,39 @@ str = get_string("new function", str);
     ML_ClearExceptions(myfunc);
     ML_Calculate(myfunc);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+ML_SetExpression(myfunc, "2+2;var1; 'test' + ' hi '");
+ML_ClearExceptions(myfunc);
+ML_Calculate(myfunc);
+
+show_message(ML_GetExprString(myfunc));
+show_message(ML_GetAnswerNum(myfunc));
+show_message(ML_GetFinalAnswer(myfunc));
+show_message(ML_GetAnswer(myfunc, 0) + "   " + string(ML_GetAnswerType(myfunc, 0)));
+show_message(ML_GetAnswer(myfunc, 1) + "   " + string(ML_GetAnswerType(myfunc, 1)));
+show_message(ML_GetAnswer(myfunc, 2) + "   " + string(ML_GetAnswerType(myfunc, 2)));
 </string>
           </argument>
         </arguments>
