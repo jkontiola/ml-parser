@@ -1,4 +1,7 @@
-///_ML_SY_HandleRightPar(parser, token, output, stack, args, stackofoutputs, stackofstacks,  allargs, level);
+///_ML_SY_HandleRightPar(parser, token, output, stack, argcount, stackofoutputs, stackofstacks,  level);
+/// @argType    r,r,r,r,r,r,r,r
+/// @returnType real
+/// @hidden     true
 var token, output, stack, level, alloutput, allstack, newstack, newoutput, argc, parser;
 parser = argument0;
 token = argument1;
@@ -17,14 +20,13 @@ if (ds_stack_empty(stack)) {
     ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS,_ML_LiTok_GetPos(token),
         "Mismatched parenthesis for '" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)))
 } else {
-    ds_stack_pop(stack); //remove parenthesis
+    ds_stack_pop(stack); //remove left parenthesis
     if (level > 0 && ds_stack_empty(stack)) {
         //flatten the outputs
         newoutput = ds_stack_top(alloutput);
         newstack = ds_stack_top(allstack);
-        _ML_SY_QueueAppendQueue(newoutput, output);
-        var f;
-        f = ds_stack_pop(newstack);
+        _ML_SY_QueueAppendQueue(newoutput, output); //append output queues
+        var f = ds_stack_pop(newstack);
         _ML_LiTok_SetArgcount(f, argc);
         ds_queue_enqueue(newoutput, f);
         return true;

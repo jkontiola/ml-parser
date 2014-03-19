@@ -1,4 +1,7 @@
 ///_ML_SY_HandleArgSep(parser, token, output, stack);
+/// @argType    r,r,r,r
+/// @returnType void
+/// @hidden     true
 var token, output, stack, parser;
 parser = argument0;
 token = argument1;

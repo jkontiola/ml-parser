@@ -1,5 +1,7 @@
 ///ML_AddBinaryOper(parser, operator, precedence, script, returntype, lhstype, rhstype[, assoc])
-
+/// @argType    r,s,r,r,s,s,s,r
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_AddBinaryOper(parser, operator, precedence, script, returntype, lhstype, rhstype[, assoc])

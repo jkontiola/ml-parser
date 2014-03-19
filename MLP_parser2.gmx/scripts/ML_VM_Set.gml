@@ -1,5 +1,7 @@
 ///ML_VM_Set(parser, VarMap, [CreateNewVars] )
-
+/// @argType    r, r, r
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_VM_Set(parser, VarMap, [CreateNewVars] )

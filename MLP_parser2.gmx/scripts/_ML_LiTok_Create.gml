@@ -1,4 +1,7 @@
 ///_ML_LiTok_Create( string, pos)
+/// @argType    r,r
+/// @returnType real
+/// @hidden     true
 var l = ds_list_create();
 ds_list_add(l, ML_TT_UNKNOWN); //type
 ds_list_add(l, argument0); //string

@@ -1,4 +1,7 @@
-///_ML_LiP_Create(function, map)
+///_ML_LiP_Create(expression, variable_map)
+/// @argType    r,r
+/// @returnType real
+/// @hidden     true
 
 var ind = ds_list_create();
 ds_list_add(ind, ds_map_create()); //binops 0
@@ -18,5 +21,6 @@ ds_list_add(ind, 0); //Error flags 11
 ds_list_add(ind, -1); //error pos 12
 ds_list_add(ind, ""); //error string 13
 ds_list_add(ind, false); //calculated 14
+ds_list_add(ind, ds_list_create()); //all answers type list 15
 
 return ind;

@@ -1,4 +1,7 @@
-//ML_FirstStringPos(str, token1,token2,...,token16)
+/// _ML_FirstStringPos(str, token1,token2,...,token16)
+/// @argType    s,s ... s
+/// @returnType r
+/// @hidden     true
 
 var num, str, pos;
 num = argument_count - 1;

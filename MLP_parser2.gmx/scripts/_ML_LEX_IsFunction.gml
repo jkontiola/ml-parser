@@ -1,4 +1,7 @@
 ///_ML_LEX_IsFunction(parser, str, prevtok)
+/// @argType    r,s,r
+/// @returnType r
+/// @hidden     true
 
 var P_FUNCTION = _ML_LiP_GetFunctionTable(argument0);
 var vstr, p, ret, prevtok, t;

@@ -1,14 +1,16 @@
-///ML_RaiseException_CurParser(Exception, position, [string, token])
+///ML_RaiseException_CurParser(Exception, position, [string])
+/// @argType    r, r, s, r
+/// @returnType real
+/// @hidden     false
 
 /*
 **  Usage:
-**      ML_RaiseException_CurParser( Exception,position,[string,token])
+**      ML_RaiseException_CurParser( Exception,position,[string])
 **
 **  Arguments:
 **      Exception   exception id of the exception. (Can be build in or a custom)
 **      position    positino of the expression (use -1 if you don't know)
 **      string      string containing a textual description of the exception
-**      token       token where exception occurs
 **
 **  Returns:
 **

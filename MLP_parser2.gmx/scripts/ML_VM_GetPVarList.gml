@@ -1,5 +1,7 @@
 ///ML_VM_GetPVarList(parser, key)
-
+/// @argType    r,r 
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_VM_GetPVarList(parser, key)

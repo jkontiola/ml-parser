@@ -1,3 +1,6 @@
 ///ML_GetAnswer(parser, answer_ind)
+/// @argType    r, r
+/// @returnType string
+/// @hidden     false
 
-return _ML_LiP_GetAnswerN(argument0, argument1);
+return string(_ML_LiP_GetAnswerN(argument0, argument1));

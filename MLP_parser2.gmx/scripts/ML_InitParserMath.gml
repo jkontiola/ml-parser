@@ -1,5 +1,7 @@
 ///ML_InitParserMath(VarMap)
-
+/// @argType    r
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_InitParserMath(VarMap)

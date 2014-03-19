@@ -1,4 +1,7 @@
 ///_ML_LEX_IsVariable(parser, str, prevtok)
+/// @argType    r,s,r
+/// @returnType r
+/// @hidden     true
 
 var P_VARIABLE = _ML_LiP_GetVariableTable(argument0);
 var vstr, p, ret, prevtok, t;

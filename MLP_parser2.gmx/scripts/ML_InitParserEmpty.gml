@@ -1,5 +1,7 @@
 ///ML_InitParserEmpty(VarMap)
-
+/// @argType    r
+/// @returnType real
+/// @hidden     false
 /*
 **  Usage:
 **      ML_InitParserEmpty(VarMap)

@@ -3,7 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\testscripts</extension>
+  </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites"/>
   <backgrounds name="background"/>
@@ -17,10 +19,12 @@
     <script>scripts\myStringLength.gml</script>
     <script>scripts\myGetString.gml</script>
     <scripts name="MATH_LOGICAL PARSER">
+      <script>scripts\ML_Initialize.gml</script>
       <script>scripts\ML_HasAnswer.gml</script>
       <script>scripts\ML_GetFinalAnswer.gml</script>
       <script>scripts\ML_GetAnswerNum.gml</script>
       <script>scripts\ML_GetAnswer.gml</script>
+      <script>scripts\ML_GetAnswerType.gml</script>
       <script>scripts\ML_GetExprString.gml</script>
       <script>scripts\ML_Calculate.gml</script>
       <scripts name="ExceptionHandling">
@@ -45,17 +49,12 @@
         <script>scripts\ML_DestroyParser.gml</script>
         <scripts name="Functions">
           <script>scripts\ML_AddFunction.gml</script>
+          <script>scripts\ML_AddFunctionArgList.gml</script>
           <script>scripts\_ML_AddFunctionSig.gml</script>
           <script>scripts\_ML_NewFunction.gml</script>
           <script>scripts\ML_ClearFunction.gml</script>
           <script>scripts\ML_RemFunctionStr.gml</script>
           <script>scripts\ML_RemFunction.gml</script>
-        </scripts>
-        <scripts name="Variable">
-          <script>scripts\ML_AddVariable.gml</script>
-          <script>scripts\ML_ClearVariable.gml</script>
-          <script>scripts\ML_RemVariableStr.gml</script>
-          <script>scripts\ML_RemVariable.gml</script>
         </scripts>
         <scripts name="Operators">
           <scripts name="Binary">
@@ -92,13 +91,23 @@
             <script>scripts\ML_RemTernaryOperStr.gml</script>
           </scripts>
         </scripts>
+        <scripts name="Variable">
+          <script>scripts\ML_AddVariable.gml</script>
+          <script>scripts\ML_ClearVariable.gml</script>
+          <script>scripts\ML_RemVariableStr.gml</script>
+          <script>scripts\ML_RemVariable.gml</script>
+        </scripts>
         <scripts name="Variable Map">
           <script>scripts\ML_VM_Get.gml</script>
           <script>scripts\ML_VM_Set.gml</script>
           <script>scripts\ML_VM_HasNoPVar.gml</script>
           <script>scripts\ML_VM_GetPVarList.gml</script>
           <script>scripts\ML_VM_GetVar.gml</script>
+          <script>scripts\ML_VM_GetVarString.gml</script>
+          <script>scripts\ML_VM_GetVarReal.gml</script>
           <script>scripts\ML_VM_SetVar.gml</script>
+          <script>scripts\ML_VM_SetVarString.gml</script>
+          <script>scripts\ML_VM_SetVarReal.gml</script>
           <script>scripts\ML_VM_RemVar.gml</script>
         </scripts>
         <script>scripts\ML_SetExpression.gml</script>
@@ -197,20 +206,23 @@
           <script>scripts\_ML_LEX_TokenAdd.gml</script>
           <script>scripts\_ML_LexicalAnalysis.gml</script>
           <script>scripts\_ML_FirstStringPos.gml</script>
+          <script>scripts\_ML_FirstStringPos1.gml</script>
+          <script>scripts\_ML_FirstStringPos2.gml</script>
+          <script>scripts\_ML_FirstStringPos3.gml</script>
         </scripts>
         <scripts name="shunting_yard">
           <script>scripts\_ML_SY_HandleValue.gml</script>
           <script>scripts\_ML_SY_HandleFunction.gml</script>
           <script>scripts\_ML_SY_HandleLeftPar.gml</script>
           <script>scripts\_ML_SY_HandleArgSep.gml</script>
-          <script>scripts\_ML_SY_OperatorActBefore.gml</script>
-          <script>scripts\_ML_SY_TokenIsOperator.gml</script>
           <script>scripts\_ML_SY_HandleOperator.gml</script>
           <script>scripts\_ML_SY_HandleRightPar.gml</script>
           <script>scripts\_ML_SY_HandleTernary2.gml</script>
-          <script>scripts\_ML_SY_TernaryIsMatchingToken.gml</script>
           <script>scripts\_ML_SY_HandleEOL.gml</script>
           <script>scripts\_ML_SY_HandleExprTerminator.gml</script>
+          <script>scripts\_ML_SY_OperatorActBefore.gml</script>
+          <script>scripts\_ML_SY_TokenIsOperator.gml</script>
+          <script>scripts\_ML_SY_TernaryIsMatchingToken.gml</script>
           <script>scripts\_ML_SY_QueueAppendQueue.gml</script>
           <script>scripts\_ML_ShuntingYard.gml</script>
         </scripts>
@@ -285,6 +297,7 @@
           <script>scripts\_ML_LiP_ClearAnswers.gml</script>
           <script>scripts\_ML_LiP_AddAnswer.gml</script>
           <script>scripts\_ML_LiP_GetAnswerN.gml</script>
+          <script>scripts\_ML_LiP_GetAnswerType.gml</script>
           <script>scripts\_ML_LiP_Destroy.gml</script>
           <scripts name="getters">
             <script>scripts\_ML_LiP_GetBinOpsTable.gml</script>
@@ -302,6 +315,7 @@
             <script>scripts\_ML_LiP_GetErrorPos.gml</script>
             <script>scripts\_ML_LiP_GetErrorString.gml</script>
             <script>scripts\_ML_LiP_GetCalculated.gml</script>
+            <script>scripts\_ML_LiP_GetAllAnswersT.gml</script>
           </scripts>
           <scripts name="setters">
             <script>scripts\_ML_LiP_SetFunctionString.gml</script>
@@ -333,12 +347,14 @@
       </scripts>
     </scripts>
     <script>scripts\newStringVarScript.gml</script>
+    <script>scripts\testscript.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_code</font>
     <font>fonts\ft_read</font>
   </fonts>
   <objects name="objects">
+    <object>objects\objExtTest</object>
     <object>objects\objTest</object>
     <object>objects\objTest2</object>
     <object>objects\objTest3</object>
@@ -363,10 +379,11 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
+    <room>rooms\rmExtTest</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>
-  <constants number="78">
+  <constants number="80">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -390,6 +407,7 @@
     <constant name="ML_VAL_REAL">"R"</constant>
     <constant name="ML_VAL_STRING">"S"</constant>
     <constant name="ML_VAL_ANY">"A"</constant>
+    <constant name="ML_VAL_UNDEFINED">"U"</constant>
     <constant name="ML_EXCEPT_CHAR">1</constant>
     <constant name="ML_EXCEPT_TOKENTYPE">2</constant>
     <constant name="ML_EXCEPT_FUNCTION">3</constant>
@@ -445,6 +463,7 @@
     <constant name="ML_LIP_ERRPOS">12</constant>
     <constant name="ML_LIP_ERRSTRING">13</constant>
     <constant name="ML_LIP_CALCULATED">14</constant>
+    <constant name="ML_LIP_ALLANSWERST">15</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

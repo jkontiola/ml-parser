@@ -1,4 +1,7 @@
 ///_ML_LexicalAnalysis(parser)
+/// @argType    r
+/// @returnType r
+/// @hidden     true
 
 var str, s, c, tc, tokenstr, tstr, p, tokenlist;
 
@@ -62,7 +65,7 @@ while (string_length(str) > 0) {
             l -= 1;
         } else {
             ML_RaiseException(ML_EXCEPT_CHAR,p,"unknown charcter: '"+c+"' at "+string(p));
-            l = _ML_FirstStringPos(str," ","(",")") - 1;
+            l = _ML_FirstStringPos3(str, " ", "(", ")") - 1;
         }
         if (l <= 0) l = string_length(str);
         tokenstr = string_copy(str,1,l);

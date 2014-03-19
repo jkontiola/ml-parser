@@ -1,4 +1,7 @@
 ///_ML_ShuntingYard(parser, tokens)
+/// @argType    r,r
+/// @returnType real
+/// @hidden     true
 
 var input, curoutput, curstack, token, endtok, o1, o2, t, allstack, alloutput;
 var curlevel, allargnum, curargnum, curparenthesis, allparenthesis;
@@ -99,7 +102,7 @@ while (i < s && !endtok) { //while there are tokens to be read
         i-=1;
     break;
     case ML_TT_RIGHTP:
-        if (_ML_SY_HandleRightPar(parser, token, curoutput, curstack, curargnum, alloutput, allstack, curlevel) == 1) {
+        if (_ML_SY_HandleRightPar(parser, token, curoutput, curstack, curargnum, alloutput, allstack, curlevel)) {
             ds_stack_destroy(curstack);
             ds_queue_destroy(curoutput);
             curoutput = ds_stack_pop(alloutput);

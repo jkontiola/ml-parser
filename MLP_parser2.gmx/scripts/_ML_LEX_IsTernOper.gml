@@ -1,4 +1,8 @@
 ///_ML_LEX_IsTernOper(parser, string, previoustoken)
+/// @argType    r,s,r
+/// @returnType r
+/// @hidden     true
+
 
 var vstr, p, ret, prevtok, t;
 var P_TERNOPER = _ML_LiP_GetTernOpsTable(argument0);

@@ -1,4 +1,7 @@
-///ML_RaiseException(parser, Exception, position, [string, token])
+///ML_RaiseException(parser, Exception, position, [string])
+/// @argType    r,r,r,s
+/// @returnType v
+/// @hidden     false
 
 /*
 **  Usage:
@@ -9,7 +12,6 @@
 **      Exception   exception id of the exception (Can be build in or a custom)
 **      position    positino of the expression (use -1 if you don't know)
 **      string      string containing a textual description of the exception
-**      token       token where exception occurs
 **
 **  Returns:
 **

@@ -1,5 +1,7 @@
 ///ML_VM_Get(parser)
-
+/// @argType    r
+/// @returnType void
+/// @hidden     false
 /*
 **  Usage:
 **      ML_VM_Get()

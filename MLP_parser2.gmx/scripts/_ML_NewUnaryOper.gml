@@ -1,5 +1,7 @@
-///   _ML_NewUnaryOper(operator, precedence,script,returntype, lhstype, affix)
-
+/// _ML_NewUnaryOper(operator, precedence,script,returntype, lhstype, affix)
+/// @argType    s,r,r,s,s,r
+/// @returnType r
+/// @hidden     true
 
 var assoc;
 if (argument5 == ML_UO_PREFIX) {

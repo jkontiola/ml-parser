@@ -1,5 +1,7 @@
 ///_ML_LiBOp_Create(name, precedence, associativity)
-
+/// @argType    s,r,r
+/// @returnType real
+/// @hidden     true
 
 var l = ds_list_create();
 ds_list_add(l, argument0); //str

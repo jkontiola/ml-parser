@@ -1,4 +1,7 @@
 ///_ML_SY_HandleOperator(parser, token, output, stack)
+/// @argType    r,r,r,r
+/// @returnType void
+/// @hidden     true
 var token, output, stack, o1, o2, t, parser;
 parser = argument0;
 token = argument1;
