@@ -1,5 +1,5 @@
 ///ML_RaiseException_CurParser(Exception, position, [string])
-/// @argType    r, r, s, r
+/// @argType    r, r, s
 /// @returnType real
 /// @hidden     false
 

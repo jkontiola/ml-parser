@@ -91,7 +91,7 @@ if (string(_ML_LiTok_GetVal(tok)) == "("){
     v = ML_TT_UNARY;
 } else if _ML_LEX_IsVariable(parser, tok, -1) {
     v = ML_TT_VARIABLE;
-} else if _ML_LEX_IsValue(parser, tok, -1 ){
+} else if _ML_LEX_IsValue(tok, -1 ){
     v = ML_TT_VALUE;
 } else {
     v = ML_TT_UNKNOWN;
@@ -115,7 +115,7 @@ for (i = 1; i < s; i += 1) {
         v = ML_TT_FUNCTION;
     } else if _ML_LEX_IsVariable(parser, tok, prevtok) {
         v = ML_TT_VARIABLE;
-    } else if _ML_LEX_IsValue(parser, tok, prevtok){
+    } else if _ML_LEX_IsValue(tok, prevtok){
         v = ML_TT_VALUE;
     } else if (_ML_LEX_IsBinoper(parser, tok, prevtok)) {
         v = ML_TT_BINARY;    

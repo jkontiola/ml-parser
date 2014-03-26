@@ -1,4 +1,4 @@
-//ML_SY_TernaryIsMatchingToken(token1, map)
+/// _ML_SY_TernaryIsMatchingToken(token1, map)
 /// @argType    r,r
 /// @returnType real
 /// @hidden     true

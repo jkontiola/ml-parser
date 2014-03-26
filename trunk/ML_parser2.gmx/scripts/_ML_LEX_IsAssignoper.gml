@@ -1,5 +1,5 @@
-///_ML_LEX_IsAssignOper(parser, str, prevtok)
-/// @argType    r,s,r
+///_ML_LEX_IsAssignoper(parser, token, prevtok)
+/// @argType    r,r,r
 /// @returnType r
 /// @hidden     true
 

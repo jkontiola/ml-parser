@@ -1,5 +1,5 @@
-///_ML_LEX_IsBinoper(parser, str, prevtok)
-/// @argType    r,s,r
+///_ML_LEX_IsBinoper(parser, token, prevtok)
+/// @argType    r,r,r
 /// @returnType r
 /// @hidden     true
 

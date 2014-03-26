@@ -1,4 +1,4 @@
-///   ML_NewBinaryOper(operator,precedence,script,returntype, lhstype, rhstype, assoc)
+/// _ML_NewBinaryOper(operator,precedence,script,returntype, lhstype, rhstype, assoc)
 /// @argType    s,r,r,s,s,s,r
 /// @returnType r
 /// @hidden     true

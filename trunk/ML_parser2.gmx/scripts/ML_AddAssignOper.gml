@@ -14,7 +14,7 @@
 **      returntype  return type of the operator
 **      lhstype     type of left hand side
 **      rhstype     type of right hand side
-**      assoc       associtivity of operator (default is right/ML_O_LEFTASSOC
+**      assoc       associtivity of operator (default is right/ML_O_RIGHTASSOC)
 **
 **  Returns:
 **      ID to the new "operator type" used in further functions

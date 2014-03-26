@@ -1,4 +1,4 @@
-///RemAssignOperStr(parser, Assign operator string)
+///ML_RemAssignOperStr(parser, Assign operator string)
 /// @argType    r,s
 /// @returnType void
 /// @hidden     false

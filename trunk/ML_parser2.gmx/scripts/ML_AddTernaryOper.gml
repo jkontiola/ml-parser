@@ -1,5 +1,5 @@
 ///ML_AddTernaryOper(parser, operator1, operator2, precedence, script, returntype, lhstype, mhstype, rhstype[, assoc])
-/// @argType    r,s,r,r,s,s,s,s,r
+/// @argType    r,s,s,r,r,s,s,s,s,r
 /// @returnType real
 /// @hidden     false
 /*
