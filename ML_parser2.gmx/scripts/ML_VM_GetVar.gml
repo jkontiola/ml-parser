@@ -17,5 +17,5 @@
 */
 
 var VARMAP =  _ML_LiP_GetVarMap(argument0);
-return string(ds_map_find_value(VARMAP, argument1));
+return ds_map_find_value(VARMAP, argument1);
 

@@ -21,3 +21,4 @@ var ind = _ML_LiP_Create("", argument0);
 global._ML_CURRENTPARSER_ = ind;
 
 return ind;
+

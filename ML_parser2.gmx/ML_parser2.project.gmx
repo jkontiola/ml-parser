@@ -3,9 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions>
-    <extension index="0">extensions\testscripts</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites"/>
   <backgrounds name="background"/>
@@ -14,10 +12,8 @@
     <script>scripts\myRandom.gml</script>
     <script>scripts\myRandom2.gml</script>
     <script>scripts\AngleDifference.gml</script>
-    <script>scripts\myfun1.gml</script>
-    <script>scripts\myfun2.gml</script>
-    <script>scripts\myStringLength.gml</script>
     <script>scripts\myGetString.gml</script>
+    <script>scripts\myStringLength.gml</script>
     <scripts name="MATH_LOGICAL PARSER">
       <script>scripts\ML_Initialize.gml</script>
       <script>scripts\ML_HasAnswer.gml</script>
@@ -43,9 +39,6 @@
       </scripts>
       <scripts name="BuildFunctions">
         <script>scripts\ML_InitParserEmpty.gml</script>
-        <script>scripts\ML_InitParserCS.gml</script>
-        <script>scripts\ML_InitParserMath.gml</script>
-        <script>scripts\ML_InitParserScience.gml</script>
         <script>scripts\ML_DestroyParser.gml</script>
         <scripts name="Functions">
           <script>scripts\ML_AddFunction.gml</script>
@@ -178,6 +171,9 @@
         <script>scripts\_ML_FNot.gml</script>
         <script>scripts\_ML_FComma.gml</script>
         <script>scripts\_ML_FConditional.gml</script>
+        <script>scripts\ML_InitParserCS.gml</script>
+        <script>scripts\ML_InitParserMath.gml</script>
+        <script>scripts\ML_InitParserScience.gml</script>
       </scripts>
       <scripts name="detail">
         <scripts name="lexer">
@@ -244,6 +240,7 @@
           <script>scripts\_ML_LiVar_Destroy.gml</script>
         </scripts>
         <scripts name="functions">
+          <script>scripts\_ML_LiF_GetFuncs.gml</script>
           <script>scripts\_ML_LiF_GetFunc.gml</script>
           <script>scripts\_ML_LiF_Create.gml</script>
           <script>scripts\_ML_LiF_Destroy.gml</script>
@@ -329,7 +326,6 @@
         </scripts>
       </scripts>
     </scripts>
-    <script>scripts\newRealVarScript.gml</script>
     <scripts name="debug">
       <script>scripts\display_all_parsers.gml</script>
       <script>scripts\calculate_all_parsers.gml</script>
@@ -343,45 +339,18 @@
         <script>scripts\___my_stack_destroy.gml</script>
         <script>scripts\___my_queue_create.gml</script>
         <script>scripts\___my_queue_destroy.gml</script>
-        <script>scripts\_ML_LiF_GetFuncs.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\newStringVarScript.gml</script>
-    <script>scripts\testscript.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_code</font>
     <font>fonts\ft_read</font>
   </fonts>
   <objects name="objects">
-    <object>objects\objExtTest</object>
     <object>objects\objTest</object>
-    <object>objects\objTest2</object>
-    <object>objects\objTest3</object>
-    <objects name="ML_Parser">
-      <object>objects\ML_objAll_o</object>
-      <object>objects\ML_objTokenTypes_o</object>
-      <object>objects\ML_objVariable_o</object>
-      <object>objects\ML_objOperators_o</object>
-      <object>objects\ML_objFunction_o</object>
-      <object>objects\ML_objTernaryOperator_o</object>
-      <object>objects\ML_objBinaryOperator_o</object>
-      <object>objects\ML_objAssignOperator_o</object>
-      <object>objects\ML_objUnaryOperator_o</object>
-      <object>objects\ML_objFunctionD_o</object>
-      <object>objects\ML_objAssignOperatorD_o</object>
-      <object>objects\ML_objUnaryOperatorD_o</object>
-      <object>objects\ML_objBinaryOperatorD_o</object>
-      <object>objects\ML_objTernaryOperatorD_o</object>
-      <object>objects\ML_objToken_o</object>
-      <object>objects\ML_objParser_o</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
-    <room>rooms\rmExtTest</room>
-    <room>rooms\room2</room>
-    <room>rooms\room0</room>
   </rooms>
   <constants number="80">
     <constant name="ML_O_LEFTASSOC">0</constant>

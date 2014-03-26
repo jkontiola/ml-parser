@@ -91,7 +91,7 @@ while (i < s && !endtok) { //while there are tokens to be read
                     v = ML_TT_UNARY;
                 } else if _ML_LEX_IsVariable(parser, token, prevtok) {
                     v = ML_TT_VARIABLE;
-                } else if _ML_LEX_IsValue(parser, token, prevtok){
+                } else if _ML_LEX_IsValue(token, prevtok){
                     v = ML_TT_VALUE;
                 } else {
                     v = ML_TT_UNKNOWN;

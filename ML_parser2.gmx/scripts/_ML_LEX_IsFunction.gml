@@ -1,5 +1,5 @@
-///_ML_LEX_IsFunction(parser, str, prevtok)
-/// @argType    r,s,r
+///_ML_LEX_IsFunction(parser, token, prevtok)
+/// @argType    r,r,r
 /// @returnType r
 /// @hidden     true
 
