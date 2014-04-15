@@ -1,5 +1,5 @@
-///_ML_ShuntingYard(parser, tokens)
-/// @argType    r,r
+///_ML_ShuntingYard(parser, tokens, rpn_queue)
+/// @argType    r,r,r
 /// @returnType real
 /// @hidden     true
 
@@ -15,7 +15,7 @@ allargnum = ds_stack_create();
 allparenthesis = ds_stack_create();
 
 curstack = ds_stack_create();
-curoutput = ds_queue_create();
+curoutput = argument2;
 curparenthesis = 1;
 curargnum = 1;
 curlevel = 0;
@@ -158,4 +158,4 @@ if !(endtok) {
     ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token),
         "Line ended before EOL'" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)));
 }
-return curoutput;
+return true;

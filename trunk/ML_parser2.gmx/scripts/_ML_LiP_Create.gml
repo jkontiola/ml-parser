@@ -22,5 +22,7 @@ ds_list_add(ind, -1); //error pos 12
 ds_list_add(ind, ""); //error string 13
 ds_list_add(ind, false); //calculated 14
 ds_list_add(ind, ds_list_create()); //all answers type list 15
+ds_list_add(ind, _ML_LiRO_Create());
+
 
 return ind;
