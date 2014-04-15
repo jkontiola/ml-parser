@@ -1,6 +1,6 @@
 ///ML_GetFinalAnswer(parser)
 /// @argType    r
-/// @returnType string
+/// @returnType any
 /// @hidden     false
 
-return string(_ML_LiP_GetAnswer(argument0));
+return _ML_LiP_GetAnswer(argument0);

@@ -22,6 +22,9 @@
       <script>scripts\ML_GetAnswer.gml</script>
       <script>scripts\ML_GetAnswerType.gml</script>
       <script>scripts\ML_GetExprString.gml</script>
+      <script>scripts\ML_Compile.gml</script>
+      <script>scripts\ML_Execute.gml</script>
+      <script>scripts\ML_CompileCleanup.gml</script>
       <script>scripts\ML_Calculate.gml</script>
       <scripts name="ExceptionHandling">
         <script>scripts\ML_NoException_CurParser.gml</script>
@@ -230,6 +233,7 @@
           <script>scripts\_ML_PARSE_Function.gml</script>
           <script>scripts\_ML_Parse.gml</script>
         </scripts>
+        <script>scripts\_ML_TokCleanUp.gml</script>
       </scripts>
       <scripts name="data_containers">
         <script>scripts\_ML_Li_GetName.gml</script>
@@ -297,6 +301,7 @@
           <script>scripts\_ML_LiP_GetAnswerType.gml</script>
           <script>scripts\_ML_LiP_Destroy.gml</script>
           <scripts name="getters">
+            <script>scripts\_ML_LiP_GetResultObject.gml</script>
             <script>scripts\_ML_LiP_GetBinOpsTable.gml</script>
             <script>scripts\_ML_LiP_GetUnOpsTable.gml</script>
             <script>scripts\_ML_LiP_GetTernOpsTable.gml</script>
@@ -323,6 +328,21 @@
             <script>scripts\_ML_LiP_SetAnswer.gml</script>
             <script>scripts\_ML_LiP_SetCalculated.gml</script>
           </scripts>
+        </scripts>
+        <scripts name="ResultObject">
+          <script>scripts\_ML_LiRO_Create.gml</script>
+          <script>scripts\_ML_LiRO_Clear.gml</script>
+          <script>scripts\_ML_LiRO_GetType.gml</script>
+          <script>scripts\_ML_LiRO_Get.gml</script>
+          <script>scripts\_ML_LiRO_Destroy.gml</script>
+          <script>scripts\_ML_LiRO_Size.gml</script>
+          <script>scripts\_ML_LiRO_Add.gml</script>
+          <script>scripts\_ML_LiRO_GetCalculated.gml</script>
+          <script>scripts\_ML_LiRO_GetFinal.gml</script>
+          <script>scripts\_ML_LiRO_GetAll.gml</script>
+          <script>scripts\_ML_LiRO_GetAllType.gml</script>
+          <script>scripts\_ML_LiRO_SetFinal.gml</script>
+          <script>scripts\_ML_LiRO_SetCalculated.gml</script>
         </scripts>
       </scripts>
     </scripts>
@@ -352,7 +372,7 @@
   <rooms name="rooms">
     <room>rooms\room1</room>
   </rooms>
-  <constants number="80">
+  <constants number="85">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -433,6 +453,11 @@
     <constant name="ML_LIP_ERRSTRING">13</constant>
     <constant name="ML_LIP_CALCULATED">14</constant>
     <constant name="ML_LIP_ALLANSWERST">15</constant>
+    <constant name="ML_LIP_RESOBJECT">16</constant>
+    <constant name="ML_LIRO_CALCULATED">0</constant>
+    <constant name="ML_LIRO_ANSWER">1</constant>
+    <constant name="ML_LIRO_ALLANSWERS">2</constant>
+    <constant name="ML_LIRO_ALLANSWERSTYPE">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

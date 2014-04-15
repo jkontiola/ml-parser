@@ -1,5 +1,5 @@
-///_ML_LexicalAnalysis(parser)
-/// @argType    r
+///_ML_LexicalAnalysis(parser, tokenlist, string)
+/// @argType    r, r, s
 /// @returnType r
 /// @hidden     true
 
@@ -11,7 +11,7 @@ var maxlevel = 0;
 
 //lists
 var parser = argument0;
-str = _ML_LiP_GetFunctionString(parser);
+str = argument2;
 
 var P_TERNOPER = _ML_LiP_GetTernOpsTable(parser);
 var P_TERNOPER2 = _ML_LiP_GetTernOps2Table(parser);
@@ -23,7 +23,7 @@ var P_BINOPER = _ML_LiP_GetBinOpsTable(parser);
 
 
 //initialize
-tokenlist = ds_list_create();
+tokenlist = argument1;
 p = 1;
 while (string_length(str) > 0) {
     c = string_char_at(str,1);
@@ -135,4 +135,4 @@ for (i = 1; i < s; i += 1) {
     prevtok = tok;
 }
 
-return tokenlist;
+return true;
