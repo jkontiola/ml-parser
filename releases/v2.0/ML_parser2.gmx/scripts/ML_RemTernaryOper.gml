@@ -1,4 +1,3 @@
-#define ML_RemTernaryOper
 ///ML_RemTernaryOper(parser, index);
 /// @argType    r,r
 /// @returnType void

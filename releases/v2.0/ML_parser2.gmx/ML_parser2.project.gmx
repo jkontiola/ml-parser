@@ -9,11 +9,6 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\myRandom.gml</script>
-    <script>scripts\myRandom2.gml</script>
-    <script>scripts\AngleDifference.gml</script>
-    <script>scripts\myGetString.gml</script>
-    <script>scripts\myStringLength.gml</script>
     <scripts name="MATH_LOGICAL PARSER">
       <script>scripts\ML_Initialize.gml</script>
       <script>scripts\ML_HasAnswer.gml</script>
@@ -343,6 +338,11 @@
         <script>scripts\___my_queue_create.gml</script>
         <script>scripts\___my_queue_destroy.gml</script>
       </scripts>
+      <script>scripts\myRandom.gml</script>
+      <script>scripts\AngleDifference.gml</script>
+      <script>scripts\myRandom2.gml</script>
+      <script>scripts\myGetString.gml</script>
+      <script>scripts\myStringLength.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

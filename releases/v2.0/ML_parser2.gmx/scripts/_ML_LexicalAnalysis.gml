@@ -13,14 +13,7 @@ var maxlevel = 0;
 var parser = argument0;
 str = _ML_LiP_GetFunctionString(parser);
 
-var P_TERNOPER = _ML_LiP_GetTernOpsTable(parser);
-var P_TERNOPER2 = _ML_LiP_GetTernOps2Table(parser);
-var P_ASSIGNOPER = _ML_LiP_GetAssignOpsTable(parser);
-var P_UNOPER = _ML_LiP_GetUnOpsTable(parser);
-var P_BINOPER = _ML_LiP_GetBinOpsTable(parser);
-//var P_FUNCTION = _ML_LiP_GetFunctionTable(parser);
-//var P_VARIABLE = _ML_LiP_GetVariableTable(parser);
-
+var P_ROOTS = _ML_LiP_GetOperatorRoots(parser);
 
 //initialize
 tokenlist = ds_list_create();
@@ -55,14 +48,22 @@ while (string_length(str) > 0) {
         } else if (_ML_LEX_Punct(c)) {
             l = 2;
             tstr = c;
+            var baselength = 1;
+            var v;
             while (l <= string_length(str) ){
                 tc = string_char_at(str,l);
                 tstr += tc;
-                if (!ds_map_exists(P_ASSIGNOPER,tstr) && !ds_map_exists(P_UNOPER,tstr) && !ds_map_exists(P_BINOPER,tstr) 
-                    && !ds_map_exists(P_TERNOPER, tstr) && !ds_map_exists(P_TERNOPER2, tstr) ) break;
+                v = ds_map_find_value(P_ROOTS, tstr);
+                if (!is_array(v)) {
+                    break;
+                }
+                if (v[1] > 0) {
+                    baselength = l;
+                }
+                
                 l += 1;
             }
-            l -= 1;
+            l = baselength;
         } else {
             ML_RaiseException(ML_EXCEPT_CHAR,p,"unknown charcter: '"+c+"' at "+string(p));
             l = _ML_FirstStringPos3(str, " ", "(", ")") - 1;

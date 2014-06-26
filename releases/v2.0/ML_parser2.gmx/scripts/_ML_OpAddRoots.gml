@@ -1,4 +1,3 @@
-#define _ML_OpAddRoots
 /// _ML_OpAddRoots(parser, string)
 /// @argType    r,s
 /// @returnType r

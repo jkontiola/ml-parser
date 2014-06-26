@@ -1,4 +1,3 @@
-#define ML_RemBinaryOper
 ///ML_RemBinaryOper(parser, index)
 /// @argType    r,r
 /// @returnType void

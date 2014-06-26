@@ -1,4 +1,3 @@
-#define ML_RemAssignOper
 ///ML_RemAssignOper(parser, index)
 /// @argType    r,r
 /// @returnType void
