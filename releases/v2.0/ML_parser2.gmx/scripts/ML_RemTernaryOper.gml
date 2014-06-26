@@ -1,3 +1,4 @@
+#define ML_RemTernaryOper
 ///ML_RemTernaryOper(parser, index);
 /// @argType    r,r
 /// @returnType void
@@ -22,4 +23,7 @@ if (ds_list_empty(entry)) {
     ds_list_destroy(entry);
     ds_map_delete(P_TERNOPER2, str2);
 }
+_ML_OpRemRoots(argument0, str1);
+_ML_OpRemRoots(argument0, str2);
 _ML_LiTOp_Destroy(ind);
+
