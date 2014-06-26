@@ -23,4 +23,6 @@ ds_list_add(ind, ""); //error string 13
 ds_list_add(ind, false); //calculated 14
 ds_list_add(ind, ds_list_create()); //all answers type list 15
 
+ds_list_add(ind, ds_map_create()); //all signature roots 16
+
 return ind;

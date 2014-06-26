@@ -1,6 +1,6 @@
 ///ML_Calculate(parser)
 /// @argType    r
-/// @returnType string
+/// @returnType any
 /// @hidden     false
 
 /*
@@ -45,4 +45,4 @@ for (i = 0; i < s; i += 1) {
 ds_list_destroy(tokenlist);
 
 
-return string(_ML_LiP_GetCalculated(parser));
+return _ML_LiP_GetCalculated(parser);
