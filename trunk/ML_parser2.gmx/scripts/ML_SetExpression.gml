@@ -1,3 +1,4 @@
+#define ML_SetExpression
 ///ML_SetExpression(parser, expression)
 /// @argType    r,s
 /// @returnType void
@@ -16,5 +17,5 @@
 
 
 _ML_LiP_SetFunctionString(argument0, argument1);
-_ML_LiP_SetCalculated(argument0, false);
-
+var res_obj = _ML_LiP_GetResultObject(argument0);
+_ML_LiRO_SetCalculated(res_obj, false);

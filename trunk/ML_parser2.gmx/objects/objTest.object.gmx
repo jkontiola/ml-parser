@@ -39,15 +39,15 @@ variables = ds_map_create();
 allfuncs = ds_list_create();
 
 
-ds_map_add(variables, "globalvariable", 200);
+ds_map_add(variables, "globalvariable", 300);
 ds_map_add(variables, "pi", pi);
 ds_map_add(variables, "e", exp(1));
 ds_map_add(variables, "var1", 1);
-ds_map_add(variables, "var2", 1);
-ds_map_add(variables, "var3", 1);
+ds_map_add(variables, "var2", 2);
+ds_map_add(variables, "var3", 3);
 ds_map_add(variables, "str1", "");
 ds_map_add(variables, "str2", "");
-ds_map_add(variables, "str3", "");
+ds_map_add(variables, "str3", "hello world");
 
 myfunc = ML_InitParserCS(variables);
 str = "angle_difference(-270,720)"
@@ -86,7 +86,6 @@ myfunc = ML_InitParserCS(variables);
     ML_SetExpression(myfunc, str);
 ds_list_add(allfuncs, myfunc);
 
-
 str = "2 &lt;= 4 ^^ 4 &gt; 5";
 myfunc = ML_InitParserCS(variables);
 
@@ -106,12 +105,13 @@ myfunc = ML_InitParserCS(variables);
     
     
     ML_AddVariable(myfunc, "var1",1, ML_VAL_REAL, false);
-    ML_AddVariable(myfunc, "var2",1, ML_VAL_REAL, false);
-    ML_AddVariable(myfunc, "var3",1, ML_VAL_REAL, true);
+    ML_AddVariable(myfunc, "var2",2, ML_VAL_REAL, false);
+    ML_AddVariable(myfunc, "var3",3, ML_VAL_REAL, true);
     ML_SetExpression(myfunc, str);
-ds_list_add(allfuncs, myfunc);
+ds_list_add(allfuncs, myfunc);//*/
 
 str = "str2= (str1='asdfhjkg', strlen(str1)&lt;4 ? 's' : 'b')";
+//str = "str1='asdfhjkg', strlen(str1)&lt;4 ? 's' : 'b'";
 //str = "-8";
 myfunc = ML_InitParserCS(variables);
 
@@ -271,9 +271,9 @@ draw_text(k,j,"shows another function#without arguments"); j += 56;
 draw_text(k,j,"shows the use of logical operators#Logical operators are lower in precedence than comparison#function is read as (2 &lt;= 4) ^^ (4 &gt; 5)"); j += 56;
 draw_text(k,j,"shows a typical error which might occur always check for error after#calculating.  If an error occurs the answer is undefined#ALWAYS clear the error state before calculating"); j += 56;
 draw_text(k,j,"shows various forms of assignment#initially all 3 variables are '1'#"+
-              "var1 = " + string(ds_map_find_value(variables,"_var1")) + "  var2 = "+ string(ds_map_find_value(variables,"_var2")) + "  var3 = "+ string(ds_map_find_value(variables,"_var3"))); j += 56;
+              "var1 = " + string(ds_map_find_value(variables,"var1")) + "  var2 = "+ string(ds_map_find_value(variables,"var2")) + "  var3 = "+ string(ds_map_find_value(variables,"var3"))); j += 56;
 draw_text(k,j,"shows use of strings, the comma opearator # and the use of the ternary 'conditional' operator#"+
-              "str1 = " + string(ds_map_find_value(variables,"_str1")) + "  str2 = "+ string(ds_map_find_value(variables,"_str2"))); j += 56;
+              "str1 = " + string(ds_map_find_value(variables,"str1")) + "  str2 = "+ string(ds_map_find_value(variables,"str2"))); j += 56;
 draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
               "'^' is to the power of, ! means factorian, 'e' is the mathematical const#"+
               "ln(e^2^3) is read as ln(e^(2^3)) = 8#"); j+= 56;

@@ -1,3 +1,4 @@
+#define ML_RaiseException_CurParser
 ///ML_RaiseException_CurParser(Exception, position, [string])
 /// @argType    r, r, s
 /// @returnType real
@@ -16,9 +17,7 @@
 **
 **  Notes:
 */
-if (argument_count == 4) {
-    ML_RaiseException(global._ML_CURRENTPARSER_, argument[0], argument[1], argument[2], argument[3]);
-} else if (argument_count == 3) {
+if (argument_count >= 3) {
     ML_RaiseException(global._ML_CURRENTPARSER_, argument[0], argument[1], argument[2]);
 } else {
     ML_RaiseException(global._ML_CURRENTPARSER_, argument[0], argument[1]);

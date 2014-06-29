@@ -1,5 +1,8 @@
+#define _ML_SY_HandleValue
 ///_ML_SY_HandleValue(token, exprqueue)
 /// @argType    r,r
-/// @returnType void
+/// @returnType real
 /// @hidden     true
-ds_queue_enqueue(argument1, argument0);
+//ds_queue_enqueue(argument1, argument0);
+ds_list_add(argument1, argument0);
+return false;

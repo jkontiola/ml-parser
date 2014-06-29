@@ -1,11 +1,12 @@
+#define _ML_LiRO_Destroy
 ///_ML_LiRO_Destroy(ind);
 /// @argType    r
 /// @returnType void
 /// @hidden     true
 
-
-ds_list_destroy(_ML_LiP_GetAllAnswers(ind));
-ds_list_destroy(_ML_LiP_GetAllAnswersT(ind));
+var ind = argument0;
+ds_list_destroy(_ML_LiRO_GetAll(ind));
+ds_list_destroy(_ML_LiRO_GetAllType(ind));
 
 
 ds_list_destroy(ind);

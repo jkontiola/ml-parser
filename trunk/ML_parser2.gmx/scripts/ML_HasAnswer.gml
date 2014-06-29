@@ -1,5 +1,6 @@
+#define ML_HasAnswer
 /// ML_HasAnswer(parser)
 /// @argType    r
 /// @returnType void
 /// @hidden     false
-return _ML_LiP_GetCalculated(argument0);
+return ML_ResObj_HasAnswer(_ML_LiP_GetResultObject(argument0));

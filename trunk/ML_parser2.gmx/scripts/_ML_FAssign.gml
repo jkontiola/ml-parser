@@ -1,3 +1,4 @@
+#define _ML_FAssign
 //assign =
 var v;
     v = argument2;

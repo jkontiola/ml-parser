@@ -1,3 +1,4 @@
+#define calculate_all_parsers
 ///calculate_all_parsers(list)
 
 var parsers = argument0;

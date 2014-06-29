@@ -1,4 +1,5 @@
-///_ML_ShuntingYard(parser, tokens, rpn_queue)
+#define _ML_ShuntingYard
+///_ML_ShuntingYard(parser, tokens, rpn)
 /// @argType    r,r,r
 /// @returnType real
 /// @hidden     true
@@ -48,7 +49,7 @@ while (i < s && !endtok) { //while there are tokens to be read
         _ML_SY_HandleFunction(token, curstack);
         curlevel += 1;
         curstack = ds_stack_create();
-        curoutput = ds_queue_create();
+        curoutput = ds_list_create();
         curargnum = 0;
         curparenthesis = -1;
     break;
@@ -104,7 +105,7 @@ while (i < s && !endtok) { //while there are tokens to be read
     case ML_TT_RIGHTP:
         if (_ML_SY_HandleRightPar(parser, token, curoutput, curstack, curargnum, alloutput, allstack, curlevel)) {
             ds_stack_destroy(curstack);
-            ds_queue_destroy(curoutput);
+            ds_list_destroy(curoutput);
             curoutput = ds_stack_pop(alloutput);
             curstack = ds_stack_pop(allstack);
             curargnum = ds_stack_pop(allargnum);
@@ -144,7 +145,7 @@ repeat (ds_stack_size(allstack)) {
 }
 ds_stack_destroy(allstack);
 repeat (ds_stack_size(alloutput)) {
-    ds_queue_destroy(ds_stack_pop(alloutput));
+    ds_list_destroy(ds_stack_pop(alloutput));
 }
 ds_stack_destroy(alloutput);
 ds_stack_destroy(allargnum);
@@ -158,4 +159,4 @@ if !(endtok) {
     ML_RaiseException(parser, ML_EXCEPT_PARENTHESIS, _ML_LiTok_GetPos(token),
         "Line ended before EOL'" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)));
 }
-return true;
+return curoutput;
