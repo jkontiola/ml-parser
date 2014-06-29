@@ -1,3 +1,4 @@
+#define _ML_LEX_TokenSetType
 ///_ML_LEX_TokenSetType(parser, token, type)
 /// @argType    r,r,r
 /// @returnType void
@@ -57,4 +58,3 @@ switch (tokentype) {
 
 _ML_LiTok_SetType(tok, tokentype);
 _ML_LiTok_SetOperator(tok, operator);
-

@@ -1,3 +1,4 @@
+#define ML_Execute
 ///ML_Execute(parser, compile)
 /// @argType    r, r
 /// @returnType real
@@ -18,20 +19,19 @@
 **  Notes:
 */
 
-
-
+var parser = argument0;
+var compile = argument1;
 var result = _ML_LiRO_Create();
-var rpn = ds_list_find_value(argument1, 1);
 
 
+global._ML_CURRENTPARSER_ = parser;
 if (ML_NoException(parser)) {
-    var ans = _ML_Parse(argument0, rpn);
-    
+    var ans = _ML_Parse_Compiled(parser, compile, result);
     if (ML_NoException(parser)) {
         _ML_LiRO_SetFinal(result, ans);
         _ML_LiRO_SetCalculated(result, true);
     }
-
 }
+
 
 return result;

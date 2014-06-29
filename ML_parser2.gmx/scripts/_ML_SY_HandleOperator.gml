@@ -1,6 +1,7 @@
+#define _ML_SY_HandleOperator
 ///_ML_SY_HandleOperator(parser, token, output, stack)
 /// @argType    r,r,r,r
-/// @returnType void
+/// @returnType real
 /// @hidden     true
 var token, output, stack, o1, o2, t, parser;
 parser = argument0;
@@ -18,6 +19,8 @@ while (!ds_stack_empty(stack)) {
             "syntax error. Token '"+ string(_ML_LiTok_GetVal(token)) +"' at "+ _ML_LiTok_GetPos(token) + " can't exist inside ternary operator");
         break;
     }
-    ds_queue_enqueue(output, ds_stack_pop(stack));
+    //ds_queue_enqueue(output, ds_stack_pop(stack));
+    ds_list_add(output, ds_stack_pop(stack));
 }
 ds_stack_push(stack, token);
+return false;

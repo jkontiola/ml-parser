@@ -1,3 +1,4 @@
+#define _ML_PARSE_Assign
 ///_ML_PARSE_Assign(parser, token, args)
 /// @argType    r,r,r
 /// @returnType void
@@ -9,8 +10,8 @@ var token = argument1;
 var argstack = argument2;
 op = _ML_LiTok_GetOperator(token);
 if (ds_stack_size(argstack) < 2) {
-    ML_RaiseException_CurParser(ML_EXCEPT_BINOPERATOR,_ML_LiTok_GetPos(argument0),
-            "missing value for'" + string(_ML_LiTok_GetVal(argument0)) +"' at " +string(_ML_LiTok_GetPos(argument0)));
+    ML_RaiseException_CurParser(ML_EXCEPT_BINOPERATOR,_ML_LiTok_GetPos(token),
+            "missing value for'" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)));
     return 0;   
 }
 rhs = ds_stack_pop(argstack);
@@ -27,7 +28,7 @@ var v;
 v = _ML_LiTok_GetOperator(lhs);
 
 if (_ML_LiTok_GetType(lhs) != ML_TT_VARIABLE || _ML_LiVar_GetReadonly(v)) {
-    ML_RaiseException_CurParser(ML_EXCEPT_ASSIGN,_ML_LiTok_GetPos(argument0),
+    ML_RaiseException_CurParser(ML_EXCEPT_ASSIGN,_ML_LiTok_GetPos(token),
             "Left hand side is not assignable '" + string(_ML_LiTok_GetVal(lhs)) +"' at " +string(_ML_LiTok_GetPos(lhs)));
     return 0;
 }

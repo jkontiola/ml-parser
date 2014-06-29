@@ -1,6 +1,7 @@
+#define ML_GetFinalAnswer
 ///ML_GetFinalAnswer(parser)
 /// @argType    r
 /// @returnType any
 /// @hidden     false
 
-return _ML_LiP_GetAnswer(argument0);
+return ML_ResObj_GetFinalAnswer(_ML_LiP_GetResultObject(argument0));

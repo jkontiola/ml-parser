@@ -1,6 +1,7 @@
+#define ML_GetAnswerType
 ///ML_GetAnswerType(parser, answer_ind)
 /// @argType    r, r
 /// @returnType string
 /// @hidden     false
 
-return _ML_LiP_GetAnswerType(argument0, argument1);
+return ML_ResObj_GetAnswerType(_ML_LiP_GetResultObject(argument0), argument1);

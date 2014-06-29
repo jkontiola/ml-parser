@@ -1,6 +1,7 @@
+#define ML_Calculate
 ///ML_Calculate(parser)
 /// @argType    r
-/// @returnType any
+/// @returnType real
 /// @hidden     false
 
 /*
@@ -20,12 +21,13 @@ var rpn, tokenlist, ans;
 
 var parser = argument0;
 global._ML_CURRENTPARSER_ = parser;
-_ML_LiP_SetCalculated(parser, false);
-_ML_LiP_ClearAnswers(parser);
+var res_obj = _ML_LiP_GetResultObject(parser);
+_ML_LiRO_SetCalculated(res_obj, false);
+_ML_LiRO_Clear(res_obj);
 if (!ML_NoException(parser)) return 0;
 
 tokenlist = ds_list_create();
-rpn = ds_queue_create();
+rpn = ds_list_create();
 
 do {
     _ML_LexicalAnalysis(parser, tokenlist, _ML_LiP_GetFunctionString(parser));
@@ -33,19 +35,18 @@ do {
     
     _ML_ShuntingYard(parser, tokenlist, rpn);    
     if (!ML_NoException(parser))  { break;}
-    ans = _ML_Parse(parser, rpn);
-    
-    _ML_LiP_SetAnswer(parser, ans);
+    ans = _ML_Parse(parser, rpn, res_obj);    
     if (!ML_NoException(parser)) {break;}
-    _ML_LiP_SetCalculated(parser, true);
+    _ML_LiRO_SetFinal(res_obj, ans);
+    _ML_LiRO_SetCalculated(res_obj, true);
 } until 1 = 1
 
 
 //cleanup
-ds_queue_destroy(rpn);
+ds_list_destroy(rpn);
 _ML_TokCleanUp(tokenlist);
 ds_list_destroy(tokenlist);
 
 
 
-return ML_NoException(parser) && _ML_LiP_GetCalculated(parser);
+return res_obj;

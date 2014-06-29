@@ -1,3 +1,4 @@
+#define _ML_PARSE_Function
 ///_ML_PARSE_Function(parser, token, args)
 /// @argType    r,r,r
 /// @returnType void
@@ -34,8 +35,8 @@ for (i = argc -1; i >= 0; i -= 1) {
 argstring = string_copy(argstring,1,string_length(argstring) - 1);
 exact_func = _ML_LiF_GetFunc(f, argstring)
 if (exact_func < 0) {
-    ML_RaiseException_CurParser(ML_EXCEPT_ARGTYPE,_ML_LiTok_GetPos(argument0),
-        "Invalid argument type for '" + string(_ML_LiTok_GetVal(argument0)) +"' at " +string(_ML_LiTok_GetPos(argument0)));
+    ML_RaiseException_CurParser(ML_EXCEPT_ARGTYPE,_ML_LiTok_GetPos(token),
+        "Invalid argument type for '" + string(_ML_LiTok_GetVal(token)) +"' at " +string(_ML_LiTok_GetPos(token)));
     _ML_LiTok_SetString(argument0, 0);
     _ML_LiTok_SetType(argument0, ML_TT_VALUE);
     _ML_LiTok_SetOperator(argument0, ML_VAL_REAL);
@@ -98,4 +99,3 @@ _ML_LiTok_SetString(token, ret);
 _ML_LiTok_SetType(token, ML_TT_VALUE);
 _ML_LiTok_SetOperator(token, _ML_LiS_GetRettype(exact_func));
 ds_stack_push(argstack,token);
-

@@ -1,6 +1,7 @@
+#define ML_GetAnswer
 ///ML_GetAnswer(parser, answer_ind)
 /// @argType    r, r
 /// @returnType any
 /// @hidden     false
 
-return _ML_LiP_GetAnswerN(argument0, argument1);
+return ML_ResObj_GetAnswer(_ML_LiP_GetResultObject(argument0), argument1);

@@ -1,6 +1,7 @@
+#define _ML_SY_HandleFunction
 ///_ML_SY_HandleFunction(token, functionstack)
 /// @argType    r,r
-/// @returnType void
+/// @returnType real
 /// @hidden     true
 ds_stack_push(argument1, argument0);
-
+return false;

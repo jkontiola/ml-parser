@@ -1,6 +1,7 @@
+#define ML_GetAnswerNum
 ///ML_GetAnswerNum(parser)
 /// @argType    r
 /// @returnType real
 /// @hidden     false
 
-return _ML_LiP_AllAnswerSize(argument0);
+return ML_ResObj_GetAnswerNum(_ML_LiP_GetResultObject(argument0));

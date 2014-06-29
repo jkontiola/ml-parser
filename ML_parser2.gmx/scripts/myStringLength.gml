@@ -1,1 +1,3 @@
-return string_length(argument0);
+#define myStringLength
+var len = string_length(argument0);
+return len;
