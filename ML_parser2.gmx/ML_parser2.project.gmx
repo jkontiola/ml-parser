@@ -11,11 +11,6 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\myRandom.gml</script>
-    <script>scripts\myRandom2.gml</script>
-    <script>scripts\AngleDifference.gml</script>
-    <script>scripts\myGetString.gml</script>
-    <script>scripts\myStringLength.gml</script>
     <scripts name="MATH_LOGICAL PARSER">
       <script>scripts\ML_Initialize.gml</script>
       <script>scripts\ML_HasAnswer.gml</script>
@@ -112,6 +107,8 @@
             <script>scripts\ML_RemTernaryOper.gml</script>
             <script>scripts\ML_RemTernaryOperStr.gml</script>
           </scripts>
+          <script>scripts\_ML_OpRemRoots.gml</script>
+          <script>scripts\_ML_OpAddRoots.gml</script>
         </scripts>
         <scripts name="Variable">
           <script>scripts\ML_AddVariable.gml</script>
@@ -342,6 +339,7 @@
           <script>scripts\_ML_LiP_Destroy.gml</script>
           <scripts name="getters">
             <script>scripts\_ML_LiP_GetResultObject.gml</script>
+            <script>scripts\_ML_LiP_GetOperatorRoots.gml</script>
             <script>scripts\_ML_LiP_GetBinOpsTable.gml</script>
             <script>scripts\_ML_LiP_GetUnOpsTable.gml</script>
             <script>scripts\_ML_LiP_GetTernOpsTable.gml</script>
@@ -397,6 +395,11 @@
         <script>scripts\___my_queue_create.gml</script>
         <script>scripts\___my_queue_destroy.gml</script>
       </scripts>
+      <script>scripts\myRandom.gml</script>
+      <script>scripts\AngleDifference.gml</script>
+      <script>scripts\myRandom2.gml</script>
+      <script>scripts\myGetString.gml</script>
+      <script>scripts\myStringLength.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -410,12 +413,11 @@
     <object>objects\objTestComp2</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rmTest</room>
     <room>rooms\rmTestComp</room>
+    <room>rooms\rmTest</room>
     <room>rooms\rmComp</room>
-    <room>rooms\room2</room>
   </rooms>
-  <constants number="86">
+  <constants number="87">
     <constant name="ML_O_LEFTASSOC">0</constant>
     <constant name="ML_O_RIGHTASSOC">1</constant>
     <constant name="ML_UO_PREFIX">0</constant>
@@ -502,6 +504,7 @@
     <constant name="ML_CTT_CONSTANT">0</constant>
     <constant name="ML_CTT_VARIABLE">1</constant>
     <constant name="ML_CTT_ASSIGNABLE">2</constant>
+    <constant name="ML_LIP_OPSIGROOTS">16</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

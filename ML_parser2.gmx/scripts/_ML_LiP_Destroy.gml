@@ -19,5 +19,6 @@ ds_map_destroy(_ML_LiP_GetAssignOpsTable(ind));
 ds_map_destroy(_ML_LiP_GetTernOpsTable(ind));
 ds_map_destroy(_ML_LiP_GetTernOps2Table(ind));
 _ML_LiRO_Destroy(_ML_LiP_GetResultObject(ind));
+ds_map_destroy(_ML_LiP_GetOperatorRoots(ind));
 
 ds_list_destroy(ind);

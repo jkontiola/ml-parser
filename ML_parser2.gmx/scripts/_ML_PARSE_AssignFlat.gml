@@ -27,7 +27,6 @@ lhs = ds_stack_pop(argstack);
 var v = _ML_LiTok_GetOperator(lhs);
 
 if (_ML_LiTok_GetType(lhs) != ML_TT_VARIABLE || _ML_LiVar_GetReadonly(v)) {
-show_error("shoulnd't occur EVAH", false);
     ML_RaiseException_CurParser(ML_EXCEPT_ASSIGN,_ML_LiTok_GetPos(token),
             "Left hand side is not assignable '" + string(_ML_LiTok_GetVal(lhs)) +"' at " +string(_ML_LiTok_GetPos(lhs)));
     return 0;
