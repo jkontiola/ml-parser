@@ -16,7 +16,6 @@ var rhs_type = rhs[0];
 
 var lhs = ds_stack_pop(argstack);
 if (lhs[1] != ML_CTT_ASSIGNABLE) {
-show_error("shoulnd't occur", false);
     ML_RaiseException_CurParser(ML_EXCEPT_ASSIGN,_ML_LiTok_GetPos(token),
             "Left hand side is not assignable '" + string(_ML_LiTok_GetVal(lhs)) +"' at " +string(_ML_LiTok_GetPos(lhs)));
     return 0;

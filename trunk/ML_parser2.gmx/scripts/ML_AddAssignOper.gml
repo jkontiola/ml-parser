@@ -35,5 +35,6 @@ if (ds_map_exists(P_ASSIGNOPER,argument[1])) {
     if (argument_count > 7) assoc = argument[7];
     o = _ML_NewAssignOper(argument[1], argument[2], argument[3], argument[4], argument[5], argument[6], assoc);
     ds_map_add(P_ASSIGNOPER, argument[1], o);
+    _ML_OpAddRoots(argument[0], argument[1]);
 }
 return o;

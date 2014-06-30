@@ -20,5 +20,6 @@ ds_list_add(ind, -1); //error pos 10
 ds_list_add(ind, ""); //error string 11
 ds_list_add(ind, _ML_LiRO_Create()); //resobject 12
 
+ds_list_add(ind, ds_map_create()); //all signature roots 16
 
 return ind;

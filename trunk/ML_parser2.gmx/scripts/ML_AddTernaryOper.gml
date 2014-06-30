@@ -39,6 +39,8 @@ if (ds_map_exists(P_TERNOPER,argument[1])) {
     if (argument_count > 9) assoc = argument[9];
     o = _ML_NewTernaryOper(argument[1], argument[2], argument[3], argument[4], argument[5], argument[6], argument[7], argument[8], assoc);
     ds_map_add(P_TERNOPER, argument[1], o);
+    _ML_OpAddRoots(argument[0], argument[1]);
+    _ML_OpAddRoots(argument[0], argument[2]);
     _ML_TernaryAddSecond(argument[0], argument[2],o);
 }
 return o;
