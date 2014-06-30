@@ -1,4 +1,3 @@
-#define _ML_LiTok_Create
 ///_ML_LiTok_Create( string, pos)
 /// @argType    r,r
 /// @returnType real

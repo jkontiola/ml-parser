@@ -1,4 +1,3 @@
-#define _ML_PARSE_Function
 ///_ML_PARSE_Function(parser, token, args)
 /// @argType    r,r,r
 /// @returnType void

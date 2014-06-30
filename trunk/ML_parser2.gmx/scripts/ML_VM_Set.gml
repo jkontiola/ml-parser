@@ -11,7 +11,6 @@
 **      VarMap          Map containing [Variable; Value] pairs (where Variable is a string)
 **      CreateNewVars   Whether to create new variables based on the new map
 **                          varstring = key (in VarMap)
-**                          pointer = key (in VarMap)
 **                          value = value (in VarMap)
 **                          type = type of value (in VarMap)
 **                          readonly = true
@@ -25,25 +24,33 @@
 **      - Destroys all created variables in the parser
 **      - Normally not called by the user (as varmap is initialized at creation of the parser)
 */
-
-ML_ClearVariable(argument[0])
-var VARMAP = _ML_LiP_GetVarMap(argument[0]);
+var parser = argument[0];
+ML_ClearVariable(parser)
+var VARMAP = _ML_LiP_GetVarMap(parser);
 if (VARMAP != -1) ds_map_destroy(VARMAP);
 VARMAP = argument[1];
+
 
 if (argument_count > 1) {
     if (argument[2]) {    
         var s;
         s = ds_map_size(VARMAP);
         if (s > 0) {
-            var v;
-            v = ds_map_find_first(VARMAP);
+            var str, value, type;
+            str = ds_map_find_first(VARMAP);
             repeat (s) { 
-                ML_AddVariable(v,v)
-                v = ds_map_find_next(VARMAP, v);
+                if (is_real(value)) {
+                    type = ML_VAL_REAL;
+                } else {
+                    type = ML_VAL_STRING;
+                }
+                value = ds_map_find_value(VARMAP, str);
+                ML_AddVariable(parser, str, value, type, true)
+                str = ds_map_find_next(VARMAP, v);
             }
         }
     }
 }
-return VARMAP;
 
+_ML_LiP_SetVarMap(parser, VARMAP);
+return VARMAP;

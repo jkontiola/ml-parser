@@ -1,4 +1,3 @@
-#define _ML_SY_HandleValue
 ///_ML_SY_HandleValue(token, exprqueue)
 /// @argType    r,r
 /// @returnType real

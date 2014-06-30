@@ -24,11 +24,12 @@
       <script>scripts\ML_GetAnswerType.gml</script>
       <script>scripts\ML_ResObj_GetAnswerType.gml</script>
       <script>scripts\ML_GetExprString.gml</script>
+      <script>scripts\ML_ResObj_Cleanup.gml</script>
       <scripts name="Compilation">
+        <script>scripts\ML_Interpret.gml</script>
         <script>scripts\ML_Calculate.gml</script>
         <script>scripts\ML_Compile.gml</script>
         <script>scripts\ML_CompileCleanup.gml</script>
-        <script>scripts\ML_ResultCleanup.gml</script>
         <script>scripts\ML_CompileEncode.gml</script>
         <script>scripts\ML_CompileDecode.gml</script>
         <script>scripts\ML_Execute.gml</script>
@@ -45,6 +46,7 @@
             <script>scripts\_ML_BD_DecodeStack.gml</script>
             <script>scripts\_ML_BD_GetData.gml</script>
           </scripts>
+          <script>scripts\_ML_Interpret_Detail.gml</script>
         </scripts>
       </scripts>
       <scripts name="ExceptionHandling">
@@ -119,6 +121,7 @@
         <scripts name="Variable Map">
           <script>scripts\ML_VM_Get.gml</script>
           <script>scripts\ML_VM_Set.gml</script>
+          <script>scripts\ML_VM_VarExists.gml</script>
           <script>scripts\ML_VM_HasNoPVar.gml</script>
           <script>scripts\ML_VM_GetPVarList.gml</script>
           <script>scripts\ML_VM_GetVar.gml</script>
@@ -256,6 +259,7 @@
           <script>scripts\_ML_PARSE_AssignFlat.gml</script>
           <script>scripts\_ML_PARSE_Unary.gml</script>
           <script>scripts\_ML_PARSE_Function.gml</script>
+          <script>scripts\script319.gml</script>
           <script>scripts\_ML_PARSE_FuncFlat.gml</script>
           <script>scripts\_ML_Parse.gml</script>
           <script>scripts\_ML_Parse_Compiled.gml</script>
@@ -408,13 +412,12 @@
   </fonts>
   <objects name="objects">
     <object>objects\objTestComp</object>
-    <object>objects\objTest2</object>
-    <object>objects\objTest</object>
-    <object>objects\objTestComp2</object>
+    <object>objects\objShowParse</object>
+    <object>objects\objShowComp</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rmTestComp</room>
-    <room>rooms\rmTest</room>
+    <room>rooms\rmShowComp</room>
+    <room>rooms\rmShowParse</room>
     <room>rooms\rmComp</room>
   </rooms>
   <constants number="87">
@@ -497,6 +500,7 @@
     <constant name="ML_LIP_ERRPOS">10</constant>
     <constant name="ML_LIP_ERRSTRING">11</constant>
     <constant name="ML_LIP_RESOBJECT">12</constant>
+    <constant name="ML_LIP_OPSIGROOTS">13</constant>
     <constant name="ML_LIRO_CALCULATED">0</constant>
     <constant name="ML_LIRO_ANSWER">1</constant>
     <constant name="ML_LIRO_ALLANSWERS">2</constant>
@@ -504,7 +508,6 @@
     <constant name="ML_CTT_CONSTANT">0</constant>
     <constant name="ML_CTT_VARIABLE">1</constant>
     <constant name="ML_CTT_ASSIGNABLE">2</constant>
-    <constant name="ML_LIP_OPSIGROOTS">16</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

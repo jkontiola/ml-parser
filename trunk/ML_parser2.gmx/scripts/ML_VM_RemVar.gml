@@ -1,5 +1,5 @@
 ///ML_VM_RemVar(parser, key)
-/// @argType    r ,r
+/// @argType    r ,s
 /// @returnType void
 /// @hidden     false
 /*

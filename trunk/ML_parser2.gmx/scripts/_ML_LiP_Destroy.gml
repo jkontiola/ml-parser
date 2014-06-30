@@ -1,4 +1,3 @@
-#define _ML_LiP_Destroy
 ///_ML_LiP_Destroy(ind);
 /// @argType    r
 /// @returnType void

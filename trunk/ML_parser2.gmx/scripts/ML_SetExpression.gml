@@ -1,4 +1,3 @@
-#define ML_SetExpression
 ///ML_SetExpression(parser, expression)
 /// @argType    r,s
 /// @returnType void

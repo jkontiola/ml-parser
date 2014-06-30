@@ -1,4 +1,3 @@
-#define _ML_BD_DecodeList
 ///_ML_BD_DecodeList(list, buffer)
 /// @argType    r, r
 /// @returnType void

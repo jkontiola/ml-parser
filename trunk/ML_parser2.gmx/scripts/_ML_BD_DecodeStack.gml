@@ -1,4 +1,3 @@
-#define _ML_BD_DecodeStack
 /// _ML_BD_DecodeStack(grid, buffer)
 /// @argType    r, r
 /// @returnType void

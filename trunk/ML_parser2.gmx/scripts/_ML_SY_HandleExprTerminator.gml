@@ -1,4 +1,3 @@
-#define _ML_SY_HandleExprTerminator
 ///_ML_SY_HandleExprTerminator(parser, token, output, stack)
 /// @argType    r,r,r,r
 /// @returnType real

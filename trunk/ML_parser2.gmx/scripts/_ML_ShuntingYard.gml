@@ -1,4 +1,3 @@
-#define _ML_ShuntingYard
 ///_ML_ShuntingYard(parser, tokens, rpn)
 /// @argType    r,r,r
 /// @returnType real

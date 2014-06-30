@@ -1,4 +1,3 @@
-#define _ML_BD_DecodeMap
 ///_ML_BD_DecodeMap(map, buffer)
 /// @argType    r, r
 /// @returnType void

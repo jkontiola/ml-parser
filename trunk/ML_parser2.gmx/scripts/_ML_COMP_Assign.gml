@@ -1,4 +1,3 @@
-#define _ML_COMP_Assign
 ///_ML_COMP_Assign(token, args)
 /// @argType    r,r,r
 /// @returnType void

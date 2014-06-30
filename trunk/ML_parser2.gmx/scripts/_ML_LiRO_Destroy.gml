@@ -1,4 +1,3 @@
-#define _ML_LiRO_Destroy
 ///_ML_LiRO_Destroy(ind);
 /// @argType    r
 /// @returnType void

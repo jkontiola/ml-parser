@@ -1,4 +1,3 @@
-#define ML_ResObj_GetAnswerType
 ///ML_ResObj_GetAnswerType(result, answer_ind)
 /// @argType    r, r
 /// @returnType string

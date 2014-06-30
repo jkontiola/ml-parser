@@ -1,4 +1,3 @@
-#define _ML_SY_HandleOperator
 ///_ML_SY_HandleOperator(parser, token, output, stack)
 /// @argType    r,r,r,r
 /// @returnType real

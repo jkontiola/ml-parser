@@ -1,4 +1,3 @@
-#define _ML_COMP_EvalAll
 ///_ML_COMP_EvalAll(parser, ReversePolishQueue, OutFuncList, OutTokList)
 /// @argType    r,r,r,r
 /// @returnType auto

@@ -1,4 +1,3 @@
-#define _ML_COMP_Variable
 ///_ML_COMP_Variable( token, argstack)
 /// @argType    r,r
 /// @returnType void

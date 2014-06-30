@@ -1,4 +1,3 @@
-#define _ML_COMP_Ternary
 /// _ML_COMP_Ternary(tok, argstack)
 /// @argType    r,r
 /// @returnType void

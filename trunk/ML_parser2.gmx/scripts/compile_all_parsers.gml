@@ -1,4 +1,3 @@
-#define compile_all_parsers
 ///compile_all_parsers(parserlist, compilelist)
 
 var parsers = argument0;

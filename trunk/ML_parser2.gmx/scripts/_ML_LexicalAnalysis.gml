@@ -1,4 +1,3 @@
-#define _ML_LexicalAnalysis
 ///_ML_LexicalAnalysis(parser, tokenlist, string)
 /// @argType    r, r, s
 /// @returnType r

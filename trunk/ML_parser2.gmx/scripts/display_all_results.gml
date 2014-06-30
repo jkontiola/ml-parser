@@ -1,4 +1,3 @@
-#define display_all_results
 ///display_all_parsers(parsers, results)
 
 var parsers = argument0;

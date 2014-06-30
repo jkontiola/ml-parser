@@ -1,4 +1,3 @@
-#define _ML_EC_DataInBuff
 ///_ML_EC_DataInBuff(buff, data, type)
 /// @argType    r, a, r
 /// @returnType void

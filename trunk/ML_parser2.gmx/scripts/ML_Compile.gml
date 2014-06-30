@@ -1,4 +1,3 @@
-#define ML_Compile
 ///ML_Compile(parser, expression)
 /// @argType    r, s
 /// @returnType real

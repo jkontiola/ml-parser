@@ -1,4 +1,3 @@
-#define _ML_SY_HandleArgSep
 ///_ML_SY_HandleArgSep(parser, token, output, stack);
 /// @argType    r,r,r,r
 /// @returnType real

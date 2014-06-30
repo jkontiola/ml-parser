@@ -1,4 +1,3 @@
-#define _ML_LEX_TokenSetType
 ///_ML_LEX_TokenSetType(parser, token, type)
 /// @argType    r,r,r
 /// @returnType void

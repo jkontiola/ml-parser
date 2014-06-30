@@ -1,4 +1,3 @@
-#define _ML_Parse_Compiled
 ///_ML_Parse(parser, ReversePolishQueue, ResultObject)
 /// @argType    r,r,r
 /// @returnType auto

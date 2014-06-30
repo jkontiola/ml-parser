@@ -1,4 +1,3 @@
-#define _ML_SY_HandleLeftPar
 ///_ML_SY_HandleLeftPar(token, functionstack)
 /// @argType    r,r
 /// @returnType real

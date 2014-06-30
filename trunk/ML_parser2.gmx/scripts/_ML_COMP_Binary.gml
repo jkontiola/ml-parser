@@ -1,4 +1,3 @@
-#define _ML_COMP_Binary
 ///_ML_COMP_Binary( token, argstack)
 /// @argType    r,r,r
 /// @returnType void

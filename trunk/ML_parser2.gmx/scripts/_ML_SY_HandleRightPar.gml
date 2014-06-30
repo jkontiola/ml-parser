@@ -1,4 +1,3 @@
-#define _ML_SY_HandleRightPar
 ///_ML_SY_HandleRightPar(parser, token, output, stack, argcount, stackofoutputs, stackofstacks,  level);
 /// @argType    r,r,r,r,r,r,r,r
 /// @returnType real

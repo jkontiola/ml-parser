@@ -1,4 +1,3 @@
-#define _ML_COMP_RemoveExtraTokens
 ///_ML_COMP_RemoveExtraTokens(tokenList, importantTokenMap)
 /// @argType    r,r
 /// @returnType void

@@ -1,4 +1,3 @@
-#define _ML_SY_ListAppendList
 ///_ML_SY_ListAppendList(q1, q2);
 /// @argType    r,r
 /// @returnType void
