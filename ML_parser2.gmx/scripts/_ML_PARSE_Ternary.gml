@@ -1,4 +1,3 @@
-#define _ML_PARSE_Ternary
 /// _ML_PARSE_Ternary(parser, tok, argstack)
 /// @argType    r,r,r
 /// @returnType void

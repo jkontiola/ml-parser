@@ -1,4 +1,3 @@
-#define _ML_BD_DecodeQueue
 ///_ML_BD_DecodeQueue(grid, buffer)
 /// @argType    r, r
 /// @returnType void

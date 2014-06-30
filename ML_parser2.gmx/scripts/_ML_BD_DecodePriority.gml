@@ -1,4 +1,3 @@
-#define _ML_BD_DecodePriority
 ///_ML_BD_DecodePriority(grid, buffer)
 /// @argType    r, r
 /// @returnType void

@@ -1,4 +1,3 @@
-#define _ML_SY_HandleTernary2
 ///_ML_SY_HandleTernary2(parser, token, output, stack);
 /// @argType    r,r,r,r
 /// @returnType real

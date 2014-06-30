@@ -1,4 +1,3 @@
-#define ML_GetAnswerNum
 ///ML_GetAnswerNum(parser)
 /// @argType    r
 /// @returnType real

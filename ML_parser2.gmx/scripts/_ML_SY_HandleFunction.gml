@@ -1,4 +1,3 @@
-#define _ML_SY_HandleFunction
 ///_ML_SY_HandleFunction(token, functionstack)
 /// @argType    r,r
 /// @returnType real

@@ -1,4 +1,3 @@
-#define ML_Execute
 ///ML_Execute(parser, compile)
 /// @argType    r, r
 /// @returnType real

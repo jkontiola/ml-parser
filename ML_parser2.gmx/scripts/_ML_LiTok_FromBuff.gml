@@ -1,4 +1,3 @@
-#define _ML_LiTok_FromBuff
 ///_ML_LiTok_FromBuff(tok, buffer);
 /// @argType    r, r
 /// @returnType void

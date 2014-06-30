@@ -1,4 +1,3 @@
-#define _ML_PARSE_Assign
 ///_ML_PARSE_Assign(parser, token, args)
 /// @argType    r,r,r
 /// @returnType void

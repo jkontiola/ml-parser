@@ -1,4 +1,3 @@
-#define _ML_COMP_EvalToken
 ///_ML_COMP_EvalToken(parser, argTypeStack, token)
 /// @argType    r,r
 /// @returnType real

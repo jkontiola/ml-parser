@@ -79,7 +79,7 @@ if (!ML_NoException(myfunc)) {
 } else {
     show_message(string(ML_ResObj_GetFinalAnswer(r)));
 }
-ML_ResultCleanup(r);
+ML_ResObj_Cleanup(r);
 </string>
           </argument>
         </arguments>

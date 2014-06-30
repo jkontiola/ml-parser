@@ -1,4 +1,3 @@
-#define _ML_LiP_Create
 ///_ML_LiP_Create(expression, variable_map)
 /// @argType    r,r
 /// @returnType real

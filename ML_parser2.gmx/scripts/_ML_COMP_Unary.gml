@@ -1,4 +1,3 @@
-#define _ML_COMP_Unary
 ///_ML_COMP_Unary( token, argstack)
 /// @argType    r,r
 /// @returnType void

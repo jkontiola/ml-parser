@@ -1,4 +1,3 @@
-#define _ML_BD_DecodeGrid
 ///_ML_BD_DecodeGrid(grid, buffer)
 /// @argType    r, r
 /// @returnType void

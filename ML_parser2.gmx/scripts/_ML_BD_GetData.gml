@@ -1,4 +1,3 @@
-#define _ML_BD_GetData
 ///_ML_BD_GetData(buffer, type)
 /// @argType    r, r
 /// @returnType array

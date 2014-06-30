@@ -1,4 +1,3 @@
-#define ML_GetAnswerType
 ///ML_GetAnswerType(parser, answer_ind)
 /// @argType    r, r
 /// @returnType string

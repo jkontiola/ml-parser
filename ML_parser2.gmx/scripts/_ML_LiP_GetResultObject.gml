@@ -1,4 +1,3 @@
-#define _ML_LiP_GetResultObject
 ///_ML_LiP_GetResultObject(index)
 /// @argType    r
 /// @returnType real

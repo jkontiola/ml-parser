@@ -1,4 +1,3 @@
-#define ML_RaiseException_CurParser
 ///ML_RaiseException_CurParser(Exception, position, [string])
 /// @argType    r, r, s
 /// @returnType real

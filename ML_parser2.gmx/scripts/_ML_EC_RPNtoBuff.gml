@@ -1,4 +1,3 @@
-#define _ML_EC_RPNtoBuff
 ///_ML_EC_RPNtoBuff(buffer, queue_source)
 /// @argType    r, r
 /// @returnType void

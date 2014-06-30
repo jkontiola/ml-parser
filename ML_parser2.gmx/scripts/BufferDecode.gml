@@ -1,4 +1,3 @@
-#define BufferDecode
 ///BufferDecode(buffer, offset)
 
 /*//

@@ -1,4 +1,3 @@
-#define ML_ResObj_GetAnswerNum
 ///ML_ResObj_GetAnswerNum(result)
 /// @argType    r
 /// @returnType real

@@ -1,4 +1,3 @@
-#define _ML_LiTok_ToBuff
 ///_ML_LiTok_ToBuff(buffer, tok);
 /// @argType    r, r
 /// @returnType void

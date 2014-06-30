@@ -1,5 +1,5 @@
 ///ML_AddVariable(parser, varstring,[value, type, readonly = true])
-/// @argType    r,s,s,s,r
+/// @argType    r,s,a,s,r
 /// @returnType real
 /// @hidden     false
 /*
@@ -26,13 +26,6 @@ if (!ds_map_exists(VARMAP,str) ) {
     var tval = 0;
     if (argument_count > 2) {
         tval = argument[2];
-        if (argument_count > 3) {
-            if (argument[3] == ML_VAL_STRING) {
-                tval = string(tval);
-            } else if (argument[3] == ML_VAL_REAL) {
-                tval = real(tval);
-            }
-        }
     }   
     ds_map_add(VARMAP, str, tval);
 }
@@ -55,4 +48,3 @@ if (argument_count > 4) {
 var v = _ML_LiVar_Create(str, type, ro);
 ds_map_add(_ML_LiP_GetVariableTable(argument[0]),str,v);
 return v;
-

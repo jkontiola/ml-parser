@@ -1,4 +1,3 @@
-#define ML_CompileCleanup
 ///ML_CompileCleanup(Compile)
 /// @argType    r
 /// @returnType void

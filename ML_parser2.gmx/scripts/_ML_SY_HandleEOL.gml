@@ -1,4 +1,3 @@
-#define _ML_SY_HandleEOL
 ///_ML_SY_HandleEOL(parser, token, output, stack);
 /// @argType    r,r,r,r
 /// @returnType real

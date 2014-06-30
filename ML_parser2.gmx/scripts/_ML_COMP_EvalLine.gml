@@ -1,4 +1,3 @@
-#define _ML_COMP_EvalLine
 ///_ML_COMP_EvalLine(parser, ReversePolishQueue, index, newRPN, importantTokenList)
 /// @argType    r,r,r,r
 /// @returnType real

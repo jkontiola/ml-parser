@@ -1,4 +1,3 @@
-#define execute_all_parsers
 ///execute_all_parsers(parsers, compilelist, result_objects);
 
 var parsers = argument0;
@@ -6,7 +5,7 @@ var compiles = argument1;
 var results = argument2;
 var parser, compile;
 for (var i = ds_list_size(results)-1; i >= 0; --i) {
-    ML_ResultCleanup(ds_list_find_value(results, i));
+    ML_ResObj_Cleanup(ds_list_find_value(results, i));
 }
 ds_list_clear(results);
 

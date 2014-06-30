@@ -1,4 +1,3 @@
-#define _ML_PARSE_Binary
 /// _ML_PARSE_Binary(parser, tok, argstack)
 /// @argType    r,r,r
 /// @returnType void

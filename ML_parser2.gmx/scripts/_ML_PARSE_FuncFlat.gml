@@ -1,4 +1,3 @@
-#define _ML_PARSE_FuncFlat
 ///_ML_PARSE_FuncFlat(parser, token, args, temptokens)
 /// @argType    r,r,r
 /// @returnType void

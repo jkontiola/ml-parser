@@ -1,4 +1,3 @@
-#define ML_RaiseException
 ///ML_RaiseException(parser, Exception, position, [string])
 /// @argType    r,r,r,s
 /// @returnType v

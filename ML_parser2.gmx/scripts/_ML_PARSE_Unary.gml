@@ -1,4 +1,3 @@
-#define _ML_PARSE_Unary
 ///_ML_PARSE_Unary(parser, token, argstack)
 /// @argType    r,r,r
 /// @returnType void

@@ -1,4 +1,3 @@
-#define ML_Initialize
 ///ML_Initialize()
 /// @argType    
 /// @returnType void
