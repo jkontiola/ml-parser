@@ -6,10 +6,8 @@ var parser = argument0;
 var rpn = argument1;
 var newrpn = argument2;
 var important_tokens = argument3;
-var index = 0;
-var rpn_size = ds_list_size(rpn);
 
-while (index < rpn_size && ML_NoException(parser)) {
-    index = _ML_COMP_EvalLine(parser, rpn, index, newrpn, important_tokens);
+while (!ds_list_empty(rpn) && ML_NoException(parser)) {
+    _ML_COMP_EvalLine(parser, rpn, newrpn, important_tokens);
 
 }

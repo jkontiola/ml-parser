@@ -10,7 +10,7 @@ var argstring = "";
 var lhs, lhs_type;
 var argc = _ML_LiTok_GetArgcount(token);
 var tokentype, lhs_type;
-for (var i = argc -1; i >= 0; i -= 1) {
+for (var i = argc -1; i >= 0; --i) {
     lhs = ds_stack_pop(argstack);
     lhs_type = lhs[0];
     argstring = lhs_type + "$" + argstring;

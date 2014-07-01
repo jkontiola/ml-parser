@@ -12,7 +12,7 @@ f = _ML_LiTok_GetOperator(token);
 argc = _ML_LiTok_GetArgcount(token);
 var argstring, exact_func;
 argstring = "";
-for (i = argc -1; i >= 0; i -= 1) {
+for (i = argc -1; i >= 0; --i) {
     lhs = ds_stack_pop(argstack);
     if (_ML_LiTok_GetType(lhs) == ML_TT_VALUE) {
         if (_ML_LiTok_GetOperator(lhs) == ML_VAL_REAL) {

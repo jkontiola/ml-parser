@@ -1,5 +1,5 @@
 ///_ML_PARSE_FuncFlat(parser, token, args, temptokens)
-/// @argType    r,r,r
+/// @argType    r,r,r,r
 /// @returnType void
 /// @hidden     true
 var a, lhs, lhs_val, ret;
@@ -12,7 +12,7 @@ var temptokens = argument3;
 var func = _ML_LiTok_GetOperator(token);
 var func_script = _ML_LiS_GetScript(func);
 var argc = _ML_LiTok_GetArgcount(token);
-for (var i = argc -1; i >= 0; i -= 1) {
+for (var i = argc -1; i >= 0; --i) {
     lhs = ds_stack_pop(argstack);
     if (_ML_LiTok_GetType(lhs) == ML_TT_VALUE) {
         lhs_val = _ML_LiTok_GetVal(lhs);

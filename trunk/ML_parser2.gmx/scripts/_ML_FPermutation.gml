@@ -29,7 +29,7 @@
     }
     else {
         f = 1;
-        for (l=n; l>m; l-=1) f *= l;
+        for (l=n; l>m; --l) f *= l;
         return f;
     }
 }

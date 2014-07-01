@@ -25,7 +25,7 @@ var result = _ML_LiRO_Create();
 
 global._ML_CURRENTPARSER_ = parser;
 if (ML_NoException(parser)) {
-    var ans = _ML_Parse_Compiled(parser, compile, result);
+    var ans = _ML_ParseCompiled(parser, compile, result);
     if (ML_NoException(parser)) {
         _ML_LiRO_SetFinal(result, ans);
         _ML_LiRO_SetCalculated(result, true);

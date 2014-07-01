@@ -8,7 +8,7 @@ var argstr = "";
 var c = ds_list_size(argument3);
 if (c > 0) {
     argstr = ds_list_find_value(argument3, 0);
-    for (var i = 1; i < c; i += 1) {
+    for (var i = 1; i < c; ++i) {
         argstr += "$" + ds_list_find_value(argument3, i);
     }
 }

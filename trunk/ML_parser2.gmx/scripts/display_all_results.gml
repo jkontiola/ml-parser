@@ -4,7 +4,7 @@ var parsers = argument0;
 var results = argument1;
 var num = min(ds_list_size(parsers), ds_list_size(results));
 var result, parser;
-for (var i = 0; i < num; i += 1) {
+for (var i = 0; i < num; ++i) {
     parser = ds_list_find_value(parsers, i);
     result = ds_list_find_value(results, i);
     if (ML_ResObj_HasAnswer(result)) {

@@ -4,7 +4,7 @@ var parsers = argument0;
 var parser;
 var num;
 num = ds_list_size(parsers);
-for (var i = 0; i < num; i += 1) {
+for (var i = 0; i < num; ++i) {
     parser = ds_list_find_value(parsers, i);
     if (ML_HasAnswer(parser)) {
         draw_set_color(c_black);

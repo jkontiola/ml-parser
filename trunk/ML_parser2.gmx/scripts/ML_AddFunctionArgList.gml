@@ -29,7 +29,7 @@ if (ds_map_exists(P_FUNCTION,argument1)) {
     c = ds_list_size(tlist);
     if (c > 0) {
         argstr = ds_list_find_value(tlist, 1);
-        for (var i = 1; i < c; i+= 1) {
+        for (var i = 1; i < c; ++i) {
             argstr += "$" + ds_list_find_value(tlist, i);
         }
     }
