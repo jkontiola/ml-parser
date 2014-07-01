@@ -18,7 +18,7 @@ i = 1;
 var c;
 do {
     c = string_char_at(vstr,i);
-    i+=1;
+    ++i;
     if (c == ".") break;
     if !_ML_LEX_Digit(c) return false;
     
@@ -27,7 +27,7 @@ if (c = "." && i <= s) {
     do {
         c = string_char_at(vstr,i);
         if !_ML_LEX_Digit(c) return false;
-        i+=1;
+        ++i;
     } until (i > s)
 }
 

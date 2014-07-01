@@ -30,7 +30,7 @@
         f = 1;
         i = 1;
         j = 1;
-        for (l=2; l<=n; l+=1) {
+        for (l=2; l<=n; ++l) {
             f *= l;
             if (l == k) i = f;
             if (l == m) j = f;

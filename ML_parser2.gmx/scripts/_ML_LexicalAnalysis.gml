@@ -27,24 +27,24 @@ while (string_length(str) > 0) {
             while (l <= string_length(str) ){
                 tc = string_char_at(str,l);
                 if (tc == c) break;
-                l+=1;
+                ++l;
             }
         } else if (_ML_LEX_Alpha(c) || c == "_") {
             l = 2;
             while (l <= string_length(str) ){
                 tc = string_char_at(str,l);
                 if !(_ML_LEX_Word(tc)) break;
-                l += 1;
+                ++l;
             }
-            l -= 1;
+            --l;
         } else if (_ML_LEX_Digit(c)) { 
             l = 2;
             while (l <= string_length(str) ){
                 tc = string_char_at(str,l);
                 if (!_ML_LEX_Digit(tc) && tc != ".") break;
-                l += 1;
+                ++l;
             }
-            l-=1;
+            --l;
         } else if (_ML_LEX_Punct(c)) {
             l = 2;
             tstr = c;
@@ -61,7 +61,7 @@ while (string_length(str) > 0) {
                     baselength = l;
                 }
                 
-                l += 1;
+                ++l;
             }
             l = baselength;
         } else {
@@ -102,7 +102,7 @@ _ML_LEX_TokenSetType(parser, tok, v);
 if (!ML_NoException(parser)) return tokenlist;
 //middle tokens
 prevtok = tok;
-for (i = 1; i < s; i += 1) {
+for (i = 1; i < s; ++i) {
     tok = ds_list_find_value(tokenlist, i);
     if (string(_ML_LiTok_GetVal(tok)) == ";") {
         v = ML_TT_EXPRTERMINATOR;

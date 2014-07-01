@@ -259,10 +259,14 @@
           <script>scripts\_ML_PARSE_AssignFlat.gml</script>
           <script>scripts\_ML_PARSE_Unary.gml</script>
           <script>scripts\_ML_PARSE_Function.gml</script>
-          <script>scripts\script319.gml</script>
+          <script>scripts\_ML_PARSE_Value.gml</script>
           <script>scripts\_ML_PARSE_FuncFlat.gml</script>
+          <script>scripts\_ML_PARSE_EvalLine.gml</script>
+          <script>scripts\_ML_PARSE_EvalToken.gml</script>
           <script>scripts\_ML_Parse.gml</script>
-          <script>scripts\_ML_Parse_Compiled.gml</script>
+          <script>scripts\_ML_ParseCompiled.gml</script>
+          <script>scripts\_ML_PARSECOMP_EvalLine.gml</script>
+          <script>scripts\_ML_PARSECOMP_EvalToken.gml</script>
         </scripts>
         <scripts name="compile">
           <script>scripts\_ML_COMP_RemoveExtraTokens.gml</script>
@@ -372,6 +376,7 @@
           <script>scripts\_ML_LiRO_Get.gml</script>
           <script>scripts\_ML_LiRO_Destroy.gml</script>
           <script>scripts\_ML_LiRO_Size.gml</script>
+          <script>scripts\_ML_LiRO_AddToken.gml</script>
           <script>scripts\_ML_LiRO_Add.gml</script>
           <script>scripts\_ML_LiRO_GetCalculated.gml</script>
           <script>scripts\_ML_LiRO_GetFinal.gml</script>
@@ -416,8 +421,8 @@
     <object>objects\objShowComp</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rmShowComp</room>
     <room>rooms\rmShowParse</room>
+    <room>rooms\rmShowComp</room>
     <room>rooms\rmComp</room>
   </rooms>
   <constants number="87">

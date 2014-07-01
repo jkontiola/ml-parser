@@ -37,7 +37,7 @@ while (i < s && !endtok) { //while there are tokens to be read
     break;
     case ML_TT_LEFTP:
         _ML_SY_HandleLeftPar(token, curstack);
-        curparenthesis += 1;
+        ++curparenthesis;
     break;
     case ML_TT_FUNCTION:
         if (curargnum == 0) curargnum = 1;
@@ -46,7 +46,7 @@ while (i < s && !endtok) { //while there are tokens to be read
         ds_stack_push(allargnum, curargnum);
         ds_stack_push(allparenthesis, curparenthesis);
         _ML_SY_HandleFunction(token, curstack);
-        curlevel += 1;
+        ++curlevel;
         curstack = ds_stack_create();
         curoutput = ds_list_create();
         curargnum = 0;
@@ -63,7 +63,7 @@ while (i < s && !endtok) { //while there are tokens to be read
     break;
     case ML_TT_ARGSEP:
         _ML_SY_HandleArgSep(parser, token, curoutput, curstack);
-        curargnum += 1;
+        ++curargnum;
     break;
     case ML_TT_COMMA: //special case - need to recheck comma's to check against function seperation
         if (curparenthesis == 0) {
@@ -99,7 +99,7 @@ while (i < s && !endtok) { //while there are tokens to be read
             }
             _ML_LEX_TokenSetType(parser, token, v);
         }
-        i-=1;
+        --i;
     break;
     case ML_TT_RIGHTP:
         if (_ML_SY_HandleRightPar(parser, token, curoutput, curstack, curargnum, alloutput, allstack, curlevel)) {
@@ -109,9 +109,9 @@ while (i < s && !endtok) { //while there are tokens to be read
             curstack = ds_stack_pop(allstack);
             curargnum = ds_stack_pop(allargnum);
             curparenthesis = ds_stack_pop(allparenthesis);
-            curlevel -= 1;
+            --curlevel;
         } else {
-            curparenthesis -= 1;
+            --curparenthesis;
         }
     break;
     case ML_TT_EOL:
@@ -136,7 +136,7 @@ while (i < s && !endtok) { //while there are tokens to be read
     break;
     
     }
-    i+=1;
+    ++i;
 }
 var tstack, toutput;
 repeat (ds_stack_size(allstack)) {
