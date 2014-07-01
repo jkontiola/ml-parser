@@ -1,5 +1,5 @@
 ///_ML_COMP_Assign(token, args)
-/// @argType    r,r,r
+/// @argType    r,r
 /// @returnType void
 /// @hidden     true
 var token = argument0;

@@ -413,17 +413,19 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_code</font>
+    <font>fonts\ftTitle</font>
     <font>fonts\ft_read</font>
   </fonts>
   <objects name="objects">
     <object>objects\objTestComp</object>
     <object>objects\objShowParse</object>
     <object>objects\objShowComp</object>
+    <object>objects\objInfo</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rmComp</room>
     <room>rooms\rmShowParse</room>
     <room>rooms\rmShowComp</room>
-    <room>rooms\rmComp</room>
   </rooms>
   <constants number="87">
     <constant name="ML_O_LEFTASSOC">0</constant>

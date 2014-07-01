@@ -8,7 +8,6 @@ var comp;
 
 for (var i = 0; i < ds_list_size(compilelist); ++i) {
     comp = ds_list_find_value(compilelist, i);
-    //parser = ds_list_find_value(parsers, i);
     ML_CompileCleanup(comp);
 }
 ds_list_clear(compilelist);

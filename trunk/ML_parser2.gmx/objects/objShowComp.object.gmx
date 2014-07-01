@@ -25,8 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fps_sum = 0;
-fps_num = 0;
+            <string>infoInstance = instance_create(0, 0, objInfo);
+//infoInstance.visible = false;
+
+fps_sum = 0;
+//fps_num = 0;
+fps_list = ds_list_create();
 global.DEBUGNOW = false;
 global.ACTIVELISTS = 0;
 global.ACTIVEMAPS = 0;
@@ -35,6 +39,7 @@ global.ACTIVESTACKS = 0;
 
 var str;
 var tvariables;
+var myfunc;
 variables = ds_map_create();
 allfuncs = ds_list_create();
 allcompiles = ds_list_create();
@@ -189,7 +194,30 @@ ds_list_add(allfuncs, myfunc);
 compile_all_parsers(allfuncs, allcompiles);
 execute_all_parsers(allfuncs, allcompiles, allresults);
 
-//ds_map_destroy(variables);  
+newExprBox = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="18">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>calculate_all_parsers(allfuncs);
 </string>
           </argument>
         </arguments>
@@ -245,6 +273,53 @@ execute_all_parsers(allfuncs, allcompiles, allresults);
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="63">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var i_d = ds_map_find_value(async_load, "id");
+if (i_d == newExprBox) {
+    if ds_map_find_value(async_load, "status") {
+        var expr = ds_map_find_value(async_load, "result");
+        if (expr != "") {
+            var myfunc = ds_list_find_value(allfuncs, ds_list_size(allfuncs)-1);
+            ML_SetExpression(myfunc, expr);
+            
+            var comp = ds_list_find_value(allcompiles, ds_list_size(allcompiles)-1);
+            ML_CompileCleanup(comp);
+            ds_list_delete(allcompiles, ds_list_size(allcompiles)-1);
+            
+            ML_ClearExceptions(myfunc);
+            comp = ML_Compile(myfunc, expr);
+            ds_list_add(allcompiles, comp);
+            
+            var res_obj = ds_list_find_value(allresults, ds_list_size(allresults)-1);
+            ML_ResObj_Cleanup(res_obj);
+            ds_list_delete(allresults, ds_list_size(allresults)-1);
+            res_obj = ML_Execute(myfunc, comp);
+            ds_list_add(allresults, res_obj);
+            
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -267,11 +342,24 @@ i = 0;
 //debug mode, for all parsers
 k = 400;
 draw_set_font(ft_code);
-++fps_num;
+/*++fps_num;
 if (fps_num &gt; 90) {
     fps_sum += fps_real;
     draw_text(200,18,fps_sum / (fps_num - 90));
+}*/
+
+ds_list_add(fps_list, fps_real);
+var fps_num = ds_list_size(fps_list);
+
+if (fps_num &gt; room_speed * 5) {
+    ds_list_delete(fps_list, 0);
 }
+var fps_sum = 0;
+for (var fps_ind = fps_num -1; fps_ind &gt;= 0; --fps_ind) {
+    fps_sum += ds_list_find_value(fps_list, fps_ind);
+}
+fps_sum /= fps_num;
+draw_text(200,18,fps_sum);
 draw_text(200,0,fps_real);
 
 display_all_results(allfuncs, allresults);
@@ -309,6 +397,31 @@ draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="112">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+infoInstance.visible = !infoInstance.visible;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="32">
       <action>
         <libid>1</libid>
@@ -326,7 +439,12 @@ draw_text(k,j,"Shows a complete different setup of operators, using Science#"+
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>var myfunc = ds_list_find_value(allfuncs, ds_list_size(allfuncs)-1);
+
+var expr = ML_GetExprString(myfunc);
+newExprBox = get_string_async("new input string: ", expr);
+
+</string>
           </argument>
         </arguments>
       </action>
