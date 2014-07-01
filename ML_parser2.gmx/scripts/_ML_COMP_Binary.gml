@@ -1,5 +1,5 @@
 ///_ML_COMP_Binary( token, argstack)
-/// @argType    r,r,r
+/// @argType    r,r
 /// @returnType void
 /// @hidden     true
 

@@ -21,10 +21,10 @@ if (ML_NoException(parser)) {
     }
 }
 
-var lhs, lhs_val, lhs_type;
+var lhs, lhs_val;
 if (!ds_stack_empty(args)) {
     lhs = ds_stack_pop(args);
-    _ML_LiRO_AddToken(res_obj, lhs);
+    lhs_val = _ML_LiRO_AddToken(res_obj, lhs);
 }
 ds_stack_destroy(args);
 return lhs_val;
